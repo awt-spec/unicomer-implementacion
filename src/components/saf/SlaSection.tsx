@@ -19,7 +19,7 @@ export function SlaSection() {
             Acuerdos de Nivel de Servicio
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance leading-tight">
-            SLA — Incident Response
+            SLA — Respuesta a Incidentes
           </h2>
         </div>
 
@@ -29,11 +29,11 @@ export function SlaSection() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50 text-left">
-                  <th className="p-3 font-semibold text-foreground w-[140px]">Severity</th>
-                  <th className="p-3 font-semibold text-foreground">Definition</th>
-                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Availability</th>
-                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Response</th>
-                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Resolution</th>
+                  <th className="p-3 font-semibold text-foreground w-[140px]">Severidad</th>
+                  <th className="p-3 font-semibold text-foreground">Definición</th>
+                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Disponibilidad</th>
+                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Respuesta</th>
+                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Resolución</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,9 +53,9 @@ export function SlaSection() {
                       <p>{s.definition}</p>
                       {expanded === i && (
                         <div className="mt-3 p-3 rounded bg-muted/50 text-xs whitespace-pre-line">
-                          <p className="font-semibold text-foreground mb-1">Support Hours:</p>
+                          <p className="font-semibold text-foreground mb-1">Horario de Soporte:</p>
                           <p>{s.availability}</p>
-                          <p className="font-semibold text-foreground mt-2 mb-1">Penalty:</p>
+                          <p className="font-semibold text-foreground mt-2 mb-1">Penalidad:</p>
                           <p>{s.penalty}</p>
                         </div>
                       )}
@@ -79,7 +79,7 @@ export function SlaSection() {
 
         {/* Uptime & Performance */}
         <div className="scroll-reveal">
-          <h3 className="text-xl font-bold text-foreground mb-6">Platform Availability & Performance</h3>
+          <h3 className="text-xl font-bold text-foreground mb-6">Disponibilidad y Rendimiento de la Plataforma</h3>
           <div className="grid md:grid-cols-3 gap-4">
             {SLA_UPTIME.map((u) => (
               <div key={u.metric} className="bg-card rounded-lg border p-5 hover:shadow-md transition-shadow">
