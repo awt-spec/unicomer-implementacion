@@ -1,4 +1,11 @@
-import { HERRAMIENTAS } from "./data";
+const HERRAMIENTAS = [
+  { nombre: "Jira", categoria: "Gestión de Proyecto" },
+  { nombre: "Confluence", categoria: "Documentación" },
+  { nombre: "Git / Azure DevOps", categoria: "Control de Versiones" },
+  { nombre: "Teams / Slack", categoria: "Comunicación" },
+  { nombre: "Power BI", categoria: "Reportería PMO" },
+  { nombre: "SonarQube", categoria: "Calidad de Código" },
+];
 import { GitBranch, FileText, Headphones, BarChart3, MessageSquare, Code } from "lucide-react";
 
 const ICON_MAP: Record<string, typeof GitBranch> = {
