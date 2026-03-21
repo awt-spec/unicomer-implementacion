@@ -105,12 +105,69 @@ export const EQUIPO_SYSDE = [
   { nombre: "Danilo Vezzoni", rol: "QA Specialist", iniciales: "DV", experiencia: "15 años", dedicacion: "100%", pais: "Costa Rica" },
 ];
 
-export const EQUIPO_UNICOMER = [
-  { nombre: "Fernando Gutiérrez", rol: "Sponsor Ejecutivo", iniciales: "FG", experiencia: "", dedicacion: "", pais: "" },
-  { nombre: "Laura Martínez", rol: "PMO Unicomer", iniciales: "LM", experiencia: "", dedicacion: "", pais: "" },
-  { nombre: "Jorge Villalobos", rol: "Líder TI Regional", iniciales: "JV", experiencia: "", dedicacion: "", pais: "" },
-  { nombre: "Sandra Pineda", rol: "Líder de Negocio", iniciales: "SP", experiencia: "", dedicacion: "", pais: "" },
-  { nombre: "Andrés Morales", rol: "DBA / Infraestructura", iniciales: "AM", experiencia: "", dedicacion: "", pais: "" },
+
+export const SLA_SEVERITIES = [
+  {
+    level: "Severity 1",
+    label: "Critical",
+    color: "destructive" as const,
+    definition: "System Down. Complete loss of core business functions (e.g., Cannot process new loans, Cannot receive payments, API Gateway down).",
+    availability: "24×7",
+    responseTime: "1 hour",
+    resolutionTime: "1 hour",
+    penalty: "Service credits will be mutually agreed with Unicomer and subject to the support model selected.",
+  },
+  {
+    level: "Severity 2",
+    label: "High",
+    color: "warning" as const,
+    definition: "Major Impact. System operational but severely degraded. Critical functions available but slow or intermittent (e.g., Risk Engine failing for 30% of requests).",
+    availability: "24×7",
+    responseTime: "1 hour",
+    resolutionTime: "4 hours",
+    penalty: "Service credits will be mutually agreed with Unicomer and subject to the support model selected.",
+  },
+  {
+    level: "Severity 3",
+    label: "Medium",
+    color: "secondary" as const,
+    definition: "Minor Impact. Non-critical errors. Workaround available (e.g., Reporting module glitch, UI display error).",
+    availability: "Business hours per country:\n• UTC-6: El Salvador, Honduras, Guatemala, Nicaragua, Costa Rica (08:00–17:00)\n• UTC-5: Ecuador, Jamaica (08:00–17:00)\n• UTC-4: Trinidad, Guyana (08:00–17:00)",
+    responseTime: "4 hours",
+    resolutionTime: "12 hours",
+    penalty: "Service credits will be mutually agreed with Unicomer and subject to the support model selected.",
+  },
+  {
+    level: "Severity 4",
+    label: "Low",
+    color: "outline" as const,
+    definition: "Cosmetic/Request. Text errors, documentation requests, non-urgent configuration changes.",
+    availability: "Business hours per country:\n• UTC-6: El Salvador, Honduras, Guatemala, Nicaragua, Costa Rica (08:00–17:00)\n• UTC-5: Ecuador, Jamaica (08:00–17:00)\n• UTC-4: Trinidad, Guyana (08:00–17:00)",
+    responseTime: "4 hours",
+    resolutionTime: "24 hours",
+    penalty: "Service credits will be mutually agreed with Unicomer and subject to the support model selected.",
+  },
+];
+
+export const SLA_UPTIME = [
+  {
+    metric: "System Availability",
+    target: "99.9% minimum",
+    period: "Monthly",
+    penalty: "Service credits will be mutually agreed with Unicomer.",
+  },
+  {
+    metric: "API Latency",
+    target: "Major impact. System operational but with severe degradation. Critical functions available but slow or intermittent.",
+    period: "Monthly",
+    penalty: "Performance monitoring and reporting.",
+  },
+  {
+    metric: "Batch Processing",
+    target: "Real-time event sync: 10–20 Mbps/region · Overnight batch replication: 50–100 Mbps/region · Batch jobs during agreed maintenance windows.",
+    period: "Daily",
+    penalty: "Monitoring and escalation procedures.",
+  },
 ];
 
 export const RIESGOS = [
