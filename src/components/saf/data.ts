@@ -88,9 +88,9 @@ export const HITOS = [
 ];
 
 export const EQUIPO_SYSDE = [
-  { nombre: "Carlos Cascante", rol: "Project Director / Engagement Manager", iniciales: "CC", experiencia: "30 años", dedicacion: "100%", pais: "Costa Rica" },
-  { nombre: "Luis Mangel Alfaro Leal", rol: "Lead Solution Architect", iniciales: "LA", experiencia: "22 años", dedicacion: "100%", pais: "Costa Rica" },
-  { nombre: "María Nelly Vargas Salazar", rol: "Functional Lead (Credit Expert)", iniciales: "MV", experiencia: "37 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "Carlos Cascante", rol: "Project Director / Engagement Manager", iniciales: "CC", experiencia: "30 años", dedicacion: "100%", pais: "Costa Rica", foto: "carlos-cascante" },
+  { nombre: "Luis Mangel Alfaro Leal", rol: "Lead Solution Architect", iniciales: "LA", experiencia: "22 años", dedicacion: "100%", pais: "Costa Rica", foto: "luis-alfaro" },
+  { nombre: "María Nelly Vargas Salazar", rol: "Functional Lead (Credit Expert)", iniciales: "MV", experiencia: "37 años", dedicacion: "100%", pais: "Costa Rica", foto: "nelly-vargas" },
   { nombre: "Olga Lucia Cuervo Restrepo", rol: "Technical Lead (Integration)", iniciales: "OC", experiencia: "23 años", dedicacion: "100%", pais: "Colombia" },
   { nombre: "Jhonny Brenes", rol: "Migration Specialist", iniciales: "JB", experiencia: "6 años", dedicacion: "100%", pais: "Colombia" },
   { nombre: "Fernando Pinto", rol: "Change Management Lead", iniciales: "FP", experiencia: "25 años", dedicacion: "100%", pais: "Bolivia" },
