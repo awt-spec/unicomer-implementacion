@@ -2,6 +2,12 @@ import { EQUIPO_SYSDE } from "./data";
 import carlosCascante from "@/assets/team/carlos-cascante.png";
 import luisAlfaro from "@/assets/team/luis-alfaro.png";
 import nellyVargas from "@/assets/team/nelly-vargas.png";
+import fernandoPinto from "@/assets/team/fernando-pinto.png";
+import julianGomez from "@/assets/team/julian-gomez.png";
+import dennisGarcia from "@/assets/team/dennis-garcia.png";
+import martinPisacreta from "@/assets/team/martin-pisacreta.png";
+import orlandoCastro from "@/assets/team/orlando-castro.png";
+import lucasSain from "@/assets/team/lucas-sain.png";
 
 const PAIS_FLAG: Record<string, string> = {
   "México": "🇲🇽", "Costa Rica": "🇨🇷", "Colombia": "🇨🇴", "Bolivia": "🇧🇴",
@@ -12,6 +18,12 @@ const PHOTOS: Record<string, string> = {
   "carlos-cascante": carlosCascante,
   "luis-alfaro": luisAlfaro,
   "nelly-vargas": nellyVargas,
+  "fernando-pinto": fernandoPinto,
+  "julian-gomez": julianGomez,
+  "dennis-garcia": dennisGarcia,
+  "martin-pisacreta": martinPisacreta,
+  "orlando-castro": orlandoCastro,
+  "lucas-sain": lucasSain,
 };
 
 function TeamCard({ nombre, rol, iniciales, experiencia, dedicacion, pais, foto }: {
