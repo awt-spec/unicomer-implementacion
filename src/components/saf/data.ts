@@ -90,20 +90,29 @@ export const HITOS = [
 ];
 
 export const EQUIPO_SYSDE = [
-  { nombre: "Carlos Mendoza", rol: "Director de Proyecto", iniciales: "CM" },
-  { nombre: "Ana Lucía Rivera", rol: "Líder Funcional SAF+", iniciales: "AR" },
-  { nombre: "Roberto Chen", rol: "Arquitecto de Soluciones", iniciales: "RC" },
-  { nombre: "María José Estrada", rol: "Líder de Integraciones", iniciales: "ME" },
-  { nombre: "Diego Alvarado", rol: "Especialista en Migración", iniciales: "DA" },
-  { nombre: "Patricia Solano", rol: "Líder de QA", iniciales: "PS" },
+  { nombre: "Maria Fernanda Angulo Blanco", rol: "Project Director / Engagement Manager", iniciales: "MA", experiencia: "25 años", dedicacion: "100%", pais: "México" },
+  { nombre: "Luis Mangel Alfaro Leal", rol: "Lead Solution Architect", iniciales: "LA", experiencia: "22 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "María Nelly Vargas Salazar", rol: "Functional Lead (Credit Expert)", iniciales: "MV", experiencia: "37 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "Olga Lucia Cuervo Restrepo", rol: "Technical Lead (Integration)", iniciales: "OC", experiencia: "23 años", dedicacion: "100%", pais: "Colombia" },
+  { nombre: "Jhonny Brenes", rol: "Migration Specialist", iniciales: "JB", experiencia: "6 años", dedicacion: "100%", pais: "Colombia" },
+  { nombre: "Fernando Pinto", rol: "Change Management Lead", iniciales: "FP", experiencia: "25 años", dedicacion: "100%", pais: "Bolivia" },
+  { nombre: "Julian Gómez", rol: "Technical Consultant", iniciales: "JG", experiencia: "20 años", dedicacion: "100%", pais: "Colombia" },
+  { nombre: "Dennis García", rol: "Software Developer", iniciales: "DG", experiencia: "19 años", dedicacion: "50%", pais: "Costa Rica" },
+  { nombre: "Javier Acuña", rol: "Senior Developer", iniciales: "JA", experiencia: "20 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "Martin Pisacreta", rol: "Senior Backend Developer", iniciales: "MP", experiencia: "8 años", dedicacion: "50%", pais: "Argentina" },
+  { nombre: "Orlando Castro", rol: "Business Consultant", iniciales: "OC", experiencia: "31 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "Alexander Avila", rol: "Backend and API Services Developer", iniciales: "AA", experiencia: "6 años", dedicacion: "50%", pais: "Perú" },
+  { nombre: "Lucas Julián Sain", rol: "Arquitecto de Cloud y Transformación Digital", iniciales: "LS", experiencia: "22 años", dedicacion: "80%", pais: "Costa Rica" },
+  { nombre: "Carlos Andrés Solís Sequeira", rol: "Administración de Infraestructura", iniciales: "CS", experiencia: "14 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "Danilo Vezzoni", rol: "QA Specialist", iniciales: "DV", experiencia: "15 años", dedicacion: "100%", pais: "Costa Rica" },
 ];
 
 export const EQUIPO_UNICOMER = [
-  { nombre: "Fernando Gutiérrez", rol: "Sponsor Ejecutivo", iniciales: "FG" },
-  { nombre: "Laura Martínez", rol: "PMO Unicomer", iniciales: "LM" },
-  { nombre: "Jorge Villalobos", rol: "Líder TI Regional", iniciales: "JV" },
-  { nombre: "Sandra Pineda", rol: "Líder de Negocio", iniciales: "SP" },
-  { nombre: "Andrés Morales", rol: "DBA / Infraestructura", iniciales: "AM" },
+  { nombre: "Fernando Gutiérrez", rol: "Sponsor Ejecutivo", iniciales: "FG", experiencia: "", dedicacion: "", pais: "" },
+  { nombre: "Laura Martínez", rol: "PMO Unicomer", iniciales: "LM", experiencia: "", dedicacion: "", pais: "" },
+  { nombre: "Jorge Villalobos", rol: "Líder TI Regional", iniciales: "JV", experiencia: "", dedicacion: "", pais: "" },
+  { nombre: "Sandra Pineda", rol: "Líder de Negocio", iniciales: "SP", experiencia: "", dedicacion: "", pais: "" },
+  { nombre: "Andrés Morales", rol: "DBA / Infraestructura", iniciales: "AM", experiencia: "", dedicacion: "", pais: "" },
 ];
 
 export const RIESGOS = [
