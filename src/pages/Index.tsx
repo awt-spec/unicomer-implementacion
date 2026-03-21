@@ -2,12 +2,14 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Navbar } from "@/components/saf/Navbar";
 import { HeroSection } from "@/components/saf/HeroSection";
 import { ResumenSection } from "@/components/saf/ResumenSection";
+import { ContextoSection } from "@/components/saf/ContextoSection";
 import { ModulosSection } from "@/components/saf/ModulosSection";
 import { PaisesSection } from "@/components/saf/PaisesSection";
 import { TimelineSection } from "@/components/saf/TimelineSection";
 import { HitosSection } from "@/components/saf/HitosSection";
 import { EquipoSection } from "@/components/saf/EquipoSection";
 import { SlaSection } from "@/components/saf/SlaSection";
+import { EntregablesSection } from "@/components/saf/EntregablesSection";
 import { MetodologiaSection } from "@/components/saf/MetodologiaSection";
 
 const Index = () => {
@@ -18,12 +20,14 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ResumenSection />
+      <ContextoSection />
       <ModulosSection />
       <PaisesSection />
       <TimelineSection />
       <HitosSection />
       <EquipoSection />
       <SlaSection />
+      <EntregablesSection />
       <MetodologiaSection />
     </div>
   );
