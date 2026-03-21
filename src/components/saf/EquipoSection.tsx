@@ -1,18 +1,33 @@
 import { EQUIPO_SYSDE } from "./data";
+import carlosCascante from "@/assets/team/carlos-cascante.png";
+import luisAlfaro from "@/assets/team/luis-alfaro.png";
+import nellyVargas from "@/assets/team/nelly-vargas.png";
 
 const PAIS_FLAG: Record<string, string> = {
   "México": "🇲🇽", "Costa Rica": "🇨🇷", "Colombia": "🇨🇴", "Bolivia": "🇧🇴",
   "Argentina": "🇦🇷", "Perú": "🇵🇪",
 };
 
-function TeamCard({ nombre, rol, iniciales, experiencia, dedicacion, pais }: {
-  nombre: string; rol: string; iniciales: string; experiencia?: string; dedicacion?: string; pais?: string;
+const PHOTOS: Record<string, string> = {
+  "carlos-cascante": carlosCascante,
+  "luis-alfaro": luisAlfaro,
+  "nelly-vargas": nellyVargas,
+};
+
+function TeamCard({ nombre, rol, iniciales, experiencia, dedicacion, pais, foto }: {
+  nombre: string; rol: string; iniciales: string; experiencia?: string; dedicacion?: string; pais?: string; foto?: string;
 }) {
+  const photoSrc = foto ? PHOTOS[foto] : undefined;
+
   return (
     <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/60 transition-colors">
-      <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 bg-primary text-primary-foreground">
-        {iniciales}
-      </div>
+      {photoSrc ? (
+        <img src={photoSrc} alt={nombre} className="w-10 h-10 rounded-full object-cover shrink-0" />
+      ) : (
+        <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 bg-primary text-primary-foreground">
+          {iniciales}
+        </div>
+      )}
       <div className="min-w-0 flex-1">
         <p className="font-semibold text-foreground text-sm truncate">{nombre}</p>
         <p className="text-muted-foreground text-xs">{rol}</p>
