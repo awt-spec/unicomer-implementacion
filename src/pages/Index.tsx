@@ -7,9 +7,7 @@ import { PaisesSection } from "@/components/saf/PaisesSection";
 import { TimelineSection } from "@/components/saf/TimelineSection";
 import { HitosSection } from "@/components/saf/HitosSection";
 import { EquipoSection } from "@/components/saf/EquipoSection";
-import { RiesgosSection } from "@/components/saf/RiesgosSection";
 import { MetodologiaSection } from "@/components/saf/MetodologiaSection";
-import { ProximosPasosSection } from "@/components/saf/ProximosPasosSection";
 
 const Index = () => {
   useScrollReveal();
@@ -24,9 +22,7 @@ const Index = () => {
       <TimelineSection />
       <HitosSection />
       <EquipoSection />
-      <RiesgosSection />
       <MetodologiaSection />
-      <ProximosPasosSection />
     </div>
   );
 };
