@@ -88,7 +88,7 @@ export const HITOS = [
 ];
 
 export const EQUIPO_SYSDE = [
-  { nombre: "Maria Fernanda Cascante", rol: "Project Director / Engagement Manager", iniciales: "MC", experiencia: "30 años", dedicacion: "100%", pais: "Costa Rica" },
+  { nombre: "Carlos Cascante", rol: "Project Director / Engagement Manager", iniciales: "CC", experiencia: "30 años", dedicacion: "100%", pais: "Costa Rica" },
   { nombre: "Luis Mangel Alfaro Leal", rol: "Lead Solution Architect", iniciales: "LA", experiencia: "22 años", dedicacion: "100%", pais: "Costa Rica" },
   { nombre: "María Nelly Vargas Salazar", rol: "Functional Lead (Credit Expert)", iniciales: "MV", experiencia: "37 años", dedicacion: "100%", pais: "Costa Rica" },
   { nombre: "Olga Lucia Cuervo Restrepo", rol: "Technical Lead (Integration)", iniciales: "OC", experiencia: "23 años", dedicacion: "100%", pais: "Colombia" },
