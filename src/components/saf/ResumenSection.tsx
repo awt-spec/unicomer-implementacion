@@ -22,16 +22,16 @@ const FASES_RESUMEN = [
     nombre: "Fases 3–4 — Autonomía",
     paises: "Guyana, Ecuador, Trinidad, Jamaica, Guatemala",
     periodo: "Año 3.5–4",
-    ownership: "Unicomer lidera",
-    desc: "Implementaciones lideradas por Unicomer con soporte de SYSDE bajo demanda o limitado a escenarios específicos.",
+    ownership: "Unicomer + soporte ilimitado",
+    desc: "Implementaciones lideradas por Unicomer con soporte activo ilimitado de SYSDE en todas las áreas necesarias.",
   },
   {
     icon: Globe,
     nombre: "Fases 5–6 — Cierre",
     paises: "El Salvador, Costa Rica",
     periodo: "Año 4.5–5",
-    ownership: "100% Unicomer",
-    desc: "Despliegue con autonomía completa del equipo interno de Unicomer. Cierre formal del programa.",
+    ownership: "Unicomer + soporte ilimitado",
+    desc: "Despliegue liderado por Unicomer con soporte activo ilimitado de SYSDE. Cierre formal del programa.",
   },
 ];
 

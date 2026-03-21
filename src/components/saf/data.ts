@@ -1,12 +1,15 @@
 export const NAV_SECTIONS = [
   { id: "hero", label: "Inicio" },
   { id: "resumen", label: "Resumen" },
+  { id: "contexto", label: "Contexto" },
   { id: "modulos", label: "Módulos" },
   { id: "paises", label: "Países" },
   { id: "timeline", label: "Fases" },
   { id: "hitos", label: "Hitos" },
   { id: "equipo", label: "Equipo" },
   { id: "sla", label: "SLA" },
+  { id: "entregables", label: "Entregables" },
+  { id: "metodologia", label: "Metodología" },
 ];
 
 export const KPIS = [
@@ -37,16 +40,26 @@ export const MODULOS = {
   ],
 };
 
+export const SISTEMAS_ACTUALES = [
+  { sistema: "Sysde (legado)", paises: "El Salvador · Nicaragua", creditos: "419,494 + 79,360", situacion: "Ya cliente SYSDE → upgrade a SAF+", ventaja: true },
+  { sistema: "POSCental", paises: "Honduras", creditos: "338,360", situacion: "Migración completa — País PILOTO", ventaja: false },
+  { sistema: "VFlex / VisionPLUS", paises: "Guatemala", creditos: "91,536", situacion: "Migración completa", ventaja: false },
+  { sistema: "NAF", paises: "Costa Rica", creditos: "708,591", situacion: "Migración completa — mayor cartera", ventaja: false },
+  { sistema: "SIAR", paises: "Ecuador", creditos: "144,688", situacion: "Migración completa", ventaja: false },
+  { sistema: "Mambu", paises: "Jamaica", creditos: "186,000", situacion: "Migración completa — Inglés", ventaja: false },
+  { sistema: "COSACS", paises: "Trinidad & Tobago · Guyana", creditos: "117,295 + 65,176", situacion: "Migración completa — Inglés", ventaja: false },
+];
+
 export const PAISES = [
-  { pais: "Honduras", bandera: "🇭🇳", fase: "Fase 1", periodo: "Año 1–2", regulador: "CNBS", idioma: "Español", ownership: "100% SYSDE" },
-  { pais: "Nicaragua", bandera: "🇳🇮", fase: "Fase 2", periodo: "Año 3", regulador: "SIBOIF", idioma: "Español", ownership: "50% SYSDE / 50% Unicomer" },
-  { pais: "Guyana", bandera: "🇬🇾", fase: "Fase 3", periodo: "Año 3.5", regulador: "BOG", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
-  { pais: "Ecuador", bandera: "🇪🇨", fase: "Fase 3", periodo: "Año 3.5", regulador: "SEPS", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
-  { pais: "Trinidad y Tobago", bandera: "🇹🇹", fase: "Fase 4", periodo: "Año 4", regulador: "CBTT", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
-  { pais: "Jamaica", bandera: "🇯🇲", fase: "Fase 4", periodo: "Año 4", regulador: "BOJ", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
-  { pais: "Guatemala", bandera: "🇬🇹", fase: "Fase 4", periodo: "Año 4", regulador: "SIB", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
-  { pais: "El Salvador", bandera: "🇸🇻", fase: "Fase 5", periodo: "Año 4.5", regulador: "SSF", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
-  { pais: "Costa Rica", bandera: "🇨🇷", fase: "Fase 6", periodo: "Año 5", regulador: "SUGEF", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "Honduras", bandera: "🇭🇳", fase: "Fase 1", periodo: "Año 1–2", regulador: "CNBS", idioma: "Español", ownership: "100% SYSDE", creditos: "338,360", clientes: "82,500", sistema: "POSCental" },
+  { pais: "Nicaragua", bandera: "🇳🇮", fase: "Fase 2", periodo: "Año 3", regulador: "SIBOIF", idioma: "Español", ownership: "50% SYSDE / 50% Unicomer", creditos: "79,360", clientes: "55,700", sistema: "Sysde → SAF+" },
+  { pais: "Guyana", bandera: "🇬🇾", fase: "Fase 3", periodo: "Año 3.5", regulador: "BOG", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "65,176", clientes: "41,200", sistema: "COSACS" },
+  { pais: "Ecuador", bandera: "🇪🇨", fase: "Fase 3", periodo: "Año 3.5", regulador: "SEPS", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "144,688", clientes: "115,500", sistema: "SIAR" },
+  { pais: "Trinidad y Tobago", bandera: "🇹🇹", fase: "Fase 4", periodo: "Año 4", regulador: "CBTT", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "117,295", clientes: "71,600", sistema: "COSACS" },
+  { pais: "Jamaica", bandera: "🇯🇲", fase: "Fase 4", periodo: "Año 4", regulador: "BOJ", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "186,000", clientes: "94,100", sistema: "Mambu" },
+  { pais: "Guatemala", bandera: "🇬🇹", fase: "Fase 4", periodo: "Año 4", regulador: "SIB", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "91,536", clientes: "70,700", sistema: "VFlex/VisionPLUS" },
+  { pais: "El Salvador", bandera: "🇸🇻", fase: "Fase 5", periodo: "Año 4.5", regulador: "SSF", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "419,494", clientes: "128,300", sistema: "Sysde → SAF+" },
+  { pais: "Costa Rica", bandera: "🇨🇷", fase: "Fase 6", periodo: "Año 5", regulador: "SUGEF", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE", creditos: "708,591", clientes: "393,500", sistema: "NAF" },
 ];
 
 export const FASES = [
@@ -160,15 +173,44 @@ export const SLA_UPTIME = [
     penalty: "Los créditos de servicio serán acordados mutuamente con Unicomer.",
   },
   {
-    metric: "Latencia de API",
-    target: "Impacto mayor. Sistema operativo pero con degradación severa. Funciones críticas disponibles pero lentas o intermitentes.",
-    period: "Mensual",
-    penalty: "Monitoreo y reportes de rendimiento.",
+    metric: "RPO (Recovery Point Objective)",
+    target: "15–30 minutos",
+    period: "Por evento",
+    penalty: "Backups continuos de transaction logs + replicación geo-redundante.",
   },
   {
-    metric: "Procesamiento Batch",
-    target: "Sincronización de eventos en tiempo real: 10–20 Mbps/región · Replicación batch nocturna: 50–100 Mbps/región · Trabajos batch durante ventanas de mantenimiento acordadas.",
-    period: "Diario",
-    penalty: "Procedimientos de monitoreo y escalamiento.",
+    metric: "RTO (Recovery Time Objective)",
+    target: "4–12 horas",
+    period: "Por evento",
+    penalty: "DB failure: 4–6h · Datacenter outage: 6–12h · DR completo: 12h max.",
   },
+  {
+    metric: "Respuesta a Incidente de Seguridad",
+    target: "Notificación en 15 min · Assessment en 2h",
+    period: "Cada incidente",
+    penalty: "Disponibilidad 24×7 para brechas de datos o ransomware.",
+  },
+  {
+    metric: "Root Cause Analysis (RCA)",
+    target: "Preliminar: 48h · Final: 5 días hábiles",
+    period: "Post-S1",
+    penalty: "Obligatorio para todo incidente S1.",
+  },
+];
+
+export const ENTREGABLES = [
+  { num: 1, fase: "I. Planificación", nombre: "Project Management Plan", formato: "Excel & Miro", timing: "Semana 4–5" },
+  { num: 2, fase: "I. Planificación", nombre: "Blueprint / Solution Design", formato: "Word / Swagger / draw.io", timing: "6–10 semanas" },
+  { num: 3, fase: "II. Build", nombre: "Accounting Entry Matrix", formato: "Excel / SQL / Power BI", timing: "2–6 semanas" },
+  { num: 4, fase: "II. Build", nombre: "Regulatory Compliance Report", formato: "Excel / Confluence / Power BI", timing: "4–10 semanas" },
+  { num: 5, fase: "II. Build", nombre: "Configuration Workbooks (Parametrización)", formato: "Excel / Git / SQL", timing: "4–8 semanas" },
+  { num: 6, fase: "II. Build", nombre: "Integration Specs (API/Swagger)", formato: "Swagger / Postman / DevOps", timing: "1–5 semanas" },
+  { num: 7, fase: "II. Build", nombre: "Data Migration Plan (ETL)", formato: "Excel / SQL / DevOps", timing: "6–20 semanas" },
+  { num: 8, fase: "III. Testing", nombre: "QA & UAT Test Plan", formato: "DevOps / Excel / Postman", timing: "4–14 semanas" },
+  { num: 9, fase: "III. Testing", nombre: "Security Audit Report (OWASP)", formato: "OWASP / NESSUS", timing: "3–8 semanas" },
+  { num: 10, fase: "IV. Go-Live", nombre: "Cutover Plan / Runbook", formato: "Excel / Project / DevOps", timing: "Semana 0–1" },
+  { num: 11, fase: "IV. Go-Live", nombre: "Training Materials (Train-the-Trainer)", formato: "PDF / PPT / Word / Miro", timing: "4–6 semanas" },
+  { num: 12, fase: "IV. Go-Live", nombre: "DRP Test Evidence", formato: "Excel / Minds", timing: "Semana 0–1" },
+  { num: 13, fase: "V. Soporte", nombre: "Monthly Service Report (SLA)", formato: "Azure Monitor / Power BI", timing: "Mensual" },
+  { num: 14, fase: "V. Soporte", nombre: "Project Closure Report", formato: "Word / PPT / DevOps", timing: "1–2 semanas" },
 ];
