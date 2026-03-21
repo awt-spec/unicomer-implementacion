@@ -79,7 +79,7 @@ export function SlaSection() {
 
         {/* Uptime & Performance */}
         <div className="scroll-reveal">
-          <h3 className="text-xl font-bold text-foreground mb-6">Platform Availability & Performance</h3>
+          <h3 className="text-xl font-bold text-foreground mb-6">Disponibilidad y Rendimiento de la Plataforma</h3>
           <div className="grid md:grid-cols-3 gap-4">
             {SLA_UPTIME.map((u) => (
               <div key={u.metric} className="bg-card rounded-lg border p-5 hover:shadow-md transition-shadow">
