@@ -64,7 +64,7 @@ export function HeroSection() {
         <div className="flex flex-wrap justify-center gap-3 text-white/70 text-sm mb-12">
           <span className="bg-white/10 px-4 py-1.5 rounded-full">Cliente: Grupo Unicomer</span>
           <span className="bg-white/10 px-4 py-1.5 rounded-full">RFP UGN1000123</span>
-          <span className="bg-white/10 px-4 py-1.5 rounded-full">24 meses</span>
+          <span className="bg-white/10 px-4 py-1.5 rounded-full">~5 años</span>
           <span className="bg-white/10 px-4 py-1.5 rounded-full">Marzo 2026</span>
         </div>
 

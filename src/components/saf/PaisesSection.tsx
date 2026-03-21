@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { PAISES } from "./data";
 
-const FILTROS = ["Todos", "Piloto", "Ola 1", "Ola 2"];
+const FILTROS = ["Todos", "Fase 1", "Fase 2", "Fase 3", "Fase 4", "Fase 5", "Fase 6"];
 
 export function PaisesSection() {
   const [filtro, setFiltro] = useState("Todos");
-  const filtered = filtro === "Todos" ? PAISES : PAISES.filter((p) => p.ola === filtro);
+  const filtered = filtro === "Todos" ? PAISES : PAISES.filter((p) => p.fase === filtro);
 
   return (
     <section id="paises" className="py-24 px-6 bg-background">
@@ -13,7 +13,7 @@ export function PaisesSection() {
         <div className="scroll-reveal mb-10">
           <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">Cobertura Geográfica</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance leading-tight">
-            9 Países en 3 Olas
+            9 Países en 6 Fases — ~5 Años
           </h2>
         </div>
 
@@ -44,11 +44,14 @@ export function PaisesSection() {
                 <div>
                   <h4 className="font-bold text-foreground">{p.pais}</h4>
                   <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                    p.ola === "Piloto" ? "bg-primary/10 text-primary" :
-                    p.ola === "Ola 1" ? "bg-sysde-gold/20 text-sysde-gold" :
-                    "bg-blue-100 text-blue-700"
+                    p.fase === "Fase 1" ? "bg-primary/10 text-primary" :
+                    p.fase === "Fase 2" ? "bg-amber-500/15 text-amber-600" :
+                    p.fase === "Fase 3" ? "bg-sky-100 text-sky-700" :
+                    p.fase === "Fase 4" ? "bg-violet-100 text-violet-700" :
+                    p.fase === "Fase 5" ? "bg-emerald-100 text-emerald-700" :
+                    "bg-teal-100 text-teal-700"
                   }`}>
-                    {p.ola}
+                    {p.fase}
                   </span>
                 </div>
               </div>
@@ -56,6 +59,7 @@ export function PaisesSection() {
                 <span>Período</span><span className="font-medium text-foreground">{p.periodo}</span>
                 <span>Regulador</span><span className="font-medium text-foreground">{p.regulador}</span>
                 <span>Idioma</span><span className="font-medium text-foreground">{p.idioma}</span>
+                <span>Ownership</span><span className="font-medium text-foreground">{p.ownership}</span>
               </div>
             </div>
           ))}
