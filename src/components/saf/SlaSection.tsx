@@ -53,9 +53,9 @@ export function SlaSection() {
                       <p>{s.definition}</p>
                       {expanded === i && (
                         <div className="mt-3 p-3 rounded bg-muted/50 text-xs whitespace-pre-line">
-                          <p className="font-semibold text-foreground mb-1">Support Hours:</p>
+                          <p className="font-semibold text-foreground mb-1">Horario de Soporte:</p>
                           <p>{s.availability}</p>
-                          <p className="font-semibold text-foreground mt-2 mb-1">Penalty:</p>
+                          <p className="font-semibold text-foreground mt-2 mb-1">Penalidad:</p>
                           <p>{s.penalty}</p>
                         </div>
                       )}
