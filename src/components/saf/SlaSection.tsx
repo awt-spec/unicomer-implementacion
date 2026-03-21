@@ -29,11 +29,11 @@ export function SlaSection() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50 text-left">
-                  <th className="p-3 font-semibold text-foreground w-[140px]">Severity</th>
-                  <th className="p-3 font-semibold text-foreground">Definition</th>
-                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Availability</th>
-                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Response</th>
-                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Resolution</th>
+                  <th className="p-3 font-semibold text-foreground w-[140px]">Severidad</th>
+                  <th className="p-3 font-semibold text-foreground">Definición</th>
+                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Disponibilidad</th>
+                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Respuesta</th>
+                  <th className="p-3 font-semibold text-foreground text-center w-[100px]">Resolución</th>
                 </tr>
               </thead>
               <tbody>
