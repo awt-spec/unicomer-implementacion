@@ -6,7 +6,7 @@ export const NAV_SECTIONS = [
   { id: "timeline", label: "Fases" },
   { id: "hitos", label: "Hitos" },
   { id: "equipo", label: "Equipo" },
-  { id: "metodologia", label: "Metodología" },
+  { id: "sla", label: "SLA" },
 ];
 
 export const KPIS = [
