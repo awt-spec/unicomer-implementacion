@@ -30,8 +30,8 @@ const FASES_RESUMEN = [
     nombre: "Fases 5–6 — Cierre",
     paises: "El Salvador, Costa Rica",
     periodo: "Año 4.5–5",
-    ownership: "100% Unicomer",
-    desc: "Despliegue con autonomía completa del equipo interno de Unicomer. Cierre formal del programa.",
+    ownership: "Unicomer + soporte ilimitado",
+    desc: "Despliegue liderado por Unicomer con soporte activo ilimitado de SYSDE. Cierre formal del programa.",
   },
 ];
 
