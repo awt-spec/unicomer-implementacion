@@ -22,8 +22,8 @@ const FASES_RESUMEN = [
     nombre: "Fases 3–4 — Autonomía",
     paises: "Guyana, Ecuador, Trinidad, Jamaica, Guatemala",
     periodo: "Año 3.5–4",
-    ownership: "Unicomer lidera",
-    desc: "Implementaciones lideradas por Unicomer con soporte de SYSDE bajo demanda o limitado a escenarios específicos.",
+    ownership: "Unicomer + soporte ilimitado",
+    desc: "Implementaciones lideradas por Unicomer con soporte activo ilimitado de SYSDE en todas las áreas necesarias.",
   },
   {
     icon: Globe,
