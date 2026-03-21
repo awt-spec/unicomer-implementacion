@@ -19,7 +19,7 @@ export function SlaSection() {
             Acuerdos de Nivel de Servicio
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance leading-tight">
-            SLA — Incident Response
+            SLA — Respuesta a Incidentes
           </h2>
         </div>
 
