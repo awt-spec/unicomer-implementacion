@@ -1,16 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Navbar } from "@/components/saf/Navbar";
+import { HeroSection } from "@/components/saf/HeroSection";
+import { ResumenSection } from "@/components/saf/ResumenSection";
+import { ModulosSection } from "@/components/saf/ModulosSection";
+import { PaisesSection } from "@/components/saf/PaisesSection";
+import { TimelineSection } from "@/components/saf/TimelineSection";
+import { HitosSection } from "@/components/saf/HitosSection";
+import { EquipoSection } from "@/components/saf/EquipoSection";
+import { RiesgosSection } from "@/components/saf/RiesgosSection";
+import { MetodologiaSection } from "@/components/saf/MetodologiaSection";
+import { ProximosPasosSection } from "@/components/saf/ProximosPasosSection";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useScrollReveal();
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <ResumenSection />
+      <ModulosSection />
+      <PaisesSection />
+      <TimelineSection />
+      <HitosSection />
+      <EquipoSection />
+      <RiesgosSection />
+      <MetodologiaSection />
+      <ProximosPasosSection />
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
