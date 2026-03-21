@@ -39,14 +39,14 @@ export const MODULOS = {
 
 export const PAISES = [
   { pais: "Honduras", bandera: "🇭🇳", fase: "Fase 1", periodo: "Año 1–2", regulador: "CNBS", idioma: "Español", ownership: "100% SYSDE" },
-  { pais: "Nicaragua", bandera: "🇳🇮", fase: "Fase 2", periodo: "Año 3", regulador: "SIBOIF", idioma: "Español", ownership: "50% / 50%" },
-  { pais: "Guyana", bandera: "🇬🇾", fase: "Fase 3", periodo: "Año 3.5", regulador: "BOG", idioma: "Inglés", ownership: "Unicomer (soporte bajo demanda)" },
-  { pais: "Ecuador", bandera: "🇪🇨", fase: "Fase 3", periodo: "Año 3.5", regulador: "SEPS", idioma: "Español", ownership: "Unicomer (soporte bajo demanda)" },
-  { pais: "Trinidad y Tobago", bandera: "🇹🇹", fase: "Fase 4", periodo: "Año 4", regulador: "CBTT", idioma: "Inglés", ownership: "Unicomer" },
-  { pais: "Jamaica", bandera: "🇯🇲", fase: "Fase 4", periodo: "Año 4", regulador: "BOJ", idioma: "Inglés", ownership: "Unicomer" },
-  { pais: "Guatemala", bandera: "🇬🇹", fase: "Fase 4", periodo: "Año 4", regulador: "SIB", idioma: "Español", ownership: "Unicomer" },
-  { pais: "El Salvador", bandera: "🇸🇻", fase: "Fase 5", periodo: "Año 4.5", regulador: "SSF", idioma: "Español", ownership: "Unicomer" },
-  { pais: "Costa Rica", bandera: "🇨🇷", fase: "Fase 6", periodo: "Año 5", regulador: "SUGEF", idioma: "Español", ownership: "Unicomer" },
+  { pais: "Nicaragua", bandera: "🇳🇮", fase: "Fase 2", periodo: "Año 3", regulador: "SIBOIF", idioma: "Español", ownership: "50% SYSDE / 50% Unicomer" },
+  { pais: "Guyana", bandera: "🇬🇾", fase: "Fase 3", periodo: "Año 3.5", regulador: "BOG", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "Ecuador", bandera: "🇪🇨", fase: "Fase 3", periodo: "Año 3.5", regulador: "SEPS", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "Trinidad y Tobago", bandera: "🇹🇹", fase: "Fase 4", periodo: "Año 4", regulador: "CBTT", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "Jamaica", bandera: "🇯🇲", fase: "Fase 4", periodo: "Año 4", regulador: "BOJ", idioma: "Inglés", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "Guatemala", bandera: "🇬🇹", fase: "Fase 4", periodo: "Año 4", regulador: "SIB", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "El Salvador", bandera: "🇸🇻", fase: "Fase 5", periodo: "Año 4.5", regulador: "SSF", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
+  { pais: "Costa Rica", bandera: "🇨🇷", fase: "Fase 6", periodo: "Año 5", regulador: "SUGEF", idioma: "Español", ownership: "Unicomer + soporte activo ilimitado SYSDE" },
 ];
 
 export const FASES = [
@@ -62,32 +62,32 @@ export const FASES = [
   },
   {
     num: 3, nombre: "Guyana y Ecuador — En Paralelo", periodo: "Año 3.5",
-    ownership: "Unicomer (soporte bajo demanda)",
-    actividades: ["Implementación liderada por el equipo Unicomer", "Soporte de SYSDE proporcionado bajo demanda", "Despliegue en paralelo en ambos países", "Adaptaciones regulatorias y de idioma"],
+    ownership: "Unicomer + soporte activo ilimitado SYSDE",
+    actividades: ["Implementación liderada por el equipo Unicomer", "Soporte activo ilimitado de SYSDE", "Despliegue en paralelo en ambos países", "Adaptaciones regulatorias y de idioma"],
   },
   {
     num: 4, nombre: "Trinidad, Jamaica y Guatemala — En Paralelo", periodo: "Año 4",
-    ownership: "Unicomer (soporte limitado)",
-    actividades: ["Implementaciones completamente lideradas por Unicomer", "Soporte de SYSDE limitado a escenarios específicos", "Tres países desplegados en paralelo", "Soporte multilenguaje (Español/Inglés)"],
+    ownership: "Unicomer + soporte activo ilimitado SYSDE",
+    actividades: ["Implementaciones lideradas por Unicomer", "Soporte activo ilimitado de SYSDE", "Tres países desplegados en paralelo", "Soporte multilenguaje (Español/Inglés)"],
   },
   {
     num: 5, nombre: "El Salvador", periodo: "Año 4.5",
-    ownership: "Unicomer",
-    actividades: ["Implementación liderada por el equipo Unicomer", "Autonomía completa del equipo interno", "Ajustes regulatorios para SSF"],
+    ownership: "Unicomer + soporte activo ilimitado SYSDE",
+    actividades: ["Implementación liderada por el equipo Unicomer", "Soporte activo ilimitado de SYSDE", "Ajustes regulatorios para SSF"],
   },
   {
     num: 6, nombre: "Costa Rica", periodo: "Año 5",
-    ownership: "Unicomer",
-    actividades: ["Implementación liderada por el equipo Unicomer", "Cierre del programa de despliegue regional", "Ajustes regulatorios para SUGEF", "Lecciones aprendidas y cierre formal"],
+    ownership: "Unicomer + soporte activo ilimitado SYSDE",
+    actividades: ["Implementación liderada por el equipo Unicomer", "Soporte activo ilimitado de SYSDE", "Cierre del programa de despliegue regional", "Ajustes regulatorios para SUGEF", "Lecciones aprendidas y cierre formal"],
   },
 ];
 
 export const HITOS = [
   { nombre: "Go-Live Honduras (Piloto)", mes: "Fin Año 2", responsable: "Director de Proyecto SYSDE", criterio: "SAF+ en producción con operación estable. Go/No-Go Decision Gate para siguiente fase." },
   { nombre: "Go-Live Nicaragua (Modelo Compartido)", mes: "Fin Año 3", responsable: "Equipo Conjunto SYSDE/Unicomer", criterio: "País operando con SAF+ bajo modelo compartido 50/50" },
-  { nombre: "Go-Live Guyana y Ecuador", mes: "Año 3.5", responsable: "Equipo Unicomer", criterio: "Dos países en producción, liderados por Unicomer con soporte bajo demanda" },
-  { nombre: "Go-Live Trinidad, Jamaica y Guatemala", mes: "Año 4", responsable: "Equipo Unicomer", criterio: "Tres países en producción, liderados completamente por Unicomer" },
-  { nombre: "Go-Live El Salvador", mes: "Año 4.5", responsable: "Equipo Unicomer", criterio: "País en producción con autonomía completa del equipo interno" },
+  { nombre: "Go-Live Guyana y Ecuador", mes: "Año 3.5", responsable: "Equipo Unicomer", criterio: "Dos países en producción, liderados por Unicomer con soporte activo ilimitado SYSDE" },
+  { nombre: "Go-Live Trinidad, Jamaica y Guatemala", mes: "Año 4", responsable: "Equipo Unicomer", criterio: "Tres países en producción, liderados por Unicomer con soporte activo ilimitado SYSDE" },
+  { nombre: "Go-Live El Salvador", mes: "Año 4.5", responsable: "Equipo Unicomer", criterio: "País en producción con soporte activo ilimitado SYSDE" },
   { nombre: "Go-Live Costa Rica — Cierre del Programa", mes: "Año 5", responsable: "PMO Conjunto", criterio: "Todos los países operativos. Acta de cierre firmada, lecciones aprendidas documentadas." },
 ];
 
@@ -108,7 +108,6 @@ export const EQUIPO_SYSDE = [
   { nombre: "Carlos Andrés Solís Sequeira", rol: "Administración de Infraestructura", iniciales: "CS", experiencia: "14 años", dedicacion: "100%", pais: "Costa Rica" },
   { nombre: "Danilo Vezzoni", rol: "QA Specialist", iniciales: "DV", experiencia: "15 años", dedicacion: "100%", pais: "Costa Rica" },
 ];
-
 
 export const SLA_SEVERITIES = [
   {
@@ -172,30 +171,4 @@ export const SLA_UPTIME = [
     period: "Diario",
     penalty: "Procedimientos de monitoreo y escalamiento.",
   },
-];
-
-export const RIESGOS = [
-  { riesgo: "Resistencia al cambio organizacional", nivel: "ALTO", probabilidad: "Alta", impacto: "Alto", mitigacion: "Programa de gestión del cambio con comunicación ejecutiva, champions por país y capacitación temprana." },
-  { riesgo: "Retrasos en disponibilidad de contrapartes", nivel: "ALTO", probabilidad: "Media", impacto: "Alto", mitigacion: "Acuerdos de dedicación firmados, escalamiento ejecutivo definido, buffer de 15% en cronograma." },
-  { riesgo: "Complejidad regulatoria multi-país", nivel: "MEDIO", probabilidad: "Alta", impacto: "Medio", mitigacion: "Equipo legal dedicado por ola, análisis regulatorio anticipado y parametrización flexible." },
-  { riesgo: "Calidad de datos en sistemas legados", nivel: "ALTO", probabilidad: "Alta", impacto: "Alto", mitigacion: "Assessment de datos temprano, reglas de limpieza automatizadas y períodos de migración en paralelo." },
-  { riesgo: "Integración con sistemas heterogéneos", nivel: "MEDIO", probabilidad: "Media", impacto: "Medio", mitigacion: "Capa de API estandarizada, pruebas de integración continua y middleware de orquestación." },
-  { riesgo: "Rotación de personal clave", nivel: "MEDIO", probabilidad: "Media", impacto: "Alto", mitigacion: "Documentación detallada, knowledge base compartida y backup designado por rol." },
-];
-
-export const HERRAMIENTAS = [
-  { nombre: "Jira", categoria: "Gestión de Proyecto" },
-  { nombre: "Confluence", categoria: "Documentación" },
-  { nombre: "Git / Azure DevOps", categoria: "Control de Versiones" },
-  { nombre: "Teams / Slack", categoria: "Comunicación" },
-  { nombre: "Power BI", categoria: "Reportería PMO" },
-  { nombre: "SonarQube", categoria: "Calidad de Código" },
-];
-
-export const PROXIMOS_PASOS = [
-  { paso: "Aprobación del plan de implementación por Comité Ejecutivo", responsable: "Sponsor Unicomer", plazo: "Semana 1", urgencia: "alta" },
-  { paso: "Firma de acuerdos de dedicación de recursos", responsable: "RRHH Unicomer / SYSDE", plazo: "Semana 2", urgencia: "alta" },
-  { paso: "Provisión de ambientes de desarrollo y QA", responsable: "TI Unicomer", plazo: "Semana 2–3", urgencia: "alta" },
-  { paso: "Kick-off ejecutivo con equipos de ambas partes", responsable: "PMO Conjunto", plazo: "Semana 3", urgencia: "media" },
-  { paso: "Inicio de levantamiento de procesos AS-IS (El Salvador)", responsable: "Líder Funcional SYSDE", plazo: "Semana 4", urgencia: "media" },
 ];

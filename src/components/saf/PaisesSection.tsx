@@ -1,68 +1,70 @@
-import { useState } from "react";
-import { PAISES } from "./data";
+import { FASES, PAISES } from "./data";
 
-const FILTROS = ["Todos", "Fase 1", "Fase 2", "Fase 3", "Fase 4", "Fase 5", "Fase 6"];
+const faseColors: Record<number, { bg: string; border: string; dot: string }> = {
+  1: { bg: "bg-primary/5", border: "border-primary/20", dot: "bg-primary" },
+  2: { bg: "bg-amber-50", border: "border-amber-200", dot: "bg-amber-500" },
+  3: { bg: "bg-sky-50", border: "border-sky-200", dot: "bg-sky-500" },
+  4: { bg: "bg-violet-50", border: "border-violet-200", dot: "bg-violet-500" },
+  5: { bg: "bg-emerald-50", border: "border-emerald-200", dot: "bg-emerald-500" },
+  6: { bg: "bg-teal-50", border: "border-teal-200", dot: "bg-teal-500" },
+};
 
 export function PaisesSection() {
-  const [filtro, setFiltro] = useState("Todos");
-  const filtered = filtro === "Todos" ? PAISES : PAISES.filter((p) => p.fase === filtro);
-
   return (
     <section id="paises" className="py-24 px-6 bg-background">
       <div className="max-w-5xl mx-auto">
-        <div className="scroll-reveal mb-10">
+        <div className="scroll-reveal mb-14">
           <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">Cobertura Geográfica</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance leading-tight">
             9 Países en 6 Fases — ~5 Años
           </h2>
         </div>
 
-        <div className="scroll-reveal flex flex-wrap gap-2 mb-8">
-          {FILTROS.map((f) => (
-            <button
-              key={f}
-              onClick={() => setFiltro(f)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all active:scale-95 ${
-                filtro === f
-                  ? "bg-primary text-white shadow-md shadow-primary/20"
-                  : "bg-card text-muted-foreground hover:text-foreground border"
-              }`}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
+        <div className="space-y-8">
+          {FASES.map((fase) => {
+            const paisesFase = PAISES.filter((p) => p.fase === `Fase ${fase.num}`);
+            const colors = faseColors[fase.num] || faseColors[1];
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
-          {filtered.map((p) => (
-            <div
-              key={p.pais}
-              className="scroll-reveal bg-card rounded-lg border p-5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-3xl">{p.bandera}</span>
-                <div>
-                  <h4 className="font-bold text-foreground">{p.pais}</h4>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                    p.fase === "Fase 1" ? "bg-primary/10 text-primary" :
-                    p.fase === "Fase 2" ? "bg-amber-500/15 text-amber-600" :
-                    p.fase === "Fase 3" ? "bg-sky-100 text-sky-700" :
-                    p.fase === "Fase 4" ? "bg-violet-100 text-violet-700" :
-                    p.fase === "Fase 5" ? "bg-emerald-100 text-emerald-700" :
-                    "bg-teal-100 text-teal-700"
-                  }`}>
-                    {p.fase}
-                  </span>
+            return (
+              <div key={fase.num} className="scroll-reveal">
+                {/* Phase header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-3 h-3 rounded-full ${colors.dot} shrink-0`} />
+                  <div>
+                    <h3 className="font-bold text-foreground text-lg">
+                      Fase {fase.num} — {fase.periodo}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">{fase.ownership}</p>
+                  </div>
+                </div>
+
+                {/* Country cards */}
+                <div className={`grid ${paisesFase.length === 1 ? "grid-cols-1 max-w-md" : paisesFase.length === 2 ? "grid-cols-1 sm:grid-cols-2 max-w-2xl" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"} gap-4 ml-6 pl-4 border-l-2 ${colors.border}`}>
+                  {paisesFase.map((p) => (
+                    <div
+                      key={p.pais}
+                      className={`${colors.bg} rounded-xl border ${colors.border} p-5 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-4xl">{p.bandera}</span>
+                        <h4 className="font-bold text-foreground text-lg">{p.pais}</h4>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Regulador</span>
+                          <span className="font-medium text-foreground">{p.regulador}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Idioma</span>
+                          <span className="font-medium text-foreground">{p.idioma}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-y-1.5 text-xs text-muted-foreground">
-                <span>Período</span><span className="font-medium text-foreground">{p.periodo}</span>
-                <span>Regulador</span><span className="font-medium text-foreground">{p.regulador}</span>
-                <span>Idioma</span><span className="font-medium text-foreground">{p.idioma}</span>
-                <span>Ownership</span><span className="font-medium text-foreground">{p.ownership}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
