@@ -29,14 +29,15 @@ const positions: Record<number, [number, number]> = {
 const TOTAL = 6;
 const YEAR_LABELS = ["Año 1", "Año 2", "Año 3", "Año 3.5", "Año 4", "Año 4.5", "Año 5"];
 
-// Map phase numbers to entregable phases
+// Cada país pasa por todas las etapas del ciclo de implementación
+const ALL_ENTREGABLE_PHASES = ["I. Planificación", "II. Build", "III. Testing", "IV. Go-Live", "V. Soporte"];
 const FASE_ENTREGABLES: Record<number, string[]> = {
-  1: ["I. Planificación", "II. Build", "III. Testing", "IV. Go-Live"],
-  2: ["II. Build", "III. Testing", "IV. Go-Live"],
-  3: ["II. Build", "III. Testing", "IV. Go-Live"],
-  4: ["II. Build", "III. Testing", "IV. Go-Live"],
-  5: ["II. Build", "III. Testing", "IV. Go-Live"],
-  6: ["II. Build", "III. Testing", "IV. Go-Live", "V. Soporte"],
+  1: ALL_ENTREGABLE_PHASES,
+  2: ALL_ENTREGABLE_PHASES,
+  3: ALL_ENTREGABLE_PHASES,
+  4: ALL_ENTREGABLE_PHASES,
+  5: ALL_ENTREGABLE_PHASES,
+  6: ALL_ENTREGABLE_PHASES,
 };
 
 const faseEntregableColor: Record<string, string> = {
