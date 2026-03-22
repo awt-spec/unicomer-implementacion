@@ -105,8 +105,6 @@ function ModuleNodes({ cx, cy, activeOrbit, activeModule, setActiveOrbit, setAct
               key={mod.name}
               onClick={() => { setActiveOrbit(orbit.key); setActiveModule(mod); }}
               className={`absolute rounded-full border-2 flex items-center justify-center active:scale-90 group ${
-                isSelected ? "z-30" : "z-20"
-              } ${
                 isSelected
                   ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                   : isActive
@@ -117,6 +115,7 @@ function ModuleNodes({ cx, cy, activeOrbit, activeModule, setActiveOrbit, setAct
                 width: nodeSize, height: nodeSize,
                 left: cx + pos.x - nodeSize / 2,
                 top: cy + pos.y - nodeSize / 2,
+                zIndex: isSelected ? 35 : 25,
                 opacity: showNodes ? (isInView ? (isActive ? 1 : 0.5) : 0) : 0,
                 transform: showNodes && isInView
                   ? `scale(${isSelected ? 1.15 : isActive ? 1 : 0.85})`
@@ -128,7 +127,7 @@ function ModuleNodes({ cx, cy, activeOrbit, activeModule, setActiveOrbit, setAct
               title={mod.name}
             >
               <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : (showAll ? orbit.iconColor : "text-foreground/70")} />
-              <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-medium bg-foreground text-background px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-40">
+              <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-medium bg-foreground text-background px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ zIndex: 50 }}>
                 {mod.name}
               </span>
             </button>
