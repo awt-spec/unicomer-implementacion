@@ -57,20 +57,27 @@ function OrbitLabels({ cx, cy, activeOrbit, setActiveOrbit, setActiveModule, isI
   cx: number; cy: number; activeOrbit: TabKey | null;
   setActiveOrbit: (v: TabKey | null) => void; setActiveModule: (v: null) => void; isInView: boolean;
 }) {
+  // Place labels between orbits (midpoint of gap between consecutive radii)
+  const labelRadii = [
+    (0 + ORBITS[0].radius) / 2,
+    (ORBITS[0].radius + ORBITS[1].radius) / 2,
+    (ORBITS[1].radius + ORBITS[2].radius) / 2,
+  ];
+
   return (
     <>
-      {ORBITS.map((orbit) => {
-        // Place label at the top of each orbit but offset to the right to avoid node collisions
-        const labelX = cx + 30;
-        const labelY = cy - orbit.radius - 6;
+      {ORBITS.map((orbit, idx) => {
+        const labelR = labelRadii[idx];
+        const labelX = cx + labelR;
+        const labelY = cy;
         return (
           <button
             key={`label-${orbit.key}`}
             onClick={() => { setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key); setActiveModule(null); }}
-            className="absolute z-30 transition-all duration-300 active:scale-95"
+            className="absolute z-30 transition-all duration-300 active:scale-95 -translate-y-1/2"
             style={{ left: labelX, top: labelY, opacity: isInView ? 1 : 0 }}
           >
-            <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-sm transition-all duration-300 shadow-sm ${
+            <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-sm transition-all duration-300 shadow-sm whitespace-nowrap ${
               activeOrbit === orbit.key ? orbit.colorBg : "bg-card/95 text-muted-foreground border-border/50 hover:border-foreground/30"
             }`}>
               {orbit.label}
