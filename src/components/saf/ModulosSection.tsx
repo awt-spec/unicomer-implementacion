@@ -47,7 +47,7 @@ export function ModulosSection() {
     return () => observer.disconnect();
   }, []);
 
-  const size = 700;
+  const size = 780;
   const cx = size / 2;
   const cy = size / 2;
 
