@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FASES, ENTREGABLES } from "./data";
 import { ChevronRight, Users, Shield, FileText, CheckCircle2 } from "lucide-react";
+import { HondurasCronograma } from "./HondurasCronograma";
 
 const ownershipColor: Record<string, string> = {
   "100% SYSDE": "bg-primary/10 text-primary border-primary/20",
