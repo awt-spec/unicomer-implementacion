@@ -5,10 +5,8 @@ export const NAV_SECTIONS = [
   { id: "modulos", label: "Módulos" },
   { id: "paises", label: "Países" },
   { id: "timeline", label: "Fases" },
-  
   { id: "equipo", label: "Equipo" },
   { id: "sla", label: "SLA" },
-  { id: "entregables", label: "Entregables" },
   { id: "metodologia", label: "Metodología" },
 ];
 
@@ -53,13 +51,13 @@ export const MODULOS = {
 };
 
 export const SISTEMAS_ACTUALES = [
-  { sistema: "Sysde (legado)", paises: "El Salvador · Nicaragua", creditos: "419,494 + 79,360", situacion: "Ya cliente SYSDE → upgrade a SAF+", ventaja: true },
-  { sistema: "POSCental", paises: "Honduras", creditos: "338,360", situacion: "Migración completa — País PILOTO", ventaja: false },
-  { sistema: "VFlex / VisionPLUS", paises: "Guatemala", creditos: "91,536", situacion: "Migración completa", ventaja: false },
-  { sistema: "NAF", paises: "Costa Rica", creditos: "708,591", situacion: "Migración completa — mayor cartera", ventaja: false },
-  { sistema: "SIAR", paises: "Ecuador", creditos: "144,688", situacion: "Migración completa", ventaja: false },
-  { sistema: "Mambu", paises: "Jamaica", creditos: "186,000", situacion: "Migración completa — Inglés", ventaja: false },
-  { sistema: "COSACS", paises: "Trinidad & Tobago · Guyana", creditos: "117,295 + 65,176", situacion: "Migración completa — Inglés", ventaja: false },
+  { sistema: "Sysde (legado)", paises: "El Salvador · Nicaragua", creditos: "419,494 + 79,360", situacion: "Upgrade a SAF+ — evolución controlada" },
+  { sistema: "POSCental", paises: "Honduras", creditos: "338,360", situacion: "Migración completa — País PILOTO" },
+  { sistema: "VFlex / VisionPLUS", paises: "Guatemala", creditos: "91,536", situacion: "Migración completa" },
+  { sistema: "NAF", paises: "Costa Rica", creditos: "708,591", situacion: "Migración completa — mayor cartera" },
+  { sistema: "SIAR", paises: "Ecuador", creditos: "144,688", situacion: "Migración completa" },
+  { sistema: "Mambu", paises: "Jamaica", creditos: "186,000", situacion: "Migración completa — Inglés" },
+  { sistema: "COSACS", paises: "Trinidad & Tobago · Guyana", creditos: "117,295 + 65,176", situacion: "Migración completa — Inglés" },
 ];
 
 export const PAISES = [
