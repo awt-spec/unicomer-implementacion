@@ -115,7 +115,7 @@ export function ModulosSection() {
                 const mod = mods[i];
                 const Icon = icons[i % icons.length];
                 const isSelected = activeModule?.name === mod.name;
-                const nodeSize = 40;
+                const nodeSize = 42;
 
                 return (
                   <button
