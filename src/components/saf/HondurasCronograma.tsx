@@ -13,47 +13,47 @@ const HONDURAS_DRIVERS = [
 
 const HONDURAS_FASES = [
 {
-  id: "F01", nombre: "Gobernanza & Kickoff", periodo: "Mes 1", semanas: "1–4",
+  id: "F01", nombre: "Gobernanza & Kickoff", periodo: "Mes 1–2", semanas: "1–8",
   icon: Rocket, color: "from-primary to-primary/70", colorLight: "bg-primary/10 text-primary",
-  responsables: "Eduardo Wheelock · Mafe",
+  responsables: "Eduardo Wheelock · Carlos Cascante",
   tareas: [
   { tarea: "Firma del contrato marco y NDA con Unicomer HQ — Cecilia Flores de Cruz", responsable: "Eduardo Wheelock" },
-  { tarea: "Constitución del Steering Committee SYSDE–Unicomer Honduras", responsable: "Eduardo Wheelock + Mafe" },
-  { tarea: "Setup PMO: Asana, MS Project, canales Teams/email, RACI definitivo", responsable: "Mafe" },
-  { tarea: "Kickoff Meeting Honduras — presencial o Microsoft Teams (grabado)", responsable: "Mafe + Unicomer" },
+  { tarea: "Constitución del Steering Committee SYSDE–Unicomer Honduras", responsable: "Eduardo Wheelock · Carlos Cascante" },
+  { tarea: "Setup PMO: Asana, MS Project, canales Teams/email, RACI definitivo", responsable: "Carlos Cascante" },
+  { tarea: "Kickoff Meeting Honduras — presencial o Microsoft Teams (grabado)", responsable: "Carlos Cascante · Unicomer" },
   { tarea: "Definición de ambientes tecnológicos: DEV / QA / STAGING / PROD en infra Unicomer HN", responsable: "Carlos Solís" },
   { tarea: "Designación formal de IT Lead y super usuarios Unicomer Honduras", responsable: "Unicomer" }],
 
   entregables: [
   { nombre: "Project Management Plan", mes: "Mes 1", formato: "Excel & Miro — timeline, resource plan, risk matrix" }],
 
-  barStart: 0, barEnd: 1
+  barStart: 0, barEnd: 2
 },
 {
-  id: "F02", nombre: "Blueprint & Diseño", periodo: "Mes 1–4", semanas: "1–16",
+  id: "F02", nombre: "Blueprint & Diseño", periodo: "Mes 2–6", semanas: "5–24",
   icon: FileText, color: "from-amber-500 to-amber-400", colorLight: "bg-amber-50 text-amber-600",
-  responsables: "Mafe · Nelly Vargas · Luis Alfaro · Olga Cuervo",
+  responsables: "Carlos Cascante · Nelly Vargas · Luis Alfaro · Olga Cuervo",
   tareas: [
   { tarea: "Análisis AS-IS del sistema POSCental Honduras: estructura de datos, procesos, workflows", responsable: "Luis Alfaro" },
   { tarea: "Workshops de requerimientos funcionales: originación, crédito, cobranza, liquidación, CNBS", responsable: "Nelly Vargas" },
   { tarea: "Análisis regulatorio local: normativa CNBS, AML, provisiones, encaje legal, reportes BCH", responsable: "Nelly Vargas" },
-  { tarea: "Diseño arquitectura TO-BE SAF+ on-premise en servidores Unicomer Honduras", responsable: "Luis Alfaro + Carlos Solís" },
+  { tarea: "Diseño arquitectura TO-BE SAF+ on-premise en servidores Unicomer Honduras", responsable: "Luis Alfaro · Carlos Solís" },
   { tarea: "Mapeo de integraciones: CRM, Datalake, MCX, bureaus de crédito, canales digitales EMMA", responsable: "Olga Cuervo" },
   { tarea: "Diseño de modelo de datos multiempresa, multidivisa (Lempiras HNL)", responsable: "Luis Alfaro" },
-  { tarea: "Gap analysis funcional POSCental vs SAF+: identificación de desarrollos/adaptaciones", responsable: "Mafe + Nelly" }],
+  { tarea: "Gap analysis funcional POSCental vs SAF+: identificación de desarrollos/adaptaciones", responsable: "Carlos Cascante · Nelly Vargas" }],
 
   entregables: [
-  { nombre: "Blueprint / Solution Design", mes: "Mes 3", formato: "Word (AS-IS/TO-BE) · Swagger APIs · draw.io/Miro" },
-  { nombre: "Accounting Entry Matrix (GL)", mes: "Mes 4", formato: "Excel / SQL Server — mapeo completo de cuentas" },
-  { nombre: "Regulatory Compliance Report", mes: "Mes 3", formato: "Excel / Confluence / Power BI — normativa CNBS" },
-  { nombre: "BRD aprobado — Unicomer sign-off", mes: "Mes 4", formato: "Documento Word firmado por IT Director Unicomer" }],
+  { nombre: "Blueprint / Solution Design", mes: "Mes 4", formato: "Word (AS-IS/TO-BE) · Swagger APIs · draw.io/Miro" },
+  { nombre: "Accounting Entry Matrix (GL)", mes: "Mes 5", formato: "Excel / SQL Server — mapeo completo de cuentas" },
+  { nombre: "Regulatory Compliance Report", mes: "Mes 4", formato: "Excel / Confluence / Power BI — normativa CNBS" },
+  { nombre: "BRD aprobado — Unicomer sign-off", mes: "Mes 6", formato: "Documento Word firmado por IT Director Unicomer" }],
 
-  barStart: 0, barEnd: 4
+  barStart: 1, barEnd: 6
 },
 {
-  id: "F03", nombre: "Configuración & Parametrización", periodo: "Mes 3–6", semanas: "9–24",
+  id: "F03", nombre: "Configuración & Parametrización", periodo: "Mes 5–10", semanas: "17–40",
   icon: Settings, color: "from-sky-500 to-sky-400", colorLight: "bg-sky-50 text-sky-600",
-  responsables: "Mafe · Nelly Vargas · Carlos Solís · Olga Cuervo",
+  responsables: "Carlos Cascante · Nelly Vargas · Carlos Solís · Olga Cuervo",
   tareas: [
   { tarea: "Setup infraestructura on-premise: instalación SAF+ en servidores Unicomer Honduras", responsable: "Carlos Solís" },
   { tarea: "Parametrización productos crediticios: tasas, amortización francesa/alemana, cuotas, seguros", responsable: "Nelly Vargas" },
@@ -67,20 +67,20 @@ const HONDURAS_FASES = [
   { tarea: "Configuración PulsUB (motor de notificaciones) y canales digitales", responsable: "Olga Cuervo" }],
 
   entregables: [
-  { nombre: "Configuration Workbooks — parametrización completa", mes: "Mes 5", formato: "Excel / Git / Power BI / SQL — todos los productos" },
-  { nombre: "Integration Specs API (Swagger / OpenAPI)", mes: "Mes 5", formato: "Swagger / Postman / DevOps — certificadas" }],
+  { nombre: "Configuration Workbooks — parametrización completa", mes: "Mes 8", formato: "Excel / Git / Power BI / SQL — todos los productos" },
+  { nombre: "Integration Specs API (Swagger / OpenAPI)", mes: "Mes 9", formato: "Swagger / Postman / DevOps — certificadas" }],
 
-  barStart: 2, barEnd: 6
+  barStart: 4, barEnd: 10
 },
 {
-  id: "F04", nombre: "Migración de Datos (ETL)", periodo: "Mes 4–8", semanas: "13–32",
+  id: "F04", nombre: "Migración de Datos (ETL)", periodo: "Mes 7–13", semanas: "25–52",
   icon: Database, color: "from-violet-500 to-violet-400", colorLight: "bg-violet-50 text-violet-600",
   responsables: "Jhonny Brenes · Carlos Solís",
   tareas: [
   { tarea: "Auditoría de calidad de datos en POSCental: duplicados, outliers, campos nulos críticos", responsable: "Jhonny Brenes" },
   { tarea: "Mapeo entidad-entidad: clientes, contratos, pagos, garantías, historial crediticio", responsable: "Jhonny Brenes" },
   { tarea: "Diseño ETL: reglas de transformación, lógica de reconciliación, manejo de excepciones", responsable: "Jhonny Brenes" },
-  { tarea: "Desarrollo scripts ETL con herramienta SYSDE propietaria + SQL Server", responsable: "Jhonny Brenes + Dennis García" },
+  { tarea: "Desarrollo scripts ETL con herramienta SYSDE propietaria + SQL Server", responsable: "Jhonny Brenes · Dennis García" },
   { tarea: "Mock Run 1: migración completa en ambiente QA con datos reales — validación integridad", responsable: "Jhonny Brenes" },
   { tarea: "Corrección de errores Mock Run 1 — ajuste de reglas ETL", responsable: "Jhonny Brenes" },
   { tarea: "Mock Run 2: segunda migración — validación de saldos, cronogramas, histórico", responsable: "Jhonny Brenes" },
@@ -88,79 +88,91 @@ const HONDURAS_FASES = [
   { tarea: "Preparación del script de cutover productivo: pasos, checkpoints, rollback triggers", responsable: "Carlos Solís" }],
 
   entregables: [
-  { nombre: "Data Migration Plan + ETL Strategy", mes: "Mes 6", formato: "Excel / SQL / DevOps — herramienta propietaria SYSDE" },
-  { nombre: "Mock Run 1 — Reporte de validación", mes: "Mes 7", formato: "Reporte QA con reconciliación de saldos" },
-  { nombre: "Mock Run 2 — Reporte correcciones", mes: "Mes 7", formato: "Reporte QA + evidencia de saldos OK" },
-  { nombre: "Dress Rehearsal Evidence", mes: "Mes 8", formato: "Acta de simulacro firmada — timing y rollback validado" }],
+  { nombre: "Data Migration Plan + ETL Strategy", mes: "Mes 9", formato: "Excel / SQL / DevOps — herramienta propietaria SYSDE" },
+  { nombre: "Mock Run 1 — Reporte de validación", mes: "Mes 11", formato: "Reporte QA con reconciliación de saldos" },
+  { nombre: "Mock Run 2 — Reporte correcciones", mes: "Mes 12", formato: "Reporte QA + evidencia de saldos OK" },
+  { nombre: "Dress Rehearsal Evidence", mes: "Mes 13", formato: "Acta de simulacro firmada — timing y rollback validado" }],
 
-  barStart: 3, barEnd: 8
+  barStart: 6, barEnd: 13
 },
 {
-  id: "F05", nombre: "QA & UAT Testing", periodo: "Mes 6–10", semanas: "21–40",
+  id: "F05", nombre: "QA & UAT Testing", periodo: "Mes 10–16", semanas: "37–64",
   icon: FlaskConical, color: "from-emerald-500 to-emerald-400", colorLight: "bg-emerald-50 text-emerald-600",
   responsables: "Danilo Vezzoni · Unicomer QA Team",
   tareas: [
   { tarea: "Plan de pruebas: casos de uso, criterios de entrada/salida, defect tracking en DevOps", responsable: "Danilo Vezzoni" },
   { tarea: "Pruebas unitarias: cada módulo SAF+ configurado para Honduras", responsable: "Danilo Vezzoni" },
-  { tarea: "Pruebas de integración: CRM, Datalake, MCX, bureaus, CNBS reporting — end-to-end", responsable: "Danilo Vezzoni + Olga Cuervo" },
+  { tarea: "Pruebas de integración: CRM, Datalake, MCX, bureaus, CNBS reporting — end-to-end", responsable: "Danilo Vezzoni · Olga Cuervo" },
   { tarea: "Security Audit: OWASP Top 10 escaneo automatizado (NESSUS) + penetration testing", responsable: "Danilo Vezzoni" },
-  { tarea: "UAT Ciclo 1: usuarios clave Unicomer validan flujos de negocio reales (10–14 semanas)", responsable: "Unicomer + SYSDE" },
+  { tarea: "UAT Ciclo 1: usuarios clave Unicomer validan flujos de negocio reales (10–14 semanas)", responsable: "Unicomer · SYSDE" },
   { tarea: "Performance testing: carga pico diciembre — 132,633 pagos/mes · 13,205 desembolsos/mes", responsable: "Danilo Vezzoni" },
   { tarea: "Resolución defectos UAT Ciclo 1: bugs críticos (S1/S2) con SLA comprometido", responsable: "Equipo SYSDE" },
-  { tarea: "UAT Ciclo 2: re-validación tras correcciones — máximo 2 iteraciones", responsable: "Unicomer + SYSDE" }],
+  { tarea: "UAT Ciclo 2: re-validación tras correcciones — máximo 2 iteraciones", responsable: "Unicomer · SYSDE" }],
 
   entregables: [
-  { nombre: "QA & UAT Test Plan completo", mes: "Mes 8", formato: "DevOps / Excel / Power BI / Postman — 100% cobertura" },
-  { nombre: "Security Audit Report (OWASP / NESSUS)", mes: "Mes 8", formato: "Reporte OWASP Top 10 + evidencia pentest" },
-  { nombre: "UAT Sign-off formal — Unicomer Honduras", mes: "Mes 10", formato: "Acta firmada IT Director + Steering Committee" }],
+  { nombre: "QA & UAT Test Plan completo", mes: "Mes 12", formato: "DevOps / Excel / Power BI / Postman — 100% cobertura" },
+  { nombre: "Security Audit Report (OWASP / NESSUS)", mes: "Mes 13", formato: "Reporte OWASP Top 10 + evidencia pentest" },
+  { nombre: "UAT Sign-off formal — Unicomer Honduras", mes: "Mes 16", formato: "Acta firmada IT Director + Steering Committee" }],
 
-  barStart: 5, barEnd: 10
+  barStart: 9, barEnd: 16
 },
 {
-  id: "F06", nombre: "Capacitación Train-the-Trainer", periodo: "Mes 7–10", semanas: "25–40",
+  id: "F06", nombre: "Capacitación Train-the-Trainer", periodo: "Mes 13–17", semanas: "49–68",
   icon: GraduationCap, color: "from-teal-500 to-teal-400", colorLight: "bg-teal-50 text-teal-600",
-  responsables: "Fernando Pinto · Mafe",
+  responsables: "Fernando Pinto · Carlos Cascante",
   tareas: [
   { tarea: "Diseño del programa de capacitación: mapa de roles, ruta de aprendizaje por perfil", responsable: "Fernando Pinto" },
-  { tarea: "Elaboración de materiales: manuales usuario, guías administración, videos, Miro boards", responsable: "Fernando Pinto + Nelly" },
+  { tarea: "Elaboración de materiales: manuales usuario, guías administración, videos, Miro boards", responsable: "Fernando Pinto · Nelly Vargas" },
   { tarea: "Taller Rol 1 — Gerentes de crédito: originación, comités, políticas, reportería", responsable: "Fernando Pinto" },
   { tarea: "Taller Rol 2 — Operadores de ventanilla: pagos, desembolsos, consultas de saldo", responsable: "Fernando Pinto" },
-  { tarea: "Taller Rol 3 — Administradores de sistema: parametrización, mantenimiento, backups", responsable: "Mafe + Carlos Solís" },
+  { tarea: "Taller Rol 3 — Administradores de sistema: parametrización, mantenimiento, backups", responsable: "Carlos Cascante · Carlos Solís" },
   { tarea: "Taller Rol 4 — IT Honduras: infraestructura, monitoreo, actualizaciones, integración", responsable: "Carlos Solís" },
   { tarea: "Certificación de 5–8 super usuarios Unicomer Honduras como facilitadores internos", responsable: "Fernando Pinto" },
   { tarea: "Preparación materiales en inglés para países del Caribe (Jamaica, Trinidad, Guyana)", responsable: "Equipo SYSDE" }],
 
   entregables: [
-  { nombre: "Training Materials completos (Train-the-Trainer)", mes: "Mes 9", formato: "PDF / PPT / Word / Miro / Videos — por rol" },
-  { nombre: "Certificación super usuarios Honduras (5–8 personas)", mes: "Mes 9", formato: "Actas de certificación firmadas" }],
+  { nombre: "Training Materials completos (Train-the-Trainer)", mes: "Mes 15", formato: "PDF / PPT / Word / Miro / Videos — por rol" },
+  { nombre: "Certificación super usuarios Honduras (5–8 personas)", mes: "Mes 16", formato: "Actas de certificación firmadas" }],
 
-  barStart: 6, barEnd: 10
+  barStart: 12, barEnd: 17
 },
 {
-  id: "F07", nombre: "Go-Live & Estabilización", periodo: "Mes 10–24", semanas: "37–96",
+  id: "F07", nombre: "Go-Live & Estabilización", periodo: "Mes 17–24", semanas: "65–96",
   icon: Zap, color: "from-rose-500 to-rose-400", colorLight: "bg-rose-50 text-rose-600",
-  responsables: "Mafe · Carlos Solís · Eduardo Wheelock",
+  responsables: "Carlos Cascante · Carlos Solís · Eduardo Wheelock",
   tareas: [
   { tarea: "Cutover Plan / Runbook: procedimiento minuto a minuto de la noche de corte", responsable: "Carlos Solís" },
   { tarea: "Drill de Disaster Recovery (DRP Test): recuperación completa simulada — obligatorio pre-GoLive", responsable: "Carlos Solís" },
   { tarea: "Validación final de saldos migrados: créditos activos, pagos pendientes, cronogramas", responsable: "Jhonny Brenes" },
-  { tarea: "GO-LIVE Honduras: 1ra transacción comercial en producción — POSCental en modo lectura", responsable: "Mafe + Unicomer" },
-  { tarea: "Operación paralela 30 días: POSCental activo como backup de validación", responsable: "Equipo SYSDE + Unicomer IT" },
+  { tarea: "GO-LIVE Honduras: 1ra transacción comercial en producción — POSCental en modo lectura", responsable: "Carlos Cascante · Unicomer" },
+  { tarea: "Operación paralela 30 días: POSCental activo como backup de validación", responsable: "Equipo SYSDE · Unicomer IT" },
   { tarea: "Soporte Hypercare 8 semanas: equipo SYSDE dedicado exclusivamente a Honduras", responsable: "Equipo SYSDE" },
-  { tarea: "SLA activo: S1 respuesta/resolución 1h/1h · S2 1h/4h · Uptime 99.9% mensual", responsable: "Carlos Solís + L1/L2/L3" },
+  { tarea: "SLA activo: S1 respuesta/resolución 1h/1h · S2 1h/4h · Uptime 99.9% mensual", responsable: "Carlos Solís · L1/L2/L3" },
   { tarea: "Monthly Service Reports: SLA performance, capacity, incident summary", responsable: "Carlos Solís" },
-  { tarea: "Decommission de POSCental tras 30 días sin incidentes P1", responsable: "Unicomer IT + SYSDE" },
-  { tarea: "Project Closure Report Honduras + lessons learned → playbook para Nicaragua (Y3)", responsable: "Mafe + Eduardo" }],
+  { tarea: "Decommission de POSCental tras 30 días sin incidentes P1", responsable: "Unicomer IT · SYSDE" },
+  { tarea: "Project Closure Report Honduras + lessons learned → playbook para Nicaragua (Y3)", responsable: "Carlos Cascante · Eduardo Wheelock" }],
 
   entregables: [
-  { nombre: "Cutover Plan / Runbook", mes: "Mes 10", formato: "Excel / Project / DevOps — con rollback triggers" },
-  { nombre: "DRP Test Evidence — drill completado", mes: "Mes 11", formato: "Acta drill + métricas RTO/RPO validadas" },
-  { nombre: "GO-LIVE Honduras — Acta de activación", mes: "Mes 11", formato: "Acta oficial firmada Unicomer + SYSDE" },
-  { nombre: "Monthly Service Report #1 (SLA)", mes: "Mes 12", formato: "Azure Monitor / Power BI — dashboard SLA" },
-  { nombre: "Project Closure Report Honduras", mes: "Mes 13", formato: "Word / PPT / Sharepoint — lecciones → Nicaragua" }],
+  { nombre: "Cutover Plan / Runbook", mes: "Mes 17", formato: "Excel / Project / DevOps — con rollback triggers" },
+  { nombre: "DRP Test Evidence — drill completado", mes: "Mes 18", formato: "Acta drill + métricas RTO/RPO validadas" },
+  { nombre: "GO-LIVE Honduras — Acta de activación", mes: "Mes 18", formato: "Acta oficial firmada Unicomer + SYSDE" },
+  { nombre: "Monthly Service Report #1 (SLA)", mes: "Mes 19", formato: "Azure Monitor / Power BI — dashboard SLA" },
+  { nombre: "Project Closure Report Honduras", mes: "Mes 24", formato: "Word / PPT / Sharepoint — lecciones → Nicaragua" }],
 
-  barStart: 9, barEnd: 24
+  barStart: 16, barEnd: 24
 }];
+
+
+const HITOS_HN = [
+{ mes: "M1", hito: "Kickoff oficial", fase: "F01" },
+{ mes: "M6", hito: "BRD aprobado", fase: "F02" },
+{ mes: "M9", hito: "Integraciones certificadas", fase: "F03" },
+{ mes: "M13", hito: "Dress Rehearsal (ETL)", fase: "F04" },
+{ mes: "M16", hito: "UAT Sign-off", fase: "F05" },
+{ mes: "M16", hito: "Train-the-Trainer cert.", fase: "F06" },
+{ mes: "M18", hito: "GO-LIVE Honduras", fase: "F07" },
+{ mes: "M20", hito: "Go/No-Go Gate", fase: "F07" },
+{ mes: "M24", hito: "Closure Report", fase: "F07" }];
 
 
 const HITOS_HN = [

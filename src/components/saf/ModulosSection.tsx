@@ -114,7 +114,9 @@ function ModuleNodes({ cx, cy, activeOrbit, activeModule, setActiveOrbit, setAct
             <button
               key={mod.name}
               onClick={() => { setActiveOrbit(orbit.key); setActiveModule(mod); }}
-              className={`absolute rounded-full border-2 flex items-center justify-center active:scale-90 group z-20 ${
+              className={`absolute rounded-full border-2 flex items-center justify-center active:scale-90 group ${
+                isSelected ? "z-30" : "z-20"
+              } ${
                 isSelected
                   ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                   : isActive
