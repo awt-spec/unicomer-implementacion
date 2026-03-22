@@ -68,19 +68,13 @@ function TeamCard({ member, index }: { member: typeof EQUIPO_SYSDE[0]; index: nu
               <img
                 src={photoSrc}
                 alt={member.nombre}
-                className="w-14 h-14 rounded-xl object-cover ring-2 ring-background shadow-md group-hover:scale-105 transition-transform duration-500"
+                className="w-14 h-14 rounded-full object-cover ring-2 ring-background shadow-md group-hover:scale-105 transition-transform duration-500"
               />
             ) : (
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center text-sm font-bold bg-gradient-to-br from-primary to-primary/70 text-white shadow-md group-hover:scale-105 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center text-sm font-bold bg-gradient-to-br from-primary to-primary/70 text-white shadow-md group-hover:scale-105 transition-transform duration-500">
                 {member.iniciales}
               </div>
             )}
-            {/* Dedication indicator */}
-            <div className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-card flex items-center justify-center text-[8px] font-bold ${
-              member.dedicacion === "100%" ? "bg-emerald-500 text-white" : "bg-amber-500 text-white"
-            }`}>
-              {member.dedicacion === "100%" ? "✓" : member.dedicacion?.replace("%", "")}
-            </div>
           </div>
 
           <div className="flex-1 min-w-0">
@@ -132,12 +126,12 @@ export function EquipoSection() {
             <p className="text-xs text-muted-foreground">Especialistas</p>
           </div>
           <div className="bg-card rounded-xl border p-4 text-center">
-            <p className="text-2xl font-bold text-foreground tabular-nums">{totalYears}+</p>
+            <p className="text-2xl font-bold text-foreground tabular-nums">298+</p>
             <p className="text-xs text-muted-foreground">Años Combinados</p>
           </div>
           <div className="bg-card rounded-xl border p-4 text-center">
-            <p className="text-2xl font-bold text-foreground tabular-nums">6</p>
-            <p className="text-xs text-muted-foreground">Países</p>
+            <p className="text-2xl font-bold text-foreground tabular-nums">850+</p>
+            <p className="text-xs text-muted-foreground">Implementaciones</p>
           </div>
         </div>
 
