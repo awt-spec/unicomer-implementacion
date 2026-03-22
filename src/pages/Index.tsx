@@ -6,6 +6,7 @@ import { ContextoSection } from "@/components/saf/ContextoSection";
 import { ModulosSection } from "@/components/saf/ModulosSection";
 import { TimelineSection } from "@/components/saf/TimelineSection";
 import { EquipoSection } from "@/components/saf/EquipoSection";
+import { InfraestructuraSection } from "@/components/saf/InfraestructuraSection";
 import { SlaSection } from "@/components/saf/SlaSection";
 import { MetodologiaSection } from "@/components/saf/MetodologiaSection";
 
@@ -21,6 +22,7 @@ const Index = () => {
       <ModulosSection />
       <TimelineSection />
       <EquipoSection />
+      <InfraestructuraSection />
       <SlaSection />
       <MetodologiaSection />
     </div>
