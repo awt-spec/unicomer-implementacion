@@ -19,10 +19,10 @@ const ICON_MAP: Record<TabKey, typeof CORE_ICONS> = {
   operaciones: OPS_ICONS,
 };
 
-const ORBITS: { key: TabKey; label: string; radius: number; color: string; colorBg: string }[] = [
-  { key: "core", label: "SAF+ Core", radius: 140, color: "hsl(352, 88%, 43%)", colorBg: "bg-primary/10 text-primary border-primary/20" },
-  { key: "integraciones", label: "Integraciones", radius: 230, color: "hsl(38, 92%, 50%)", colorBg: "bg-amber-50 text-amber-600 border-amber-200" },
-  { key: "operaciones", label: "Operaciones", radius: 310, color: "hsl(199, 89%, 48%)", colorBg: "bg-sky-50 text-sky-600 border-sky-200" },
+const ORBITS: { key: TabKey; label: string; radius: number; color: string; colorBg: string; iconColor: string }[] = [
+  { key: "core", label: "SAF+ Core", radius: 130, color: "hsl(352, 88%, 43%)", colorBg: "bg-primary/10 text-primary border-primary/20", iconColor: "text-primary" },
+  { key: "integraciones", label: "Integraciones", radius: 250, color: "hsl(38, 92%, 50%)", colorBg: "bg-amber-50 text-amber-600 border-amber-200", iconColor: "text-amber-500" },
+  { key: "operaciones", label: "Operaciones", radius: 350, color: "hsl(199, 89%, 48%)", colorBg: "bg-sky-50 text-sky-600 border-sky-200", iconColor: "text-sky-500" },
 ];
 
 function getPositions(count: number, radius: number, offsetAngle = 0) {
@@ -47,7 +47,7 @@ export function ModulosSection() {
     return () => observer.disconnect();
   }, []);
 
-  const size = 700;
+  const size = 780;
   const cx = size / 2;
   const cy = size / 2;
 
@@ -115,7 +115,7 @@ export function ModulosSection() {
                 const mod = mods[i];
                 const Icon = icons[i % icons.length];
                 const isSelected = activeModule?.name === mod.name;
-                const nodeSize = 40;
+                const nodeSize = 42;
 
                 return (
                   <button
@@ -126,7 +126,7 @@ export function ModulosSection() {
                         ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                         : isActive
                         ? "bg-card hover:shadow-md border-border"
-                        : "bg-card/40 border-border/30"
+                        : "bg-card border-border/40 shadow-sm"
                     }`}
                     style={{
                       width: nodeSize, height: nodeSize,
@@ -142,7 +142,7 @@ export function ModulosSection() {
                     }}
                     title={mod.name}
                   >
-                    <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : "text-foreground/70"} />
+                    <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : (showAll ? orbit.iconColor : "text-foreground/70")} />
                     {/* Tooltip on hover */}
                     <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-medium bg-foreground text-background px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
                       {mod.name}
