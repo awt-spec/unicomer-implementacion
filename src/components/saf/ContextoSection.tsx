@@ -1,5 +1,5 @@
 import { SISTEMAS_ACTUALES } from "./data";
-import { AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Info } from "lucide-react";
 
 export function ContextoSection() {
   return (
@@ -17,46 +17,45 @@ export function ContextoSection() {
         </div>
 
         <div className="scroll-reveal space-y-3 stagger-children">
-          {SISTEMAS_ACTUALES.map((s) => (
-            <div
-              key={s.sistema}
-              className={`scroll-reveal group bg-card rounded-xl border p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
-                s.ventaja ? "border-primary/20 bg-primary/[0.02]" : ""
-              }`}
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h4 className="font-bold text-foreground">{s.sistema}</h4>
-                  {s.ventaja && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
-                      <CheckCircle2 size={10} /> VENTAJA SYSDE
-                    </span>
-                  )}
+          {SISTEMAS_ACTUALES.map((s) => {
+            const isSysde = s.sistema === "Sysde (legado)";
+            return (
+              <div
+                key={s.sistema}
+                className={`scroll-reveal group bg-card rounded-xl border p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
+                  isSysde ? "border-primary/30 ring-1 ring-primary/10" : ""
+                }`}
+              >
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-bold text-foreground">{s.sistema}</h4>
+                    {isSysde && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                        Cliente actual
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-muted-foreground">{s.paises}</p>
                 </div>
-                <p className="text-sm text-muted-foreground">{s.paises}</p>
+                <div className="text-right shrink-0">
+                  <p className="text-sm font-bold text-foreground tabular-nums">{s.creditos}</p>
+                  <p className="text-xs text-muted-foreground">créditos vigentes</p>
+                </div>
+                <div className="sm:w-56 shrink-0">
+                  <p className="text-xs text-muted-foreground">{s.situacion}</p>
+                </div>
               </div>
-              <div className="text-right shrink-0">
-                <p className="text-sm font-bold text-foreground tabular-nums">{s.creditos}</p>
-                <p className="text-xs text-muted-foreground">créditos vigentes</p>
-              </div>
-              <div className="sm:w-56 shrink-0">
-                <p className="text-xs text-muted-foreground">{s.situacion}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Advantage callout */}
-        <div className="scroll-reveal mt-8 bg-primary/5 border border-primary/20 rounded-xl p-5 flex items-start gap-3">
-          <AlertTriangle size={18} className="text-primary shrink-0 mt-0.5" />
-          <div>
-            <p className="font-bold text-foreground text-sm mb-1">Ventaja diferencial SYSDE</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              El Salvador (419K créditos) y Nicaragua (79K créditos) ya operan sobre plataforma Sysde. 
-              La implementación de SAF+ en estos países es una evolución controlada, no una migración desde cero, 
-              reduciendo significativamente el riesgo y el tiempo de implementación.
-            </p>
-          </div>
+        {/* Subtle note about existing SYSDE clients */}
+        <div className="scroll-reveal mt-8 flex items-start gap-3 text-sm text-muted-foreground">
+          <Info size={16} className="text-primary shrink-0 mt-0.5" />
+          <p className="leading-relaxed">
+            El Salvador y Nicaragua ya operan sobre plataforma Sysde, lo que convierte su migración a SAF+ en una 
+            evolución controlada con menor riesgo y tiempo de implementación.
+          </p>
         </div>
       </div>
     </section>
