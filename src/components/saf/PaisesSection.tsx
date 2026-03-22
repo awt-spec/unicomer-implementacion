@@ -12,62 +12,60 @@ const faseColors: Record<number, { accent: string; bg: string; text: string }> =
 
 function CountryCard({ pais, index }: { pais: typeof PAISES[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // Start revealing when element is 80% from top, fully visible at 50%
+      const start = vh * 0.85;
+      const end = vh * 0.45;
+      const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+      setProgress(p);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const faseNum = parseInt(pais.fase.replace("Fase ", ""));
   const isLeft = index % 2 === 0;
 
   return (
     <div
       ref={ref}
-      className="transition-all duration-[800ms] cubic-bezier(0.16, 1, 0.3, 1)"
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible
-          ? "translateX(0) translateY(0)"
-          : `translateX(${isLeft ? "-60px" : "60px"}) translateY(20px)`,
-        filter: visible ? "blur(0px)" : "blur(6px)",
-        transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-        transitionDelay: `${index * 80}ms`,
+        opacity: progress,
+        transform: `translateY(${(1 - progress) * 40}px) translateX(${(1 - progress) * (isLeft ? -20 : 20)}px) scale(${0.96 + progress * 0.04})`,
+        filter: `blur(${(1 - progress) * 8}px)`,
+        transition: "transform 0.1s linear, opacity 0.1s linear, filter 0.1s linear",
+        willChange: "transform, opacity, filter",
       }}
     >
-      <div className="group relative bg-card rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+      <div className="group relative bg-card rounded-2xl border shadow-sm hover:shadow-xl transition-shadow duration-500 overflow-hidden">
         {/* Accent bar */}
         <div
           className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
-          style={{ background: faseColors[parseInt(pais.fase.replace("Fase ", ""))]?.accent || "hsl(352,88%,43%)" }}
+          style={{ background: faseColors[faseNum]?.accent || "hsl(352,88%,43%)" }}
         />
 
         <div className="p-6 md:p-8">
           <div className="flex items-start gap-5">
-            {/* Flag */}
-            <div className="text-6xl md:text-7xl leading-none shrink-0 group-hover:scale-110 transition-transform duration-500">
+            <div className="text-6xl md:text-7xl leading-none shrink-0 transition-transform duration-700 ease-out group-hover:scale-110">
               {pais.bandera}
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 mb-1 flex-wrap">
                 <h3 className="text-xl md:text-2xl font-bold text-foreground">{pais.pais}</h3>
-                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${faseColors[parseInt(pais.fase.replace("Fase ", ""))]?.bg} ${faseColors[parseInt(pais.fase.replace("Fase ", ""))]?.text}`}>
+                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${faseColors[faseNum]?.bg} ${faseColors[faseNum]?.text}`}>
                   {pais.fase}
                 </span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">{pais.periodo} · {pais.ownership}</p>
 
-              {/* Metrics */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <Metric label="Créditos" value={pais.creditos} />
                 <Metric label="Clientes" value={pais.clientes} />
@@ -92,7 +90,6 @@ function Metric({ label, value }: { label: string; value: string }) {
 }
 
 export function PaisesSection() {
-  const progressRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(0);
 
@@ -124,19 +121,18 @@ export function PaisesSection() {
         </div>
 
         {/* Progress line */}
-        <div className="hidden lg:block fixed right-8 top-1/2 -translate-y-1/2 z-30 pointer-events-none" style={{ opacity: progress > 0.02 && progress < 0.95 ? 1 : 0, transition: "opacity 0.4s" }}>
+        <div className="hidden lg:block fixed right-8 top-1/2 -translate-y-1/2 z-30 pointer-events-none" style={{ opacity: progress > 0.02 && progress < 0.95 ? 1 : 0, transition: "opacity 0.6s ease" }}>
           <div className="w-1 h-48 bg-border rounded-full overflow-hidden">
             <div
-              ref={progressRef}
-              className="w-full bg-primary rounded-full transition-all duration-200"
-              style={{ height: `${progress * 100}%` }}
+              className="w-full bg-primary rounded-full"
+              style={{ height: `${progress * 100}%`, transition: "height 0.15s linear" }}
             />
           </div>
           <p className="text-[10px] text-muted-foreground mt-2 text-center tabular-nums">{Math.round(progress * 9)}/9</p>
         </div>
 
         {/* Country cards */}
-        <div className="space-y-6 mt-12">
+        <div className="space-y-8 mt-12">
           {PAISES.map((pais, i) => (
             <CountryCard key={pais.pais} pais={pais} index={i} />
           ))}

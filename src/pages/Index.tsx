@@ -24,7 +24,7 @@ const Index = () => {
       <ModulosSection />
       <PaisesSection />
       <TimelineSection />
-      <HitosSection />
+      
       <EquipoSection />
       <SlaSection />
       <EntregablesSection />

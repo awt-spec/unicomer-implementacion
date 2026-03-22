@@ -21,19 +21,31 @@ export const KPIS = [
 
 export const MODULOS = {
   core: [
+    { name: "Administración de Seguridad", desc: "Gestión de usuarios, roles, permisos y políticas de acceso al sistema SAF+." },
+    { name: "Políticas de Negocio", desc: "Motor de reglas configurables para definir políticas crediticias, aprobaciones y límites de negocio." },
+    { name: "Administración de Clientes", desc: "Gestión integral del perfil del cliente: datos demográficos, documentos, historial y relaciones." },
+    { name: "Contabilidad Financiera", desc: "Motor contable integrado con generación de pólizas, cierre diario y reportes regulatorios." },
     { name: "Originación de Crédito", desc: "Evaluación, scoring crediticio y aprobación de solicitudes de crédito al consumo." },
     { name: "Gestión de Cartera", desc: "Administración del ciclo de vida completo del crédito: desembolso, pagos, mora, castigo." },
     { name: "Cobranza", desc: "Estrategias de cobro automatizadas, asignación de gestores y seguimiento de promesas de pago." },
-    { name: "Contabilidad", desc: "Motor contable integrado con generación de pólizas, cierre diario y reportes regulatorios." },
     { name: "Parametrización", desc: "Configuración centralizada de productos, tasas, plazos, comisiones y reglas de negocio." },
   ],
   integraciones: [
+    { name: "Administración de Préstamos", desc: "Gestión completa del ciclo de préstamos: desembolso, amortización, refinanciamiento y liquidación." },
+    { name: "Créditos", desc: "Módulo de créditos rotativos y cuotas para financiamiento al consumo." },
+    { name: "Línea de Crédito", desc: "Administración de líneas de crédito revolventes con control de límites y disponibilidad." },
+    { name: "Administración de Bancos", desc: "Gestión de relaciones bancarias, conciliaciones y movimientos interbancarios." },
+    { name: "Administración de Cajas", desc: "Control de cajas, arqueos, apertura/cierre y gestión de efectivo en sucursales." },
     { name: "Core Bancario / ERP", desc: "Interfaces con sistemas legados SAP, Oracle y core bancarios existentes." },
     { name: "Burós de Crédito", desc: "Consulta y reporte a burós locales en cada país (Equifax, TransUnion, etc.)." },
     { name: "Pasarelas de Pago", desc: "Integración con pasarelas locales, ACH, transferencias y pagos en línea." },
     { name: "Reguladores", desc: "Reportes regulatorios por país: CNBS, SSF, SIB, SUGEF, entre otros." },
   ],
   operaciones: [
+    { name: "Cuentas Corrientes", desc: "Gestión de cuentas corrientes con control de saldos, movimientos y estados de cuenta." },
+    { name: "Depósitos a Plazo", desc: "Administración de certificados de depósito a plazo fijo con cálculo de intereses y vencimientos." },
+    { name: "Cuentas de Ahorro", desc: "Gestión de cuentas de ahorro con capitalización de intereses y control de movimientos." },
+    { name: "Factoraje y Tarjetas", desc: "Módulos de factoraje financiero y administración de tarjetas de crédito/débito." },
     { name: "Reportería BI", desc: "Dashboards ejecutivos y operativos con métricas de cartera, mora e indicadores clave." },
     { name: "Seguridad & Auditoría", desc: "Control de acceso por roles, bitácora de transacciones y auditoría de cambios." },
     { name: "Migración de Datos", desc: "Extracción, transformación y carga de datos desde sistemas legados hacia SAF+." },
