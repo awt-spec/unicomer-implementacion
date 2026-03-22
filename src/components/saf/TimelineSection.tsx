@@ -216,15 +216,6 @@ export function TimelineSection() {
           </div>
         </div>
 
-        {/* Go/No-Go callout */}
-        <div className="scroll-reveal mt-10 bg-primary/5 border border-primary/20 rounded-xl p-6">
-          <h4 className="font-bold text-foreground text-sm mb-2">⚠️ Go/No-Go Decision Gate</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            La transición de la Fase 1 (País Piloto) a las fases siguientes constituye un gate formal de decisión Go/No-Go.
-            Grupo Unicomer se reserva el derecho de validar el desempeño y decidir unilateralmente si proceder.
-            Los compromisos financieros se activan exclusivamente país por país, al momento del Go-Live de cada instancia.
-          </p>
-        </div>
       </div>
     </section>
   );
