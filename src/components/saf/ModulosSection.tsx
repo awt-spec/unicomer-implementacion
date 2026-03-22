@@ -126,7 +126,7 @@ export function ModulosSection() {
                         ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                         : isActive
                         ? "bg-card hover:shadow-md border-border"
-                        : "bg-card/40 border-border/30"
+                        : "bg-card border-border/40 shadow-sm"
                     }`}
                     style={{
                       width: nodeSize, height: nodeSize,
