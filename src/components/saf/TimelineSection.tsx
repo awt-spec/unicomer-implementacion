@@ -134,6 +134,9 @@ export function TimelineSection() {
 
         {/* Detail panel */}
         <div className="scroll-reveal">
+          {selected === 1 ? (
+            <HondurasCronograma />
+          ) : (
           <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
             {/* Header */}
             <div className={`bg-gradient-to-r ${barColors[selected]} p-6 md:p-8`}>
