@@ -142,7 +142,7 @@ export function ModulosSection() {
                     }}
                     title={mod.name}
                   >
-                    <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : "text-foreground/70"} />
+                    <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : (showAll ? orbit.iconColor : "text-foreground/70")} />
                     {/* Tooltip on hover */}
                     <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-medium bg-foreground text-background px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
                       {mod.name}
