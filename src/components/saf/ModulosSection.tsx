@@ -19,10 +19,10 @@ const ICON_MAP: Record<TabKey, typeof CORE_ICONS> = {
   operaciones: OPS_ICONS,
 };
 
-const ORBITS: { key: TabKey; label: string; radius: number; color: string; colorBg: string }[] = [
-  { key: "core", label: "SAF+ Core", radius: 140, color: "hsl(352, 88%, 43%)", colorBg: "bg-primary/10 text-primary border-primary/20" },
-  { key: "integraciones", label: "Integraciones", radius: 230, color: "hsl(38, 92%, 50%)", colorBg: "bg-amber-50 text-amber-600 border-amber-200" },
-  { key: "operaciones", label: "Operaciones", radius: 310, color: "hsl(199, 89%, 48%)", colorBg: "bg-sky-50 text-sky-600 border-sky-200" },
+const ORBITS: { key: TabKey; label: string; radius: number; color: string; colorBg: string; iconColor: string }[] = [
+  { key: "core", label: "SAF+ Core", radius: 130, color: "hsl(352, 88%, 43%)", colorBg: "bg-primary/10 text-primary border-primary/20", iconColor: "text-primary" },
+  { key: "integraciones", label: "Integraciones", radius: 250, color: "hsl(38, 92%, 50%)", colorBg: "bg-amber-50 text-amber-600 border-amber-200", iconColor: "text-amber-500" },
+  { key: "operaciones", label: "Operaciones", radius: 350, color: "hsl(199, 89%, 48%)", colorBg: "bg-sky-50 text-sky-600 border-sky-200", iconColor: "text-sky-500" },
 ];
 
 function getPositions(count: number, radius: number, offsetAngle = 0) {
