@@ -175,16 +175,7 @@ const HITOS_HN = [
 { mes: "M24", hito: "Closure Report", fase: "F07" }];
 
 
-const HITOS_HN = [
-{ mes: "M1", hito: "Kickoff oficial", fase: "F01" },
-{ mes: "M4", hito: "BRD aprobado", fase: "F02" },
-{ mes: "M5", hito: "Integraciones certificadas", fase: "F03" },
-{ mes: "M8", hito: "Dress Rehearsal (ETL)", fase: "F04" },
-{ mes: "M9", hito: "Train-the-Trainer cert.", fase: "F06" },
-{ mes: "M10", hito: "UAT Sign-off", fase: "F05" },
-{ mes: "M11", hito: "GO-LIVE Honduras", fase: "F07" },
-{ mes: "M13", hito: "Go/No-Go Gate", fase: "F07" },
-{ mes: "M24", hito: "Closure Report", fase: "F07" }];
+
 
 
 const TOTAL_MONTHS = 24;
