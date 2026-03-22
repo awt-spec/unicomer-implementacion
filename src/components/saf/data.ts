@@ -125,7 +125,7 @@ export const EQUIPO_SYSDE = [
   { nombre: "Dennis García", rol: "Software Developer", iniciales: "DG", experiencia: "19 años", dedicacion: "100%", pais: "Costa Rica", foto: "dennis-garcia" },
   { nombre: "Javier Acuña", rol: "Senior Developer", iniciales: "JA", experiencia: "20 años", dedicacion: "100%", pais: "Costa Rica" },
   { nombre: "Martin Pisacreta", rol: "Senior Backend Developer", iniciales: "MP", experiencia: "8 años", dedicacion: "100%", pais: "Argentina", foto: "martin-pisacreta" },
-  { nombre: "Orlando Castro", rol: "Business Consultant", iniciales: "OC", experiencia: "31 años", dedicacion: "100%", pais: "Costa Rica", foto: "orlando-castro" },
+  { nombre: "Orlando Castro", rol: "Experto en Crédito y Factoraje", iniciales: "OC", experiencia: "31 años", dedicacion: "100%", pais: "Costa Rica", foto: "orlando-castro" },
   { nombre: "Alexander Avila", rol: "Backend and API Services Developer", iniciales: "AA", experiencia: "6 años", dedicacion: "100%", pais: "Perú" },
   { nombre: "Lucas Julián Sain", rol: "Arquitecto de Cloud y Transformación Digital", iniciales: "LS", experiencia: "22 años", dedicacion: "100%", pais: "Costa Rica", foto: "lucas-sain" },
   { nombre: "Carlos Andrés Solís Sequeira", rol: "Administración de Infraestructura", iniciales: "CS", experiencia: "14 años", dedicacion: "100%", pais: "Costa Rica" },

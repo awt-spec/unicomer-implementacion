@@ -130,7 +130,7 @@ const KPIS_CALIDAD = [
 
 /* ── TABS ── */
 
-type TabKey = "syscrum" | "plan" | "fabrica" | "cambios" | "soporte";
+type TabKey = "syscrum" | "plan" | "fabrica" | "cambios" | "soporte" | "portal";
 
 const TABS: { key: TabKey; label: string; icon: typeof Zap }[] = [
   { key: "syscrum", label: "SYSCRUM Agile", icon: Zap },
@@ -138,6 +138,7 @@ const TABS: { key: TabKey; label: string; icon: typeof Zap }[] = [
   { key: "fabrica", label: "Fábrica de Software", icon: Code },
   { key: "cambios", label: "Control de Cambios", icon: Settings },
   { key: "soporte", label: "Soporte & Continuidad", icon: Headphones },
+  { key: "portal", label: "Portal SYSDE", icon: Monitor },
 ];
 
 /* ═══════════════════════════════ COMPONENT ═══════════════════════════════ */
@@ -187,57 +188,66 @@ export function MetodologiaSection() {
         {/* ─── TAB: SYSCRUM ─── */}
         {activeTab === "syscrum" && (
           <div className="space-y-8 animate-fade-in">
-            {/* Pilares */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {SYSCRUM_PILARES.map((p) => (
-                <div key={p.titulo} className="scroll-reveal bg-card rounded-xl border p-5 group hover:shadow-md transition-all duration-300 hover:border-primary/30">
-                  <p.icon size={22} className="text-primary mb-3 group-hover:scale-110 transition-transform duration-300" />
-                  <h4 className="font-bold text-foreground text-sm mb-1.5">{p.titulo}</h4>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Ciclo interactivo */}
+            {/* Sprint Cycle Visual */}
             <div className="bg-card rounded-2xl border overflow-hidden shadow-sm">
-              <div className="flex border-b">
-                {SYSCRUM_FASES.map((fase, i) => {
-                  const Icon = fase.icon;
-                  const isActive = activeFase === i;
-                  return (
-                    <button key={fase.id} onClick={() => setActiveFase(i)}
-                      className={`flex-1 flex items-center justify-center gap-2 py-4 px-3 text-xs font-semibold transition-all duration-300 relative ${
-                        isActive ? "text-primary bg-primary/5" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                      }`}>
-                      <Icon size={16} />
-                      <span className="hidden sm:inline">{fase.nombre}</span>
-                      {isActive && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="p-6 md:p-8">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    {(() => { const Icon = SYSCRUM_FASES[activeFase].icon; return <Icon size={24} className="text-primary" />; })()}
+              <div className="bg-gradient-to-r from-primary to-primary/80 p-6 md:p-8 text-white">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+                    <RotateCcw size={24} className="text-white" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">FASE {activeFase + 1}</span>
+                    <h3 className="text-xl font-bold">Ciclo Iterativo SYSCRUM</h3>
+                    <p className="text-white/70 text-xs">Sprints de 2-4 semanas con entregas incrementales</p>
+                  </div>
+                </div>
+
+                {/* Visual cycle: 4 phases in a row with arrows */}
+                <div className="flex flex-col sm:flex-row items-stretch gap-2 mt-4">
+                  {SYSCRUM_FASES.map((fase, i) => {
+                    const Icon = fase.icon;
+                    const isActive = activeFase === i;
+                    return (
+                      <button key={fase.id} onClick={() => setActiveFase(i)}
+                        className="flex-1 flex items-center gap-2"
+                      >
+                        <div className={`flex-1 rounded-xl p-3 text-center transition-all duration-300 ${
+                          isActive ? "bg-white text-foreground shadow-lg scale-105" : "bg-white/15 hover:bg-white/25 text-white"
+                        }`}>
+                          <Icon size={20} className={`mx-auto mb-1 ${isActive ? "text-primary" : ""}`} />
+                          <p className={`text-[10px] font-bold leading-tight ${isActive ? "text-foreground" : ""}`}>{fase.nombre}</p>
+                        </div>
+                        {i < SYSCRUM_FASES.length - 1 && (
+                          <ArrowRight size={14} className="text-white/40 shrink-0 hidden sm:block" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Active phase detail */}
+              <div className="p-6 md:p-8">
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    {(() => { const Icon = SYSCRUM_FASES[activeFase].icon; return <Icon size={20} className="text-primary" />; })()}
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">FASE {activeFase + 1} / {SYSCRUM_FASES.length}</span>
                     <h4 className="font-bold text-foreground text-lg mt-1">{SYSCRUM_FASES[activeFase].nombre}</h4>
                     <p className="text-muted-foreground text-sm mt-1 leading-relaxed">{SYSCRUM_FASES[activeFase].desc}</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
-                  {SYSCRUM_FASES[activeFase].actividades.map((act, i) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {SYSCRUM_FASES[activeFase].actividades.map((act) => (
                     <div key={act} className="flex items-center gap-2 text-xs text-foreground bg-muted/50 rounded-lg px-3 py-2.5">
-                      <ArrowRight size={12} className="text-primary shrink-0" />
+                      <CheckCircle2 size={12} className="text-primary shrink-0" />
                       {act}
                     </div>
                   ))}
                 </div>
 
+                {/* Phase navigation dots */}
                 <div className="flex items-center justify-center gap-2 mt-6 pt-4 border-t">
                   {SYSCRUM_FASES.map((_, i) => (
                     <div key={i} className="flex items-center gap-1">
@@ -250,6 +260,17 @@ export function MetodologiaSection() {
                   <RotateCcw size={12} className="text-muted-foreground ml-2" />
                 </div>
               </div>
+            </div>
+
+            {/* Pilares */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {SYSCRUM_PILARES.map((p) => (
+                <div key={p.titulo} className="scroll-reveal bg-card rounded-xl border p-5 group hover:shadow-md transition-all duration-300 hover:border-primary/30">
+                  <p.icon size={22} className="text-primary mb-3 group-hover:scale-110 transition-transform duration-300" />
+                  <h4 className="font-bold text-foreground text-sm mb-1.5">{p.titulo}</h4>
+                  <p className="text-muted-foreground text-xs leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
             </div>
 
             {/* KPIs de Calidad */}
@@ -611,6 +632,44 @@ export function MetodologiaSection() {
                     {i < 4 && <ArrowRight size={12} className="text-muted-foreground shrink-0" />}
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ─── TAB: PORTAL SYSDE ─── */}
+        {activeTab === "portal" && (
+          <div className="space-y-6 animate-fade-in">
+            <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
+              <div className="bg-gradient-to-r from-primary to-primary/80 p-6 text-white">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <Monitor size={20} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Portal de Implementación y Soporte SYSDE</h3>
+                    <p className="text-white/70 text-xs">Dashboard en tiempo real para seguimiento del proyecto</p>
+                  </div>
+                </div>
+              </div>
+              <div className="aspect-video w-full">
+                <iframe
+                  src="https://dashboard-implementacion.lovable.app"
+                  className="w-full h-full border-0"
+                  title="Portal SYSDE - Dashboard de Implementación"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-5 border-t">
+                <a
+                  href="https://dashboard-implementacion.lovable.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:text-primary/80 transition-colors active:scale-95"
+                >
+                  <Globe size={14} />
+                  Abrir portal en nueva ventana →
+                </a>
               </div>
             </div>
           </div>
