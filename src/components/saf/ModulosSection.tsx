@@ -202,28 +202,34 @@ function DetailPanel({ activeOrbit, activeModule, setActiveOrbit, setActiveModul
     <div className="space-y-3">
       {(showAll ? ORBITS : ORBITS.filter(o => o.key === activeOrbit)).map((orbit) => {
         const icons = ICON_MAP[orbit.key];
-        const isExpanded = showAll || activeOrbit === orbit.key;
+        const isActive = activeOrbit === orbit.key;
         return (
-          <div key={orbit.key} className={`bg-card rounded-xl border p-5 transition-all duration-300 ${activeOrbit === orbit.key ? `${orbit.colorBg} shadow-md` : ""}`}>
-            <div className="flex items-center gap-3 mb-1 cursor-pointer active:scale-[0.98] transition-transform" onClick={() => setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key)}>
-              <div className="w-3 h-3 rounded-full" style={{ background: orbit.color }} />
+          <div key={orbit.key} className={`bg-card rounded-xl border transition-all duration-300 overflow-hidden ${isActive ? `${orbit.colorBg} shadow-md` : ""}`}>
+            <button
+              className="flex items-center gap-3 w-full p-5 cursor-pointer active:scale-[0.99] transition-transform text-left"
+              onClick={() => setActiveOrbit(isActive ? null : orbit.key)}
+            >
+              <div className="w-3 h-3 rounded-full shrink-0" style={{ background: orbit.color }} />
               <h4 className="font-bold text-sm">{orbit.label}</h4>
-              <span className="text-xs text-muted-foreground ml-auto">{MODULOS[orbit.key].length} módulos</span>
-            </div>
-            {isExpanded && (
-              <div className="mt-3 grid sm:grid-cols-2 gap-1.5 animate-fade-in">
-                {MODULOS[orbit.key].map((mod, mi) => {
-                  const Icon = icons[mi % icons.length];
-                  return (
-                    <div key={mod.name} onClick={() => { setActiveModule(mod); setActiveOrbit(orbit.key); }}
-                      className="text-sm py-2 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-center gap-2">
-                      <Icon size={14} className="shrink-0 text-muted-foreground" />
-                      <span className="font-medium text-foreground">{mod.name}</span>
-                    </div>
-                  );
-                })}
+              <span className="text-xs text-muted-foreground ml-auto mr-2">{MODULOS[orbit.key].length} módulos</span>
+              <ChevronDown size={14} className={`text-muted-foreground transition-transform duration-300 shrink-0 ${isActive ? "rotate-180" : ""}`} />
+            </button>
+            <div className={`grid transition-all duration-300 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+              <div className="overflow-hidden">
+                <div className="px-5 pb-5 grid sm:grid-cols-2 gap-1.5">
+                  {MODULOS[orbit.key].map((mod, mi) => {
+                    const Icon = icons[mi % icons.length];
+                    return (
+                      <div key={mod.name} onClick={() => { setActiveModule(mod); setActiveOrbit(orbit.key); }}
+                        className="text-sm py-2 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-center gap-2">
+                        <Icon size={14} className="shrink-0 text-muted-foreground" />
+                        <span className="font-medium text-foreground">{mod.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         );
       })}
