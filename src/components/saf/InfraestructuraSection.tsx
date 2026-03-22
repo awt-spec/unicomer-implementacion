@@ -428,7 +428,7 @@ function TabCloud() {
   return (
     <div className="space-y-3">
       {CLOUD_PROVIDERS.map((p) => (
-        <div key={p.name} className={`rounded-xl border p-4 flex items-start gap-4 transition-shadow hover:shadow-md ${p.name === "Microsoft Azure" ? "ring-1 ring-primary/30 bg-primary/3" : "bg-card"}`}>
+        <div key={p.name} className={`rounded-xl border p-4 flex items-start gap-4 transition-shadow hover:shadow-md ${p.name === "Microsoft Azure" ? "ring-1 ring-primary/30 bg-primary/5" : "bg-card"}`}>
           <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${p.compatible && p.certified ? "bg-emerald-100 text-emerald-600" : p.compatible ? "bg-amber-100 text-amber-600" : "bg-red-100 text-red-500"}`}>
             <Cloud size={18} />
           </div>
