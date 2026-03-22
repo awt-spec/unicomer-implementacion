@@ -215,13 +215,10 @@ export function ModulosSection() {
                               <div
                                 key={mod.name}
                                 onClick={(e) => { e.stopPropagation(); setActiveModule(mod); setActiveOrbit(orbit.key); }}
-                                className="text-sm py-2.5 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-start gap-2"
+                                className="text-sm py-2 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-center gap-2"
                               >
-                                <Icon size={14} className="mt-0.5 shrink-0 text-muted-foreground" />
-                                <div>
-                                  <span className="font-medium text-foreground">{mod.name}</span>
-                                  <span className="block text-xs text-muted-foreground mt-0.5 line-clamp-1">{mod.desc}</span>
-                                </div>
+                                <Icon size={14} className="shrink-0 text-muted-foreground" />
+                                <span className="font-medium text-foreground">{mod.name}</span>
                               </div>
                             );
                           })}
