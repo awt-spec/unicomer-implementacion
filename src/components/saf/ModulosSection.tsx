@@ -44,7 +44,7 @@ export function ModulosSection() {
             Módulos SAF+
           </h2>
           <p className="text-muted-foreground mt-2 text-sm max-w-xl">
-            Explora el ecosistema SAF+ — haz clic en un módulo para ver su descripción.
+            Explora el ecosistema SAF+ — selecciona una capa para ver sus módulos.
           </p>
         </div>
 
@@ -53,7 +53,10 @@ export function ModulosSection() {
           {ORBITS.map((orbit) => (
             <button
               key={orbit.key}
-              onClick={() => { setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key); setActiveModule(null); }}
+              onClick={() => { 
+                setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key); 
+                setActiveModule(null); 
+              }}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all active:scale-95 ${
                 activeOrbit === orbit.key ? orbit.colorBg : "bg-card text-muted-foreground border-border hover:border-foreground/30"
               }`}
@@ -68,7 +71,7 @@ export function ModulosSection() {
         <div className="scroll-reveal flex flex-col xl:flex-row gap-10 items-start">
           {/* Solar system */}
           <div className="relative shrink-0 hidden lg:block" style={{ width: size, height: size }}>
-            {/* Animated orbit rings */}
+            {/* Orbit rings */}
             <svg width={size} height={size} className="absolute inset-0" aria-hidden>
               {ORBITS.map((orbit, oi) => (
                 <circle
@@ -101,23 +104,24 @@ export function ModulosSection() {
               <span className="text-white font-bold text-sm text-center leading-tight">SAF+</span>
             </div>
 
-            {/* Module nodes */}
+            {/* Module nodes - only show for selected orbit */}
             {ORBITS.map((orbit, oi) => {
               const mods = MODULOS[orbit.key];
               const positions = getPositions(mods.length, orbit.radius, oi * 0.3 + 0.2);
-              const isActive = activeOrbit === orbit.key || activeOrbit === null;
+              const isActive = activeOrbit === orbit.key;
+              const showNodes = isActive || activeOrbit === null;
 
               return positions.map((pos, i) => {
                 const mod = mods[i];
                 const isSelected = activeModule?.name === mod.name;
-                const nodeW = orbit.key === "core" ? 85 : 95;
+                const nodeW = 95;
                 const nodeH = 40;
 
                 return (
                   <button
                     key={mod.name}
                     onClick={() => { setActiveOrbit(orbit.key); setActiveModule(mod); }}
-                    className={`absolute rounded-xl border flex items-center justify-center text-center transition-all duration-500 active:scale-90 ${
+                    className={`absolute rounded-xl border flex items-center justify-center text-center active:scale-90 ${
                       isSelected
                         ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                         : isActive
@@ -128,12 +132,13 @@ export function ModulosSection() {
                       width: nodeW, height: nodeH,
                       left: cx + pos.x - nodeW / 2,
                       top: cy + pos.y - nodeH / 2,
-                      opacity: isInView ? (isActive ? 1 : 0.3) : 0,
-                      transform: isInView
-                        ? `scale(${isSelected ? 1.12 : isActive ? 1 : 0.9})`
-                        : "scale(0.5)",
-                      transitionDelay: `${i * 50 + oi * 120}ms`,
-                      transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                      opacity: showNodes ? (isInView ? (isActive ? 1 : 0.25) : 0) : 0,
+                      transform: showNodes && isInView
+                        ? `scale(${isSelected ? 1.12 : isActive ? 1 : 0.85})`
+                        : "scale(0.4)",
+                      pointerEvents: showNodes ? "auto" : "none",
+                      transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                      transitionDelay: showNodes ? `${i * 50 + oi * 100}ms` : "0ms",
                     }}
                   >
                     <span className={`text-[9px] font-semibold leading-tight px-1 ${isSelected ? "" : "text-foreground"}`}>
@@ -145,7 +150,7 @@ export function ModulosSection() {
             })}
           </div>
 
-          {/* Detail panel + mobile list */}
+          {/* Detail panel + list */}
           <div className="flex-1 min-w-0 w-full">
             {activeModule ? (
               <div className="bg-card rounded-2xl border p-8 shadow-sm animate-fade-in">
@@ -186,7 +191,7 @@ export function ModulosSection() {
                           {MODULOS[orbit.key].map((mod) => (
                             <div
                               key={mod.name}
-                              onClick={(e) => { e.stopPropagation(); setActiveModule(mod); }}
+                              onClick={(e) => { e.stopPropagation(); setActiveModule(mod); setActiveOrbit(orbit.key); }}
                               className="text-sm py-2.5 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98]"
                             >
                               <span className="font-medium text-foreground">{mod.name}</span>

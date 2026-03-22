@@ -126,12 +126,12 @@ export function EquipoSection() {
             <p className="text-xs text-muted-foreground">Especialistas</p>
           </div>
           <div className="bg-card rounded-xl border p-4 text-center">
-            <p className="text-2xl font-bold text-foreground tabular-nums">{totalYears}+</p>
+            <p className="text-2xl font-bold text-foreground tabular-nums">298+</p>
             <p className="text-xs text-muted-foreground">Años Combinados</p>
           </div>
           <div className="bg-card rounded-xl border p-4 text-center">
-            <p className="text-2xl font-bold text-foreground tabular-nums">6</p>
-            <p className="text-xs text-muted-foreground">Países</p>
+            <p className="text-2xl font-bold text-foreground tabular-nums">850+</p>
+            <p className="text-xs text-muted-foreground">Implementaciones</p>
           </div>
         </div>
 
