@@ -48,7 +48,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-sysde-charcoal border-t border-white/10 px-4 py-3 space-y-1">
+        <div className="lg:hidden bg-neutral-800 border-t border-white/10 px-4 py-3 space-y-1">
           {NAV_SECTIONS.map((s) => (
             <button
               key={s.id}
