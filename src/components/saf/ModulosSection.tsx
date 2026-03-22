@@ -132,13 +132,13 @@ export function ModulosSection() {
                 const mod = mods[i];
                 const Icon = icons[i % icons.length];
                 const isSelected = activeModule?.name === mod.name;
-                const nodeSize = 56;
+                const nodeSize = 42;
 
                 return (
                   <button
                     key={mod.name}
                     onClick={() => { setActiveOrbit(orbit.key); setActiveModule(mod); }}
-                    className={`absolute rounded-2xl border flex flex-col items-center justify-center gap-0.5 active:scale-90 ${
+                    className={`absolute rounded-full border flex items-center justify-center active:scale-90 group ${
                       isSelected
                         ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                         : isActive
@@ -151,7 +151,7 @@ export function ModulosSection() {
                       top: cy + pos.y - nodeSize / 2,
                       opacity: showNodes ? (isInView ? (isActive ? 1 : 0.2) : 0) : 0,
                       transform: showNodes && isInView
-                        ? `scale(${isSelected ? 1.15 : isActive ? 1 : 0.8})`
+                        ? `scale(${isSelected ? 1.2 : isActive ? 1 : 0.8})`
                         : "scale(0.3)",
                       pointerEvents: showNodes ? "auto" : "none",
                       transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -159,9 +159,10 @@ export function ModulosSection() {
                     }}
                     title={mod.name}
                   >
-                    <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : "text-foreground/70"} />
-                    <span className={`text-[7px] font-semibold leading-tight px-0.5 text-center ${isSelected ? "" : "text-foreground/70"}`}>
-                      {mod.name.length > 14 ? mod.name.slice(0, 12) + "…" : mod.name}
+                    <Icon size={18} strokeWidth={1.8} className={isSelected ? "" : "text-foreground/70"} />
+                    {/* Tooltip on hover */}
+                    <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-medium bg-foreground text-background px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+                      {mod.name}
                     </span>
                   </button>
                 );
@@ -214,13 +215,10 @@ export function ModulosSection() {
                               <div
                                 key={mod.name}
                                 onClick={(e) => { e.stopPropagation(); setActiveModule(mod); setActiveOrbit(orbit.key); }}
-                                className="text-sm py-2.5 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-start gap-2"
+                                className="text-sm py-2 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-center gap-2"
                               >
-                                <Icon size={14} className="mt-0.5 shrink-0 text-muted-foreground" />
-                                <div>
-                                  <span className="font-medium text-foreground">{mod.name}</span>
-                                  <span className="block text-xs text-muted-foreground mt-0.5 line-clamp-1">{mod.desc}</span>
-                                </div>
+                                <Icon size={14} className="shrink-0 text-muted-foreground" />
+                                <span className="font-medium text-foreground">{mod.name}</span>
                               </div>
                             );
                           })}
