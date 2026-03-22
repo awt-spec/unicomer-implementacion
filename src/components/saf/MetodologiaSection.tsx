@@ -130,7 +130,7 @@ const KPIS_CALIDAD = [
 
 /* ── TABS ── */
 
-type TabKey = "syscrum" | "plan" | "fabrica" | "cambios" | "soporte";
+type TabKey = "syscrum" | "plan" | "fabrica" | "cambios" | "soporte" | "portal";
 
 const TABS: { key: TabKey; label: string; icon: typeof Zap }[] = [
   { key: "syscrum", label: "SYSCRUM Agile", icon: Zap },
@@ -138,6 +138,7 @@ const TABS: { key: TabKey; label: string; icon: typeof Zap }[] = [
   { key: "fabrica", label: "Fábrica de Software", icon: Code },
   { key: "cambios", label: "Control de Cambios", icon: Settings },
   { key: "soporte", label: "Soporte & Continuidad", icon: Headphones },
+  { key: "portal", label: "Portal SYSDE", icon: Monitor },
 ];
 
 /* ═══════════════════════════════ COMPONENT ═══════════════════════════════ */
