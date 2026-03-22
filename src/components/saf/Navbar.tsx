@@ -14,7 +14,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-sysde-charcoal/95 backdrop-blur-sm border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-800/95 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
         <span className="text-white font-bold tracking-wider text-sm uppercase">
           SYSDE <span className="text-primary font-normal">| SAF+</span>
@@ -48,7 +48,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-sysde-charcoal border-t border-white/10 px-4 py-3 space-y-1">
+        <div className="lg:hidden bg-neutral-800 border-t border-white/10 px-4 py-3 space-y-1">
           {NAV_SECTIONS.map((s) => (
             <button
               key={s.id}

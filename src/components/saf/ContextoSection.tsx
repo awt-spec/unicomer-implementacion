@@ -1,5 +1,20 @@
-import { SISTEMAS_ACTUALES } from "./data";
+import { SISTEMAS_ACTUALES, PAISES } from "./data";
 import { Info } from "lucide-react";
+
+// Map sistema name to flags from PAISES data
+function getFlagsForSistema(paises: string): string {
+  const flags: string[] = [];
+  PAISES.forEach((p) => {
+    if (paises.includes(p.pais)) {
+      flags.push(p.bandera);
+    }
+  });
+  // Handle edge cases
+  if (paises.includes("Trinidad")) flags.push(PAISES.find(p => p.pais === "Trinidad y Tobago")?.bandera || "🇹🇹");
+  if (paises.includes("Guyana") && !flags.includes("🇬🇾")) flags.push("🇬🇾");
+  // Deduplicate
+  return [...new Set(flags)].join(" ");
+}
 
 export function ContextoSection() {
   return (
@@ -19,6 +34,7 @@ export function ContextoSection() {
         <div className="scroll-reveal space-y-3 stagger-children">
           {SISTEMAS_ACTUALES.map((s) => {
             const isSysde = s.sistema === "Sysde (legado)";
+            const flags = getFlagsForSistema(s.paises);
             return (
               <div
                 key={s.sistema}
@@ -26,6 +42,9 @@ export function ContextoSection() {
                   isSysde ? "border-primary/30 ring-1 ring-primary/10" : ""
                 }`}
               >
+                <div className="text-3xl shrink-0 flex gap-1">
+                  {flags}
+                </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <h4 className="font-bold text-foreground">{s.sistema}</h4>
@@ -49,7 +68,7 @@ export function ContextoSection() {
           })}
         </div>
 
-        {/* Subtle note about existing SYSDE clients */}
+        {/* Note about SYSDE clients */}
         <div className="scroll-reveal mt-8 flex items-start gap-3 text-sm text-muted-foreground">
           <Info size={16} className="text-primary shrink-0 mt-0.5" />
           <p className="leading-relaxed">
