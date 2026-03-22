@@ -1,12 +1,28 @@
 import { useState, useRef, useEffect } from "react";
 import { MODULOS } from "./data";
+import {
+  Shield, Settings, Users, Calculator, Landmark, FileCheck,
+  Briefcase, PhoneCall, Receipt, Wallet, PiggyBank, Clock, SlidersHorizontal,
+  BookOpen, Scale, AlertTriangle, BarChart3, ArrowLeftRight, CreditCard, Store, Building2, Smartphone,
+  LineChart, ShieldCheck, Database,
+} from "lucide-react";
 
 type TabKey = keyof typeof MODULOS;
 
+const CORE_ICONS = [Shield, Settings, Users, Calculator, Landmark, FileCheck, Briefcase, PhoneCall, Receipt, Wallet, PiggyBank, Clock, SlidersHorizontal];
+const INTEG_ICONS = [BookOpen, Scale, AlertTriangle, BarChart3, ArrowLeftRight, CreditCard, Store, Building2, Smartphone];
+const OPS_ICONS = [LineChart, ShieldCheck, Database];
+
+const ICON_MAP: Record<TabKey, typeof CORE_ICONS> = {
+  core: CORE_ICONS,
+  integraciones: INTEG_ICONS,
+  operaciones: OPS_ICONS,
+};
+
 const ORBITS: { key: TabKey; label: string; radius: number; color: string; colorBg: string }[] = [
-  { key: "core", label: "SAF+ Core", radius: 130, color: "hsl(352, 88%, 43%)", colorBg: "bg-primary/10 text-primary border-primary/20" },
-  { key: "integraciones", label: "Integraciones", radius: 220, color: "hsl(38, 92%, 50%)", colorBg: "bg-amber-50 text-amber-600 border-amber-200" },
-  { key: "operaciones", label: "Operaciones", radius: 300, color: "hsl(199, 89%, 48%)", colorBg: "bg-sky-50 text-sky-600 border-sky-200" },
+  { key: "core", label: "SAF+ Core", radius: 155, color: "hsl(352, 88%, 43%)", colorBg: "bg-primary/10 text-primary border-primary/20" },
+  { key: "integraciones", label: "Integraciones", radius: 265, color: "hsl(38, 92%, 50%)", colorBg: "bg-amber-50 text-amber-600 border-amber-200" },
+  { key: "operaciones", label: "Operaciones", radius: 350, color: "hsl(199, 89%, 48%)", colorBg: "bg-sky-50 text-sky-600 border-sky-200" },
 ];
 
 function getPositions(count: number, radius: number, offsetAngle = 0) {
@@ -25,13 +41,13 @@ export function ModulosSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsInView(true); },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const size = 680;
+  const size = 780;
   const cx = size / 2;
   const cy = size / 2;
 
@@ -53,9 +69,9 @@ export function ModulosSection() {
           {ORBITS.map((orbit) => (
             <button
               key={orbit.key}
-              onClick={() => { 
-                setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key); 
-                setActiveModule(null); 
+              onClick={() => {
+                setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key);
+                setActiveModule(null);
               }}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all active:scale-95 ${
                 activeOrbit === orbit.key ? orbit.colorBg : "bg-card text-muted-foreground border-border hover:border-foreground/30"
@@ -82,8 +98,8 @@ export function ModulosSection() {
                   strokeWidth={activeOrbit === orbit.key ? 2.5 : 1}
                   strokeDasharray={activeOrbit === orbit.key ? "none" : "6 6"}
                   className="transition-all duration-700"
-                  style={{ 
-                    opacity: isInView ? 1 : 0, 
+                  style={{
+                    opacity: isInView ? 1 : 0,
                     transitionDelay: `${oi * 200}ms`,
                   }}
                 />
@@ -104,24 +120,25 @@ export function ModulosSection() {
               <span className="text-white font-bold text-sm text-center leading-tight">SAF+</span>
             </div>
 
-            {/* Module nodes - only show for selected orbit */}
+            {/* Module nodes */}
             {ORBITS.map((orbit, oi) => {
               const mods = MODULOS[orbit.key];
+              const icons = ICON_MAP[orbit.key];
               const positions = getPositions(mods.length, orbit.radius, oi * 0.3 + 0.2);
               const isActive = activeOrbit === orbit.key;
               const showNodes = isActive || activeOrbit === null;
 
               return positions.map((pos, i) => {
                 const mod = mods[i];
+                const Icon = icons[i % icons.length];
                 const isSelected = activeModule?.name === mod.name;
-                const nodeW = 95;
-                const nodeH = 40;
+                const nodeSize = 56;
 
                 return (
                   <button
                     key={mod.name}
                     onClick={() => { setActiveOrbit(orbit.key); setActiveModule(mod); }}
-                    className={`absolute rounded-xl border flex items-center justify-center text-center active:scale-90 ${
+                    className={`absolute rounded-2xl border flex flex-col items-center justify-center gap-0.5 active:scale-90 ${
                       isSelected
                         ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                         : isActive
@@ -129,20 +146,22 @@ export function ModulosSection() {
                         : "bg-card/40 border-border/30"
                     }`}
                     style={{
-                      width: nodeW, height: nodeH,
-                      left: cx + pos.x - nodeW / 2,
-                      top: cy + pos.y - nodeH / 2,
-                      opacity: showNodes ? (isInView ? (isActive ? 1 : 0.25) : 0) : 0,
+                      width: nodeSize, height: nodeSize,
+                      left: cx + pos.x - nodeSize / 2,
+                      top: cy + pos.y - nodeSize / 2,
+                      opacity: showNodes ? (isInView ? (isActive ? 1 : 0.2) : 0) : 0,
                       transform: showNodes && isInView
-                        ? `scale(${isSelected ? 1.12 : isActive ? 1 : 0.85})`
-                        : "scale(0.4)",
+                        ? `scale(${isSelected ? 1.15 : isActive ? 1 : 0.8})`
+                        : "scale(0.3)",
                       pointerEvents: showNodes ? "auto" : "none",
                       transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                       transitionDelay: showNodes ? `${i * 50 + oi * 100}ms` : "0ms",
                     }}
+                    title={mod.name}
                   >
-                    <span className={`text-[9px] font-semibold leading-tight px-1 ${isSelected ? "" : "text-foreground"}`}>
-                      {mod.name.length > 22 ? mod.name.slice(0, 20) + "…" : mod.name}
+                    <Icon size={16} strokeWidth={1.8} className={isSelected ? "" : "text-foreground/70"} />
+                    <span className={`text-[7px] font-semibold leading-tight px-0.5 text-center ${isSelected ? "" : "text-foreground/70"}`}>
+                      {mod.name.length > 14 ? mod.name.slice(0, 12) + "…" : mod.name}
                     </span>
                   </button>
                 );
@@ -173,6 +192,7 @@ export function ModulosSection() {
               <div className="space-y-4">
                 {ORBITS.map((orbit) => {
                   const isExpanded = activeOrbit === orbit.key;
+                  const icons = ICON_MAP[orbit.key];
                   return (
                     <div
                       key={orbit.key}
@@ -188,16 +208,22 @@ export function ModulosSection() {
                       </div>
                       {isExpanded && (
                         <div className="mt-3 grid sm:grid-cols-2 gap-2 animate-fade-in">
-                          {MODULOS[orbit.key].map((mod) => (
-                            <div
-                              key={mod.name}
-                              onClick={(e) => { e.stopPropagation(); setActiveModule(mod); setActiveOrbit(orbit.key); }}
-                              className="text-sm py-2.5 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98]"
-                            >
-                              <span className="font-medium text-foreground">{mod.name}</span>
-                              <span className="block text-xs text-muted-foreground mt-0.5 line-clamp-1">{mod.desc}</span>
-                            </div>
-                          ))}
+                          {MODULOS[orbit.key].map((mod, mi) => {
+                            const Icon = icons[mi % icons.length];
+                            return (
+                              <div
+                                key={mod.name}
+                                onClick={(e) => { e.stopPropagation(); setActiveModule(mod); setActiveOrbit(orbit.key); }}
+                                className="text-sm py-2.5 px-3 rounded-lg hover:bg-background/80 transition-colors cursor-pointer active:scale-[0.98] flex items-start gap-2"
+                              >
+                                <Icon size={14} className="mt-0.5 shrink-0 text-muted-foreground" />
+                                <div>
+                                  <span className="font-medium text-foreground">{mod.name}</span>
+                                  <span className="block text-xs text-muted-foreground mt-0.5 line-clamp-1">{mod.desc}</span>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       )}
                     </div>
