@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { EQUIPO_SYSDE } from "./data";
-import { MapPin, Clock, Briefcase } from "lucide-react";
+import { MEMBER_IMPLEMENTATIONS } from "./teamImplementations";
+import { MapPin, Briefcase, ChevronDown, Building2 } from "lucide-react";
 import carlosCascante from "@/assets/team/carlos-cascante.png";
 import luisAlfaro from "@/assets/team/luis-alfaro.png";
 import nellyVargas from "@/assets/team/nelly-vargas.png";
@@ -31,8 +32,10 @@ const PHOTOS: Record<string, string> = {
 function TeamCard({ member, index }: { member: typeof EQUIPO_SYSDE[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const photoSrc = member.foto ? PHOTOS[member.foto] : undefined;
   const isLeader = index < 3;
+  const implementations = MEMBER_IMPLEMENTATIONS[member.nombre] || [];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,9 +49,7 @@ function TeamCard({ member, index }: { member: typeof EQUIPO_SYSDE[0]; index: nu
   return (
     <div
       ref={ref}
-      className={`group relative bg-card rounded-2xl border overflow-hidden transition-all duration-500 hover:shadow-xl ${
-        isLeader ? "md:col-span-1" : ""
-      }`}
+      className="group relative bg-card rounded-2xl border overflow-hidden transition-all duration-500 hover:shadow-xl"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0) scale(1)" : "translateY(30px) scale(0.97)",
@@ -57,34 +58,27 @@ function TeamCard({ member, index }: { member: typeof EQUIPO_SYSDE[0]; index: nu
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
-      {/* Top accent */}
       <div className={`h-1 ${isLeader ? "bg-primary" : "bg-border"} group-hover:bg-primary transition-colors duration-300`} />
-      
+
       <div className="p-5">
         <div className="flex items-start gap-4">
-          {/* Avatar */}
           <div className="relative shrink-0">
             {photoSrc ? (
-              <img
-                src={photoSrc}
-                alt={member.nombre}
-                className="w-14 h-14 rounded-full object-cover ring-2 ring-background shadow-md group-hover:scale-105 transition-transform duration-500"
-              />
+              <img src={photoSrc} alt={member.nombre}
+                className="w-14 h-14 rounded-full object-cover ring-2 ring-background shadow-md group-hover:scale-105 transition-transform duration-500" />
             ) : (
               <div className="w-14 h-14 rounded-full flex items-center justify-center text-sm font-bold bg-gradient-to-br from-primary to-primary/70 text-white shadow-md group-hover:scale-105 transition-transform duration-500">
                 {member.iniciales}
               </div>
             )}
           </div>
-
           <div className="flex-1 min-w-0">
             <h4 className="font-bold text-foreground text-sm leading-tight truncate">{member.nombre}</h4>
             <p className="text-xs text-primary font-medium mt-0.5 line-clamp-1">{member.rol}</p>
           </div>
         </div>
 
-        {/* Meta */}
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-muted-foreground">
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
           <span className="flex items-center gap-1">
             <Briefcase size={10} className="text-primary/60" />
             {member.experiencia}
@@ -93,19 +87,41 @@ function TeamCard({ member, index }: { member: typeof EQUIPO_SYSDE[0]; index: nu
             <MapPin size={10} className="text-primary/60" />
             {PAIS_FLAG[member.pais || ""] || ""} {member.pais}
           </span>
-          <span className="flex items-center gap-1">
-            <Clock size={10} className="text-primary/60" />
-            {member.dedicacion}
-          </span>
         </div>
+
+        {/* Implementations toggle */}
+        {implementations.length > 0 && (
+          <div className="mt-3">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="flex items-center gap-1.5 text-[10px] font-semibold text-muted-foreground hover:text-foreground transition-colors active:scale-95 w-full"
+            >
+              <Building2 size={10} className="text-primary/60" />
+              <span>{implementations.length} implementaciones</span>
+              <ChevronDown size={10} className={`ml-auto transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+            </button>
+
+            <div className={`grid transition-all duration-300 ease-out ${expanded ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0"}`}>
+              <div className="overflow-hidden">
+                <div className="space-y-1">
+                  {implementations.map((impl) => (
+                    <div key={impl.nombre} className="flex items-center gap-2 text-[10px] py-1 px-2 rounded-md bg-muted/40 hover:bg-muted/60 transition-colors">
+                      <span className="shrink-0">{impl.bandera}</span>
+                      <span className="font-medium text-foreground truncate flex-1">{impl.nombre}</span>
+                      <span className="text-muted-foreground shrink-0">{impl.año}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 export function EquipoSection() {
-  const totalYears = EQUIPO_SYSDE.reduce((acc, m) => acc + parseInt(m.experiencia || "0"), 0);
-
   return (
     <section id="equipo" className="py-24 px-6 bg-secondary/50">
       <div className="max-w-6xl mx-auto">
@@ -115,11 +131,10 @@ export function EquipoSection() {
             Equipo SYSDE
           </h2>
           <p className="text-muted-foreground mt-2 text-sm max-w-xl">
-            {EQUIPO_SYSDE.length} profesionales con más de {totalYears} años de experiencia combinada.
+            {EQUIPO_SYSDE.length} profesionales dedicados al 100%. Más de 850 implementaciones exitosas.
           </p>
         </div>
 
-        {/* Stats */}
         <div className="scroll-reveal grid grid-cols-2 gap-4 mb-10">
           <div className="bg-card rounded-xl border p-4 text-center">
             <p className="text-2xl font-bold text-foreground tabular-nums">{EQUIPO_SYSDE.length}</p>
@@ -131,7 +146,6 @@ export function EquipoSection() {
           </div>
         </div>
 
-        {/* Team grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {EQUIPO_SYSDE.map((member, i) => (
             <TeamCard key={member.nombre} member={member} index={i} />
