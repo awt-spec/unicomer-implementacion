@@ -410,7 +410,7 @@ function TabContinuidad() {
             </div>
             <div className="flex justify-between py-1 border-b border-border/50">
               <span className="text-muted-foreground">Failover</span>
-              <span className="font-semibold text-primary">< 5 min automático</span>
+              <span className="font-semibold text-primary">&lt; 5 min automático</span>
             </div>
             <div className="flex justify-between py-1">
               <span className="text-muted-foreground">SLA con DRP</span>
