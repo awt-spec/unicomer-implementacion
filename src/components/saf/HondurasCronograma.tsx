@@ -1,0 +1,341 @@
+import { useState } from "react";
+import { ChevronRight, CheckCircle2, Clock, Users, Zap, FileText, Shield, Rocket, GraduationCap, Database, FlaskConical, Settings } from "lucide-react";
+
+const HONDURAS_FASES = [
+  {
+    id: "F01", nombre: "Gobernanza & Kickoff", periodo: "Mes 1", semanas: "1–4",
+    icon: Rocket, color: "from-primary to-primary/70", colorLight: "bg-primary/10 text-primary",
+    responsables: "Alberto Wheelock · Eduardo Wheelock · Mafe",
+    tareas: [
+      { tarea: "Firma del contrato marco y NDA con Unicomer HQ", responsable: "Alberto Wheelock" },
+      { tarea: "Constitución del Steering Committee SYSDE–Unicomer Honduras", responsable: "Alberto + Eduardo" },
+      { tarea: "Setup PMO: Asana, MS Project, canales Teams/email, RACI definitivo", responsable: "Alberto Wheelock" },
+      { tarea: "Kickoff Meeting Honduras — presencial o Microsoft Teams", responsable: "Mafe + Unicomer" },
+      { tarea: "Definición de ambientes tecnológicos: DEV / QA / STAGING / PROD", responsable: "Carlos Solís" },
+      { tarea: "Designación formal de IT Lead y super usuarios Unicomer Honduras", responsable: "Unicomer" },
+    ],
+    entregables: [
+      { nombre: "Project Management Plan", mes: "Mes 1", formato: "Excel & Miro — timeline, resource plan, risk matrix" },
+    ],
+    barStart: 0, barEnd: 1,
+  },
+  {
+    id: "F02", nombre: "Blueprint & Diseño", periodo: "Mes 1–4", semanas: "1–16",
+    icon: FileText, color: "from-amber-500 to-amber-400", colorLight: "bg-amber-50 text-amber-600",
+    responsables: "Mafe · Nelly Vargas · Luis Alfaro · Olga Cuervo",
+    tareas: [
+      { tarea: "Análisis AS-IS del sistema POSCental Honduras", responsable: "Luis Alfaro" },
+      { tarea: "Workshops de requerimientos funcionales: originación, crédito, cobranza, liquidación, CNBS", responsable: "Nelly Vargas" },
+      { tarea: "Análisis regulatorio local: normativa CNBS, AML, provisiones, reportes BCH", responsable: "Nelly Vargas" },
+      { tarea: "Diseño arquitectura TO-BE SAF+ on-premise en servidores Unicomer Honduras", responsable: "Luis Alfaro + Carlos Solís" },
+      { tarea: "Mapeo de integraciones: CRM, Datalake, MCX, bureaus de crédito, EMMA", responsable: "Olga Cuervo" },
+      { tarea: "Diseño de modelo de datos multiempresa, multidivisa (Lempiras HNL)", responsable: "Luis Alfaro" },
+      { tarea: "Gap analysis funcional POSCental vs SAF+", responsable: "Mafe + Nelly" },
+    ],
+    entregables: [
+      { nombre: "Blueprint / Solution Design", mes: "Mes 3", formato: "Word (AS-IS/TO-BE) · Swagger APIs · draw.io/Miro" },
+      { nombre: "Accounting Entry Matrix (GL)", mes: "Mes 4", formato: "Excel / SQL Server — mapeo completo de cuentas" },
+      { nombre: "Regulatory Compliance Report", mes: "Mes 3", formato: "Excel / Confluence / Power BI — normativa CNBS" },
+      { nombre: "BRD aprobado — Unicomer sign-off", mes: "Mes 4", formato: "Documento Word firmado por IT Director Unicomer" },
+    ],
+    barStart: 0, barEnd: 4,
+  },
+  {
+    id: "F03", nombre: "Configuración & Parametrización", periodo: "Mes 3–6", semanas: "9–24",
+    icon: Settings, color: "from-sky-500 to-sky-400", colorLight: "bg-sky-50 text-sky-600",
+    responsables: "Mafe · Nelly Vargas · Carlos Solís · Olga Cuervo",
+    tareas: [
+      { tarea: "Setup infraestructura on-premise: instalación SAF+ en servidores Unicomer", responsable: "Carlos Solís" },
+      { tarea: "Parametrización productos crediticios: tasas, amortización, cuotas, seguros", responsable: "Nelly Vargas" },
+      { tarea: "Carga de catálogos: clientes, sucursales, vendedores, zonas, plan de cuentas", responsable: "Nelly Vargas" },
+      { tarea: "Configuración productos especiales: crédito retail, financiamiento", responsable: "Nelly Vargas" },
+      { tarea: "Desarrollo y certificación integraciones API: CRM EMMA, Datalake, MCX", responsable: "Olga Cuervo" },
+      { tarea: "Integración SmartCredit y bureau de crédito Honduras", responsable: "Olga Cuervo" },
+      { tarea: "Configuración reportería regulatoria CNBS", responsable: "Nelly Vargas" },
+      { tarea: "Configuración módulo AML/Lista Cautela", responsable: "Carlos Solís" },
+      { tarea: "Setup de seguridad: roles, perfiles, permisos, auditoría", responsable: "Carlos Solís" },
+    ],
+    entregables: [
+      { nombre: "Configuration Workbooks — parametrización completa", mes: "Mes 5", formato: "Excel / Git / Power BI / SQL" },
+      { nombre: "Integration Specs API (Swagger / OpenAPI)", mes: "Mes 5", formato: "Swagger / Postman / DevOps — certificadas" },
+    ],
+    barStart: 2, barEnd: 6,
+  },
+  {
+    id: "F04", nombre: "Migración de Datos (ETL)", periodo: "Mes 4–8", semanas: "13–32",
+    icon: Database, color: "from-violet-500 to-violet-400", colorLight: "bg-violet-50 text-violet-600",
+    responsables: "Jhonny Brenes · Carlos Solís",
+    tareas: [
+      { tarea: "Auditoría de calidad de datos en POSCental: duplicados, outliers, campos nulos", responsable: "Jhonny Brenes" },
+      { tarea: "Mapeo entidad-entidad: clientes, contratos, pagos, garantías, historial", responsable: "Jhonny Brenes" },
+      { tarea: "Diseño ETL: reglas de transformación, reconciliación, manejo de excepciones", responsable: "Jhonny Brenes" },
+      { tarea: "Desarrollo scripts ETL con herramienta SYSDE propietaria + SQL Server", responsable: "Jhonny Brenes + Dennis García" },
+      { tarea: "Mock Run 1: migración completa en QA con datos reales", responsable: "Jhonny Brenes" },
+      { tarea: "Corrección de errores Mock Run 1 — ajuste de reglas ETL", responsable: "Jhonny Brenes" },
+      { tarea: "Mock Run 2: segunda migración — validación de saldos, cronogramas", responsable: "Jhonny Brenes" },
+      { tarea: "Dress Rehearsal: simulacro completo de cutover en STAGING", responsable: "Equipo SYSDE" },
+    ],
+    entregables: [
+      { nombre: "Data Migration Plan + ETL Strategy", mes: "Mes 6", formato: "Excel / SQL / DevOps" },
+      { nombre: "Mock Run 1 — Reporte de validación", mes: "Mes 7", formato: "Reporte QA con reconciliación de saldos" },
+      { nombre: "Mock Run 2 — Reporte correcciones", mes: "Mes 7", formato: "Reporte QA + evidencia de saldos OK" },
+      { nombre: "Dress Rehearsal Evidence", mes: "Mes 8", formato: "Acta de simulacro — timing y rollback validado" },
+    ],
+    barStart: 3, barEnd: 8,
+  },
+  {
+    id: "F05", nombre: "QA & UAT Testing", periodo: "Mes 6–10", semanas: "21–40",
+    icon: FlaskConical, color: "from-emerald-500 to-emerald-400", colorLight: "bg-emerald-50 text-emerald-600",
+    responsables: "Danilo Vezzoni · Unicomer QA Team",
+    tareas: [
+      { tarea: "Plan de pruebas: casos de uso, criterios de entrada/salida, defect tracking", responsable: "Danilo Vezzoni" },
+      { tarea: "Pruebas unitarias: cada módulo SAF+ configurado para Honduras", responsable: "Danilo Vezzoni" },
+      { tarea: "Pruebas de integración: CRM, Datalake, MCX, bureaus, CNBS — end-to-end", responsable: "Danilo + Olga" },
+      { tarea: "Security Audit: OWASP Top 10 + penetration testing (NESSUS)", responsable: "Danilo Vezzoni" },
+      { tarea: "UAT Ciclo 1: usuarios clave Unicomer validan flujos de negocio reales", responsable: "Unicomer + SYSDE" },
+      { tarea: "Performance testing: carga pico diciembre — 132,633 pagos/mes", responsable: "Danilo Vezzoni" },
+      { tarea: "Resolución defectos UAT Ciclo 1: bugs S1/S2 con SLA comprometido", responsable: "Equipo SYSDE" },
+      { tarea: "UAT Ciclo 2: re-validación tras correcciones", responsable: "Unicomer + SYSDE" },
+    ],
+    entregables: [
+      { nombre: "QA & UAT Test Plan completo", mes: "Mes 8", formato: "DevOps / Excel / Power BI / Postman" },
+      { nombre: "Security Audit Report (OWASP / NESSUS)", mes: "Mes 8", formato: "Reporte OWASP Top 10 + evidencia pentest" },
+      { nombre: "UAT Sign-off formal — Unicomer Honduras", mes: "Mes 10", formato: "Acta firmada IT Director + Steering" },
+    ],
+    barStart: 5, barEnd: 10,
+  },
+  {
+    id: "F06", nombre: "Capacitación Train-the-Trainer", periodo: "Mes 7–10", semanas: "25–40",
+    icon: GraduationCap, color: "from-teal-500 to-teal-400", colorLight: "bg-teal-50 text-teal-600",
+    responsables: "Fernando Pinto · Mafe",
+    tareas: [
+      { tarea: "Diseño del programa de capacitación: mapa de roles, ruta por perfil", responsable: "Fernando Pinto" },
+      { tarea: "Elaboración de materiales: manuales, guías, videos, Miro boards", responsable: "Fernando Pinto + Nelly" },
+      { tarea: "Taller Rol 1 — Gerentes de crédito: originación, comités, reportería", responsable: "Fernando Pinto" },
+      { tarea: "Taller Rol 2 — Operadores: pagos, desembolsos, consultas de saldo", responsable: "Fernando Pinto" },
+      { tarea: "Taller Rol 3 — Administradores: parametrización, mantenimiento, backups", responsable: "Mafe + Carlos Solís" },
+      { tarea: "Taller Rol 4 — IT Honduras: infraestructura, monitoreo, integración", responsable: "Carlos Solís" },
+      { tarea: "Certificación de 5–8 super usuarios Unicomer Honduras", responsable: "Fernando Pinto" },
+    ],
+    entregables: [
+      { nombre: "Training Materials completos (por rol)", mes: "Mes 9", formato: "PDF / PPT / Word / Miro / Videos" },
+      { nombre: "Certificación super usuarios Honduras (5–8)", mes: "Mes 9", formato: "Actas de certificación firmadas" },
+    ],
+    barStart: 6, barEnd: 10,
+  },
+  {
+    id: "F07", nombre: "Go-Live & Estabilización", periodo: "Mes 10–13+", semanas: "37–52+",
+    icon: Zap, color: "from-rose-500 to-rose-400", colorLight: "bg-rose-50 text-rose-600",
+    responsables: "Mafe · Carlos Solís · Alberto Wheelock",
+    tareas: [
+      { tarea: "Cutover Plan / Runbook: procedimiento minuto a minuto", responsable: "Carlos Solís" },
+      { tarea: "Drill de Disaster Recovery (DRP Test): recuperación simulada", responsable: "Carlos Solís" },
+      { tarea: "Validación final de saldos migrados: créditos, pagos, cronogramas", responsable: "Jhonny Brenes" },
+      { tarea: "GO-LIVE Honduras: 1ra transacción comercial en producción", responsable: "Mafe + Unicomer" },
+      { tarea: "Operación paralela 30 días: POSCental como backup", responsable: "SYSDE + Unicomer IT" },
+      { tarea: "Soporte Hypercare 8 semanas dedicado a Honduras", responsable: "Equipo SYSDE" },
+      { tarea: "SLA activo: S1 1h/1h · S2 1h/4h · Uptime 99.9%", responsable: "Carlos Solís + L1/L2/L3" },
+      { tarea: "Decommission de POSCental tras 30 días sin incidentes P1", responsable: "Unicomer IT + SYSDE" },
+    ],
+    entregables: [
+      { nombre: "Cutover Plan / Runbook", mes: "Mes 10", formato: "Excel / Project / DevOps — con rollback triggers" },
+      { nombre: "DRP Test Evidence — drill completado", mes: "Mes 11", formato: "Acta drill + métricas RTO/RPO" },
+      { nombre: "GO-LIVE Honduras — Acta de activación", mes: "Mes 11", formato: "Acta oficial firmada Unicomer + SYSDE" },
+      { nombre: "Monthly Service Report #1 (SLA)", mes: "Mes 12", formato: "Azure Monitor / Power BI — dashboard SLA" },
+      { nombre: "Project Closure Report Honduras", mes: "Mes 13", formato: "Word / PPT / Sharepoint — lecciones → Nicaragua" },
+    ],
+    barStart: 9, barEnd: 13,
+  },
+];
+
+const HITOS_HN = [
+  { mes: "M1", hito: "Kickoff oficial", fase: "F01" },
+  { mes: "M4", hito: "BRD aprobado", fase: "F02" },
+  { mes: "M5", hito: "Integraciones certificadas", fase: "F03" },
+  { mes: "M8", hito: "Dress Rehearsal (ETL)", fase: "F04" },
+  { mes: "M9", hito: "Train-the-Trainer cert.", fase: "F06" },
+  { mes: "M10", hito: "UAT Sign-off", fase: "F05" },
+  { mes: "M11", hito: "GO-LIVE Honduras", fase: "F07" },
+  { mes: "M13", hito: "Closure Report", fase: "F07" },
+];
+
+const TOTAL_MONTHS = 13;
+const KPI_DATA = [
+  { value: "7", label: "Fases" },
+  { value: "42", label: "Tareas" },
+  { value: "14", label: "Entregables" },
+  { value: "24m", label: "Duración" },
+  { value: "1,691", label: "Usuarios" },
+];
+
+export function HondurasCronograma() {
+  const [selectedFase, setSelectedFase] = useState(0);
+  const [showTab, setShowTab] = useState<"tareas" | "entregables">("tareas");
+  const fase = HONDURAS_FASES[selectedFase];
+  const Icon = fase.icon;
+
+  return (
+    <div className="space-y-6 animate-fade-in">
+      {/* Header */}
+      <div className="bg-card rounded-2xl border p-6 md:p-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-2xl">🇭🇳</span>
+          <div>
+            <h3 className="text-lg font-bold text-foreground">Honduras — País Piloto</h3>
+            <p className="text-xs text-muted-foreground">100% SYSDE · 24 meses · POSCental → SAF+</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {KPI_DATA.map((kpi) => (
+            <div key={kpi.label} className="bg-muted/50 rounded-lg px-4 py-2 text-center">
+              <p className="text-lg font-bold text-foreground tabular-nums">{kpi.value}</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{kpi.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mini Gantt */}
+      <div className="bg-card rounded-2xl border p-5 md:p-6 overflow-x-auto">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Cronograma 13 Meses</p>
+        <div className="min-w-[600px]">
+          {/* Month labels */}
+          <div className="flex mb-2 pl-40 md:pl-48">
+            {Array.from({ length: TOTAL_MONTHS }, (_, i) => (
+              <div key={i} className="flex-1 text-center text-[9px] text-muted-foreground font-medium">M{i + 1}</div>
+            ))}
+          </div>
+          {/* Bars */}
+          <div className="space-y-1.5">
+            {HONDURAS_FASES.map((f, fi) => {
+              const isActive = fi === selectedFase;
+              return (
+                <button
+                  key={f.id}
+                  onClick={() => { setSelectedFase(fi); setShowTab("tareas"); }}
+                  className={`flex items-center w-full group transition-all duration-200 rounded-lg px-2 py-1.5 active:scale-[0.998] ${isActive ? "bg-primary/5" : "hover:bg-muted/50"}`}
+                >
+                  <span className={`text-[11px] font-medium w-38 md:w-46 shrink-0 text-left pr-2 truncate transition-colors ${isActive ? "text-foreground font-semibold" : "text-muted-foreground"}`}>
+                    <span className="font-bold">{f.id}</span> {f.nombre.split("&")[0].trim()}
+                  </span>
+                  <div className="flex-1 relative h-7">
+                    <div className="absolute inset-0 flex">
+                      {Array.from({ length: TOTAL_MONTHS }, (_, i) => (
+                        <div key={i} className="flex-1 border-l border-dashed border-border/30 first:border-l-0" />
+                      ))}
+                    </div>
+                    <div
+                      className={`absolute top-0.5 h-6 rounded-md bg-gradient-to-r ${f.color} transition-all duration-300 flex items-center justify-center ${isActive ? "shadow-md ring-1 ring-offset-1 ring-primary/20" : "opacity-60 group-hover:opacity-90"}`}
+                      style={{
+                        left: `${(f.barStart / TOTAL_MONTHS) * 100}%`,
+                        width: `${((f.barEnd - f.barStart) / TOTAL_MONTHS) * 100}%`,
+                      }}
+                    >
+                      <span className="text-white text-[8px] font-bold drop-shadow-sm whitespace-nowrap px-1">{f.periodo}</span>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Milestones row */}
+          <div className="flex mt-3 pl-40 md:pl-48 border-t border-dashed border-border/40 pt-2">
+            {Array.from({ length: TOTAL_MONTHS }, (_, i) => {
+              const hito = HITOS_HN.find(h => h.mes === `M${i + 1}`);
+              return (
+                <div key={i} className="flex-1 flex flex-col items-center">
+                  {hito ? (
+                    <div className="group relative">
+                      <div className={`w-2.5 h-2.5 rounded-full ${i + 1 === 11 ? "bg-primary" : "bg-amber-500"} shadow-sm`} />
+                      <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[7px] font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity bg-card px-1 rounded z-10">
+                        {hito.hito}
+                      </span>
+                    </div>
+                  ) : <div className="w-2.5 h-2.5" />}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Phase detail */}
+      <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
+        <div className={`bg-gradient-to-r ${fase.color} p-5 md:p-6`}>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+              <Icon size={18} className="text-white" />
+            </div>
+            <div>
+              <p className="text-white/70 text-[10px] font-semibold uppercase tracking-wider">{fase.id} · {fase.periodo}</p>
+              <h4 className="text-lg font-bold text-white leading-tight">{fase.nombre}</h4>
+            </div>
+          </div>
+          <p className="text-white/60 text-xs mt-1">{fase.responsables}</p>
+
+          <div className="flex gap-2 mt-4">
+            <button onClick={() => setShowTab("tareas")} className={`text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95 ${showTab === "tareas" ? "bg-white text-foreground" : "bg-white/20 text-white border border-white/20"}`}>
+              Tareas ({fase.tareas.length})
+            </button>
+            <button onClick={() => setShowTab("entregables")} className={`text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95 flex items-center gap-1 ${showTab === "entregables" ? "bg-white text-foreground" : "bg-white/20 text-white border border-white/20"}`}>
+              <CheckCircle2 size={11} />
+              Entregables ({fase.entregables.length})
+            </button>
+          </div>
+        </div>
+
+        <div className="p-5 md:p-6">
+          {showTab === "tareas" ? (
+            <ul className="space-y-2.5">
+              {fase.tareas.map((t, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm group">
+                  <ChevronRight size={13} className="text-primary mt-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                  <div className="flex-1 min-w-0">
+                    <span className="text-foreground group-hover:text-foreground/90 transition-colors">{t.tarea}</span>
+                    <span className="block text-[10px] text-muted-foreground mt-0.5">{t.responsable}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="grid sm:grid-cols-2 gap-3">
+              {fase.entregables.map((e, i) => (
+                <div key={i} className="bg-muted/30 rounded-lg border p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-semibold text-foreground text-sm leading-snug">{e.nombre}</h5>
+                      <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
+                        <span className="flex items-center gap-1"><Clock size={9} />{e.mes}</span>
+                        <span className="flex items-center gap-1"><FileText size={9} />{e.formato}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Phase nav */}
+          <div className="flex justify-between items-center mt-6 pt-4 border-t">
+            <button onClick={() => { setSelectedFase(Math.max(0, selectedFase - 1)); setShowTab("tareas"); }} disabled={selectedFase === 0}
+              className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors active:scale-95">
+              ← Fase anterior
+            </button>
+            <div className="flex gap-1.5">
+              {HONDURAS_FASES.map((_, fi) => (
+                <button key={fi} onClick={() => { setSelectedFase(fi); setShowTab("tareas"); }}
+                  className={`w-2 h-2 rounded-full transition-all ${fi === selectedFase ? "bg-primary scale-125" : "bg-muted-foreground/20 hover:bg-muted-foreground/40"}`} />
+              ))}
+            </div>
+            <button onClick={() => { setSelectedFase(Math.min(HONDURAS_FASES.length - 1, selectedFase + 1)); setShowTab("tareas"); }} disabled={selectedFase === HONDURAS_FASES.length - 1}
+              className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors active:scale-95">
+              Fase siguiente →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
