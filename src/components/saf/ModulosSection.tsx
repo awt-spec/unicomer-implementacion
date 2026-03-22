@@ -155,10 +155,10 @@ export function ModulosSection() {
             ) : (
               <div className="space-y-4">
                 {ORBITS.map((orbit) => (
-                  <button
+                  <div
                     key={orbit.key}
                     onClick={() => setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key)}
-                    className={`w-full text-left bg-card rounded-xl border p-5 transition-all duration-300 hover:shadow-md active:scale-[0.98] ${
+                    className={`w-full text-left bg-card rounded-xl border p-5 transition-all duration-300 hover:shadow-md active:scale-[0.98] cursor-pointer ${
                       activeOrbit === orbit.key ? `${orbit.colorBg} shadow-md` : ""
                     }`}
                   >
@@ -170,18 +170,18 @@ export function ModulosSection() {
                     {activeOrbit === orbit.key && (
                       <div className="mt-3 space-y-2">
                         {MODULOS[orbit.key].map((mod) => (
-                          <button
+                          <div
                             key={mod.name}
                             onClick={(e) => { e.stopPropagation(); setActiveModule(mod); }}
-                            className="block w-full text-left text-sm py-2 px-3 rounded-lg hover:bg-background/80 transition-colors active:scale-[0.98]"
+                            className="block w-full text-left text-sm py-2 px-3 rounded-lg hover:bg-background/80 transition-colors active:scale-[0.98] cursor-pointer"
                           >
                             <span className="font-medium text-foreground">{mod.name}</span>
                             <span className="block text-xs text-muted-foreground mt-0.5 line-clamp-1">{mod.desc}</span>
-                          </button>
+                          </div>
                         ))}
                       </div>
                     )}
-                  </button>
+                  </div>
                 ))}
               </div>
             )}
