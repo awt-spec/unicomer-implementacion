@@ -57,35 +57,24 @@ function OrbitLabels({ cx, cy, activeOrbit, setActiveOrbit, setActiveModule, isI
   cx: number; cy: number; activeOrbit: TabKey | null;
   setActiveOrbit: (v: TabKey | null) => void; setActiveModule: (v: null) => void; isInView: boolean;
 }) {
-  // Place labels between orbits (midpoint of gap between consecutive radii)
-  const labelRadii = [
-    (0 + ORBITS[0].radius) / 2,
-    (ORBITS[0].radius + ORBITS[1].radius) / 2,
-    (ORBITS[1].radius + ORBITS[2].radius) / 2,
-  ];
-
   return (
-    <>
-      {ORBITS.map((orbit, idx) => {
-        const labelR = labelRadii[idx];
-        const labelX = cx + labelR;
-        const labelY = cy;
-        return (
-          <button
-            key={`label-${orbit.key}`}
-            onClick={() => { setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key); setActiveModule(null); }}
-            className="absolute z-30 transition-all duration-300 active:scale-95 -translate-y-1/2"
-            style={{ left: labelX, top: labelY, opacity: isInView ? 1 : 0 }}
-          >
-            <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-sm transition-all duration-300 shadow-sm whitespace-nowrap ${
-              activeOrbit === orbit.key ? orbit.colorBg : "bg-card/95 text-muted-foreground border-border/50 hover:border-foreground/30"
-            }`}>
-              {orbit.label}
-            </span>
-          </button>
-        );
-      })}
-    </>
+    <div className="absolute left-0 right-0 flex justify-center gap-3 z-40" style={{ top: cy - ORBITS[ORBITS.length - 1].radius - 50 }}>
+      {ORBITS.map((orbit) => (
+        <button
+          key={`label-${orbit.key}`}
+          onClick={() => { setActiveOrbit(activeOrbit === orbit.key ? null : orbit.key); setActiveModule(null); }}
+          className="transition-all duration-300 active:scale-95"
+          style={{ opacity: isInView ? 1 : 0 }}
+        >
+          <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border backdrop-blur-sm transition-all duration-300 shadow-sm whitespace-nowrap flex items-center gap-1.5 ${
+            activeOrbit === orbit.key ? orbit.colorBg : "bg-card/95 text-muted-foreground border-border/50 hover:border-foreground/30"
+          }`}>
+            <span className="inline-block w-2 h-2 rounded-full shrink-0" style={{ background: orbit.color }} />
+            {orbit.label}
+          </span>
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -114,7 +103,9 @@ function ModuleNodes({ cx, cy, activeOrbit, activeModule, setActiveOrbit, setAct
             <button
               key={mod.name}
               onClick={() => { setActiveOrbit(orbit.key); setActiveModule(mod); }}
-              className={`absolute rounded-full border-2 flex items-center justify-center active:scale-90 group z-20 ${
+              className={`absolute rounded-full border-2 flex items-center justify-center active:scale-90 group ${
+                isSelected ? "z-30" : "z-20"
+              } ${
                 isSelected
                   ? `${orbit.colorBg} ring-2 ring-offset-2 shadow-lg`
                   : isActive
