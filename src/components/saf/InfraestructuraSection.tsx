@@ -119,7 +119,6 @@ const TABS = [
   { key: "sizing", label: "Capacidad & Sizing", icon: Cpu },
   { key: "seguridad", label: "Seguridad", icon: Shield },
   { key: "continuidad", label: "Continuidad & DR", icon: RefreshCw },
-  { key: "cloud", label: "Nube", icon: Cloud },
 ];
 
 function ScrollRevealDiv({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
