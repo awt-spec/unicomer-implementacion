@@ -120,14 +120,10 @@ export function EquipoSection() {
         </div>
 
         {/* Stats */}
-        <div className="scroll-reveal grid grid-cols-3 gap-4 mb-10">
+        <div className="scroll-reveal grid grid-cols-2 gap-4 mb-10">
           <div className="bg-card rounded-xl border p-4 text-center">
             <p className="text-2xl font-bold text-foreground tabular-nums">{EQUIPO_SYSDE.length}</p>
             <p className="text-xs text-muted-foreground">Especialistas</p>
-          </div>
-          <div className="bg-card rounded-xl border p-4 text-center">
-            <p className="text-2xl font-bold text-foreground tabular-nums">298+</p>
-            <p className="text-xs text-muted-foreground">Años Combinados</p>
           </div>
           <div className="bg-card rounded-xl border p-4 text-center">
             <p className="text-2xl font-bold text-foreground tabular-nums">850+</p>
