@@ -5,6 +5,7 @@ export const NAV_SECTIONS = [
   { id: "modulos", label: "Módulos" },
   { id: "timeline", label: "Fases" },
   { id: "equipo", label: "Equipo" },
+  { id: "infraestructura", label: "Infraestructura" },
   { id: "sla", label: "SLA" },
   { id: "metodologia", label: "Metodología" },
 ];
