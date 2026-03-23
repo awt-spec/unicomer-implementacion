@@ -239,7 +239,7 @@ function DetailPanel({ activeOrbit, activeModule, setActiveOrbit, setActiveModul
 /* ---------- Main ---------- */
 
 export function ModulosSection() {
-  const [activeOrbit, setActiveOrbit] = useState<TabKey | null>(null);
+  const [activeOrbit, setActiveOrbit] = useState<TabKey | null>("core");
   const [activeModule, setActiveModule] = useState<{ name: string; desc: string } | null>(null);
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
