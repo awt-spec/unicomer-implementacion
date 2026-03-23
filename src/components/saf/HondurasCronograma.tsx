@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronRight, CheckCircle2, Clock, Zap, FileText, Rocket, GraduationCap, Database, FlaskConical, Settings, TrendingUp, CreditCard, Users, BarChart3, ArrowUpDown, TestTubes } from "lucide-react";
+import { ChevronRight, CheckCircle2, Clock, Zap, FileText, Rocket, GraduationCap, Database, FlaskConical, Settings, TrendingUp, CreditCard, Users, BarChart3, ArrowUpDown, TestTubes, Sparkles, Building2, Headphones, DollarSign, Puzzle } from "lucide-react";
 
 const HONDURAS_DRIVERS = [
 { label: "Créditos Vigentes", value: "338,360", icon: CreditCard },
