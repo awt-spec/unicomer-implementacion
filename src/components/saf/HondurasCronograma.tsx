@@ -189,6 +189,15 @@ const HITOS_HN = [
 
 const TOTAL_MONTHS = 24;
 
+const LIC_FEATURES = [
+  { icon: Users, title: "Usuarios", desc: "Sin límites. Sin cobro por usuario.", gradient: "from-blue-50 to-slate-50", border: "border-blue-100" },
+  { icon: Building2, title: "Empresas", desc: "Multi-entidad. Multi-país. Una suscripción.", gradient: "from-emerald-50 to-green-50", border: "border-emerald-100" },
+  { icon: Headphones, title: "Soporte Ilimitado", desc: "Sin tickets de pago. Sin cobro por incidente.", gradient: "from-violet-50 to-purple-50", border: "border-violet-100" },
+  { icon: GraduationCap, title: "Capacitación", desc: "Formación continua y sesiones de entrenamiento — sin costo.", gradient: "from-amber-50 to-orange-50", border: "border-amber-100" },
+  { icon: DollarSign, title: "Transacciones Ilimitadas", desc: "Desembolsos, cobros, consultas — ilimitados.", gradient: "from-rose-50 to-pink-50", border: "border-rose-100" },
+  { icon: Sparkles, title: "Desarrollo Evolutivo", desc: "Mejoras, nuevas funcionalidades y regulatorio — ilimitado.", gradient: "from-teal-50 to-cyan-50", border: "border-teal-100" },
+];
+
 const KPI_DATA = [
 { value: "8", label: "Fases" },
 { value: "62", label: "Tareas" },
