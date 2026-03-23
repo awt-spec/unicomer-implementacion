@@ -13,7 +13,7 @@ const HONDURAS_DRIVERS = [
 
 const HONDURAS_FASES = [
 {
-  id: "F01", nombre: "Kickoff", periodo: "Mes 1–2", semanas: "1–8",
+  id: "F01", nombre: "Gobernanza & Kickoff", periodo: "Mes 1–2", semanas: "1–8",
   icon: Rocket, color: "from-primary to-primary/70", colorLight: "bg-primary/10 text-primary",
   responsables: "Eduardo Wheelock · Carlos Cascante",
   tareas: [
