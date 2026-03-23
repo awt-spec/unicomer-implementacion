@@ -269,7 +269,7 @@ export function ModulosSection() {
         <div className="scroll-reveal flex flex-col xl:flex-row gap-10 items-start">
           {/* Solar system */}
           <div className="relative shrink-0 hidden lg:block" style={{ width: size, height: size }}>
-            <svg width={size} height={size} className="absolute inset-0" style={{ zIndex: 1 }} aria-hidden>
+            <svg width={size} height={size} className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }} aria-hidden>
               <OrbitRings cx={cx} cy={cy} activeOrbit={activeOrbit} isInView={isInView} />
             </svg>
 
