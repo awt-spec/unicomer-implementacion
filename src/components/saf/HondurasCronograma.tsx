@@ -13,7 +13,7 @@ const HONDURAS_DRIVERS = [
 
 const HONDURAS_FASES = [
 {
-  id: "F01", nombre: "Kickoff", periodo: "Mes 1–2", semanas: "1–8",
+  id: "F01", nombre: "Gobernanza & Kickoff", periodo: "Mes 1–2", semanas: "1–8",
   icon: Rocket, color: "from-primary to-primary/70", colorLight: "bg-primary/10 text-primary",
   responsables: "Eduardo Wheelock · Carlos Cascante",
   tareas: [
@@ -177,7 +177,7 @@ const HONDURAS_FASES = [
 
 
 const HITOS_HN = [
-{ mes: "M1", hito: "Kickoff oficial", fase: "F01" },
+{ mes: "M1", hito: "Gobernanza & Kickoff", fase: "F01" },
 { mes: "M6", hito: "BRD aprobado", fase: "F02" },
 { mes: "M9", hito: "Integraciones certificadas", fase: "F03" },
 { mes: "M13", hito: "Dress Rehearsal (ETL)", fase: "F04" },
@@ -249,7 +249,7 @@ export function HondurasCronograma() {
           <div className="flex mb-2 pl-44 md:pl-52">
             {Array.from({ length: TOTAL_MONTHS }, (_, i) =>
             <div key={i} className={`flex-1 text-center text-[8px] font-medium ${i < 12 ? "text-muted-foreground" : "text-muted-foreground/60"}`}>
-                {i % 2 === 0 ? `M${i + 1}` : ""}
+                {`M${i + 1}`}
               </div>
             )}
           </div>
@@ -259,23 +259,6 @@ export function HondurasCronograma() {
             <div className="flex-1 text-center text-[9px] font-bold text-primary/40 border-b border-primary/10" style={{ flex: 12 }}>Año 2</div>
           </div>
           {/* Bars */}
-          {/* Gobernanza bar - spans full 24 months */}
-          <div className="flex items-center w-full rounded-lg px-2 py-1 mb-1">
-            <span className="text-[10px] font-bold w-42 md:w-50 shrink-0 text-left pr-2 text-muted-foreground uppercase tracking-wider">
-              Gobernanza
-            </span>
-            <div className="flex-1 relative h-4">
-              <div className="absolute inset-0 flex">
-                {Array.from({ length: TOTAL_MONTHS }, (_, i) =>
-                <div key={i} className="flex-1 border-l border-dashed border-border/20 first:border-l-0" />
-                )}
-              </div>
-              <div className="absolute top-0 h-4 rounded-md bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 border-dashed"
-              style={{ left: "0%", width: "100%" }}>
-                <span className="text-[7px] font-bold text-primary/60 px-2 leading-4 whitespace-nowrap">​</span>
-              </div>
-            </div>
-          </div>
           <div className="space-y-1.5">
             {HONDURAS_FASES.map((f, fi) => {
               const isActive = fi === selectedFase;
