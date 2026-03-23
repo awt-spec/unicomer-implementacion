@@ -96,25 +96,24 @@ const HONDURAS_FASES = [
   barStart: 6, barEnd: 13
 },
 {
-  id: "F05", nombre: "QA & UAT Testing", periodo: "Mes 10–16", semanas: "37–64",
+{
+  id: "F05", nombre: "Certificación de Migración & Brechas", periodo: "Mes 10–14", semanas: "37–56",
   icon: FlaskConical, color: "from-emerald-500 to-emerald-400", colorLight: "bg-emerald-50 text-emerald-600",
-  responsables: "Danilo Vezzoni · Unicomer QA Team",
+  responsables: "Jhonny Brenes · Danilo Vezzoni · Carlos Cascante",
   tareas: [
-  { tarea: "Plan de pruebas: casos de uso, criterios de entrada/salida, defect tracking en DevOps", responsable: "Danilo Vezzoni" },
-  { tarea: "Pruebas unitarias: cada módulo SAF+ configurado para Honduras", responsable: "Danilo Vezzoni" },
-  { tarea: "Pruebas de integración: CRM, Datalake, MCX, bureaus, CNBS reporting — end-to-end", responsable: "Danilo Vezzoni · Olga Cuervo" },
-  { tarea: "Security Audit: OWASP Top 10 escaneo automatizado (NESSUS) + penetration testing", responsable: "Danilo Vezzoni" },
-  { tarea: "UAT Ciclo 1: usuarios clave Unicomer validan flujos de negocio reales (10–14 semanas)", responsable: "Unicomer · SYSDE" },
-  { tarea: "Performance testing: carga pico diciembre — 132,633 pagos/mes · 13,205 desembolsos/mes", responsable: "Danilo Vezzoni" },
-  { tarea: "Resolución defectos UAT Ciclo 1: bugs críticos (S1/S2) con SLA comprometido", responsable: "Equipo SYSDE" },
-  { tarea: "UAT Ciclo 2: re-validación tras correcciones — máximo 2 iteraciones", responsable: "Unicomer · SYSDE" }],
-
+  { tarea: "Certificación de migración: validación de integridad de datos migrados vs POSCental", responsable: "Jhonny Brenes" },
+  { tarea: "Reconciliación de saldos migrados: créditos activos, pagos, cronogramas, historial", responsable: "Jhonny Brenes" },
+  { tarea: "Identificación de posibles brechas de desarrollo: funcionalidades sin cobertura SAF+", responsable: "Carlos Cascante · Nelly Vargas" },
+  { tarea: "Priorización y clasificación de brechas: críticas, deseables, futuras", responsable: "Carlos Cascante" },
+  { tarea: "Desarrollo de adaptaciones y customizaciones identificadas en gap analysis", responsable: "Equipo SYSDE" },
+  { tarea: "Certificación de adaptaciones: pruebas unitarias y funcionales de desarrollos custom", responsable: "Danilo Vezzoni" },
+  { tarea: "Validación regulatoria: reportería CNBS generada desde datos migrados", responsable: "Nelly Vargas" },
+  { tarea: "Sign-off de certificación de migración por Unicomer Honduras", responsable: "Unicomer · SYSDE" }],
   entregables: [
-  { nombre: "QA & UAT Test Plan completo", mes: "Mes 12", formato: "DevOps / Excel / Power BI / Postman — 100% cobertura" },
-  { nombre: "Security Audit Report (OWASP / NESSUS)", mes: "Mes 13", formato: "Reporte OWASP Top 10 + evidencia pentest" },
-  { nombre: "UAT Sign-off formal — Unicomer Honduras", mes: "Mes 16", formato: "Acta firmada IT Director + Steering Committee" }],
-
-  barStart: 9, barEnd: 16
+  { nombre: "Reporte de Certificación de Migración", mes: "Mes 12", formato: "Excel / QA — reconciliación completa de saldos" },
+  { nombre: "Gap Analysis & Brechas identificadas", mes: "Mes 11", formato: "Excel / DevOps — clasificación y priorización" },
+  { nombre: "Adaptaciones certificadas — Sign-off", mes: "Mes 14", formato: "Acta firmada + evidencia de pruebas unitarias" }],
+  barStart: 9, barEnd: 14
 },
 {
   id: "F06", nombre: "Capacitación Train-the-Trainer", periodo: "Mes 13–17", semanas: "49–68",
@@ -129,15 +128,32 @@ const HONDURAS_FASES = [
   { tarea: "Taller Rol 4 — IT Honduras: infraestructura, monitoreo, actualizaciones, integración", responsable: "Carlos Solís" },
   { tarea: "Certificación de 5–8 super usuarios Unicomer Honduras como facilitadores internos", responsable: "Fernando Pinto" },
   { tarea: "Preparación materiales en inglés para países del Caribe (Jamaica, Trinidad, Guyana)", responsable: "Equipo SYSDE" }],
-
   entregables: [
   { nombre: "Training Materials completos (Train-the-Trainer)", mes: "Mes 15", formato: "PDF / PPT / Word / Miro / Videos — por rol" },
   { nombre: "Certificación super usuarios Honduras (5–8 personas)", mes: "Mes 16", formato: "Actas de certificación firmadas" }],
-
   barStart: 12, barEnd: 17
 },
 {
-  id: "F07", nombre: "Go-Live & Estabilización", periodo: "Mes 17–24", semanas: "65–96",
+  id: "F07", nombre: "Pruebas Integrales", periodo: "Mes 15–19", semanas: "57–76",
+  icon: TestTubes, color: "from-indigo-500 to-indigo-400", colorLight: "bg-indigo-50 text-indigo-600",
+  responsables: "Danilo Vezzoni · Unicomer QA Team",
+  tareas: [
+  { tarea: "Plan de pruebas integrales: casos de uso end-to-end, criterios de entrada/salida", responsable: "Danilo Vezzoni" },
+  { tarea: "Pruebas de integración completa: SAF+ + CRM + Datalake + MCX + bureaus + CNBS", responsable: "Danilo Vezzoni · Olga Cuervo" },
+  { tarea: "Pruebas de regresión: validación de que adaptaciones no afectan funcionalidad core", responsable: "Danilo Vezzoni" },
+  { tarea: "Security Audit: OWASP Top 10 escaneo automatizado (NESSUS) + penetration testing", responsable: "Danilo Vezzoni" },
+  { tarea: "Performance testing: carga pico diciembre — 132,633 pagos/mes · 13,205 desembolsos/mes", responsable: "Danilo Vezzoni" },
+  { tarea: "UAT Ciclo 1: usuarios clave Unicomer validan flujos de negocio reales", responsable: "Unicomer · SYSDE" },
+  { tarea: "Resolución defectos UAT Ciclo 1: bugs críticos (S1/S2) con SLA comprometido", responsable: "Equipo SYSDE" },
+  { tarea: "UAT Ciclo 2: re-validación tras correcciones — sign-off formal", responsable: "Unicomer · SYSDE" }],
+  entregables: [
+  { nombre: "Test Plan Integral completo", mes: "Mes 16", formato: "DevOps / Excel / Power BI — 100% cobertura" },
+  { nombre: "Security Audit Report (OWASP / NESSUS)", mes: "Mes 17", formato: "Reporte OWASP Top 10 + evidencia pentest" },
+  { nombre: "UAT Sign-off formal — Unicomer Honduras", mes: "Mes 19", formato: "Acta firmada IT Director + Steering Committee" }],
+  barStart: 14, barEnd: 19
+},
+{
+  id: "F08", nombre: "Go-Live & Estabilización", periodo: "Mes 19–24", semanas: "73–96",
   icon: Zap, color: "from-rose-500 to-rose-400", colorLight: "bg-rose-50 text-rose-600",
   responsables: "Carlos Cascante · Carlos Solís · Eduardo Wheelock",
   tareas: [
@@ -151,15 +167,13 @@ const HONDURAS_FASES = [
   { tarea: "Monthly Service Reports: SLA performance, capacity, incident summary", responsable: "Carlos Solís" },
   { tarea: "Decommission de POSCental tras 30 días sin incidentes P1", responsable: "Unicomer IT · SYSDE" },
   { tarea: "Project Closure Report Honduras + lessons learned → playbook para Nicaragua (Y3)", responsable: "Carlos Cascante · Eduardo Wheelock" }],
-
   entregables: [
-  { nombre: "Cutover Plan / Runbook", mes: "Mes 17", formato: "Excel / Project / DevOps — con rollback triggers" },
-  { nombre: "DRP Test Evidence — drill completado", mes: "Mes 18", formato: "Acta drill + métricas RTO/RPO validadas" },
-  { nombre: "GO-LIVE Honduras — Acta de activación", mes: "Mes 18", formato: "Acta oficial firmada Unicomer + SYSDE" },
-  { nombre: "Monthly Service Report #1 (SLA)", mes: "Mes 19", formato: "Azure Monitor / Power BI — dashboard SLA" },
+  { nombre: "Cutover Plan / Runbook", mes: "Mes 19", formato: "Excel / Project / DevOps — con rollback triggers" },
+  { nombre: "DRP Test Evidence — drill completado", mes: "Mes 20", formato: "Acta drill + métricas RTO/RPO validadas" },
+  { nombre: "GO-LIVE Honduras — Acta de activación", mes: "Mes 20", formato: "Acta oficial firmada Unicomer + SYSDE" },
+  { nombre: "Monthly Service Report #1 (SLA)", mes: "Mes 21", formato: "Azure Monitor / Power BI — dashboard SLA" },
   { nombre: "Project Closure Report Honduras", mes: "Mes 24", formato: "Word / PPT / Sharepoint — lecciones → Nicaragua" }],
-
-  barStart: 16, barEnd: 24
+  barStart: 18, barEnd: 24
 }];
 
 
