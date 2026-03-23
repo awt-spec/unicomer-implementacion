@@ -255,7 +255,7 @@ export function ModulosSection() {
 
   const size = 780;
   const cx = size / 2;
-  const cy = size / 2;
+  const cy = size / 2 - 10;
 
   return (
     <section ref={sectionRef} id="modulos" className="py-24 px-6 bg-secondary/50">
