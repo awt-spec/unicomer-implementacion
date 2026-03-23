@@ -5,7 +5,7 @@ import {
   Layers, TrendingUp, ShieldCheck, AlertTriangle, ClipboardList,
   Settings, Monitor, Rocket, BookOpen, Shield, Wrench,
   ChevronDown, ArrowDown, Diamond, Phone, Globe, Database,
-  Headphones, RefreshCw, Eye, PenTool, TestTube, Package,
+  Headphones, RefreshCw, Eye, PenTool, TestTube, Package, Maximize,
   CircleDot, ChevronRight } from
 "lucide-react";
 
