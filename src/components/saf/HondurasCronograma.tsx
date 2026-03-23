@@ -177,7 +177,7 @@ const HONDURAS_FASES = [
 
 
 const HITOS_HN = [
-{ mes: "M1", hito: "Kickoff oficial", fase: "F01" },
+{ mes: "M1", hito: "Gobernanza & Kickoff", fase: "F01" },
 { mes: "M6", hito: "BRD aprobado", fase: "F02" },
 { mes: "M9", hito: "Integraciones certificadas", fase: "F03" },
 { mes: "M13", hito: "Dress Rehearsal (ETL)", fase: "F04" },
