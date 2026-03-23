@@ -325,80 +325,130 @@ export function HondurasCronograma() {
 
       {/* Phase detail */}
       <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
-        <div className={`bg-gradient-to-r ${fase.color} p-5 md:p-6`}>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
-              <Icon size={18} className="text-white" />
+        {isLicSlide ? (
+          <>
+            {/* Licenciamiento slide */}
+            <div className="bg-gradient-to-r from-primary to-primary/70 p-5 md:p-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+                  <Sparkles size={18} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-white/70 text-[10px] font-semibold uppercase tracking-wider">MODELO DE LICENCIAMIENTO</p>
+                  <h4 className="text-lg font-bold text-white leading-tight">Una suscripción. Todo ilimitado.</h4>
+                </div>
+              </div>
+              <p className="text-white/60 text-xs mt-1">Sin sorpresas. Sin costos ocultos. Sin letra pequeña.</p>
             </div>
-            <div>
-              <p className="text-white/70 text-[10px] font-semibold uppercase tracking-wider">{fase.id} · {fase.periodo} · Semanas {fase.semanas}</p>
-              <h4 className="text-lg font-bold text-white leading-tight">{fase.nombre}</h4>
+            <div className="p-5 md:p-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                {LIC_FEATURES.map((f) => {
+                  const FIcon = f.icon;
+                  return (
+                    <div key={f.title} className={`relative rounded-xl border ${f.border} bg-gradient-to-br ${f.gradient} p-4 text-left transition-shadow hover:shadow-lg`}>
+                      <span className="text-2xl font-black text-primary/60 select-none">∞</span>
+                      <div className="flex items-center gap-2 mt-2 mb-1">
+                        <FIcon className="w-4 h-4 text-muted-foreground" />
+                        <span className="font-semibold text-foreground text-sm">{f.title}</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="rounded-xl border border-sky-100 bg-gradient-to-br from-sky-50 to-blue-50 p-4 text-left max-w-xs transition-shadow hover:shadow-lg">
+                <span className="text-2xl font-black text-teal-500 select-none">Modular</span>
+                <div className="flex items-center gap-2 mt-2 mb-1">
+                  <Puzzle className="w-4 h-4 text-muted-foreground" />
+                  <span className="font-semibold text-foreground text-sm">Arquitectura</span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">Activa solo lo que necesitas. Expande sin renegociar.</p>
+              </div>
+
+              {/* Phase nav */}
+              <div className="flex justify-between items-center mt-6 pt-4 border-t">
+                <button disabled className="text-xs text-muted-foreground disabled:opacity-30 transition-colors">← Fase anterior</button>
+                <div className="flex gap-1.5">
+                  <button onClick={() => { setSelectedFase(-1); setShowTab("tareas"); }} className={`w-2 h-2 rounded-full transition-all ${isLicSlide ? "bg-primary scale-125" : "bg-muted-foreground/20 hover:bg-muted-foreground/40"}`} />
+                  {HONDURAS_FASES.map((_, fi) =>
+                    <button key={fi} onClick={() => { setSelectedFase(fi); setShowTab("tareas"); }} className={`w-2 h-2 rounded-full transition-all ${fi === selectedFase ? "bg-primary scale-125" : "bg-muted-foreground/20 hover:bg-muted-foreground/40"}`} />
+                  )}
+                </div>
+                <button onClick={() => { setSelectedFase(0); setShowTab("tareas"); }} className="text-xs text-muted-foreground hover:text-foreground transition-colors active:scale-95">Fase siguiente →</button>
+              </div>
             </div>
-          </div>
-          <p className="text-white/60 text-xs mt-1">{fase.responsables}</p>
+          </>
+        ) : fase && Icon ? (
+          <>
+            <div className={`bg-gradient-to-r ${fase.color} p-5 md:p-6`}>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+                  <Icon size={18} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-white/70 text-[10px] font-semibold uppercase tracking-wider">{fase.id} · {fase.periodo} · Semanas {fase.semanas}</p>
+                  <h4 className="text-lg font-bold text-white leading-tight">{fase.nombre}</h4>
+                </div>
+              </div>
+              <p className="text-white/60 text-xs mt-1">{fase.responsables}</p>
+              <div className="flex gap-2 mt-4">
+                <button onClick={() => setShowTab("tareas")} className={`text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95 ${showTab === "tareas" ? "bg-white text-foreground" : "bg-white/20 text-white border border-white/20"}`}>
+                  Tareas ({fase.tareas.length})
+                </button>
+                <button onClick={() => setShowTab("entregables")} className={`text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95 flex items-center gap-1 ${showTab === "entregables" ? "bg-white text-foreground" : "bg-white/20 text-white border border-white/20"}`}>
+                  <CheckCircle2 size={11} />
+                  Entregables ({fase.entregables.length})
+                </button>
+              </div>
+            </div>
 
-          <div className="flex gap-2 mt-4">
-            <button onClick={() => setShowTab("tareas")} className={`text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95 ${showTab === "tareas" ? "bg-white text-foreground" : "bg-white/20 text-white border border-white/20"}`}>
-              Tareas ({fase.tareas.length})
-            </button>
-            <button onClick={() => setShowTab("entregables")} className={`text-[11px] font-semibold px-3 py-1 rounded-full transition-all active:scale-95 flex items-center gap-1 ${showTab === "entregables" ? "bg-white text-foreground" : "bg-white/20 text-white border border-white/20"}`}>
-              <CheckCircle2 size={11} />
-              Entregables ({fase.entregables.length})
-            </button>
-          </div>
-        </div>
-
-        <div className="p-5 md:p-6">
-          {showTab === "tareas" ?
-          <ul className="space-y-2.5">
-              {fase.tareas.map((t, i) =>
-            <li key={i} className="flex items-start gap-3 text-sm group">
-                  <ChevronRight size={13} className="text-primary mt-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
-                  <div className="flex-1 min-w-0">
-                    <span className="text-foreground group-hover:text-foreground/90 transition-colors">{t.tarea}</span>
-                    <span className="block text-[10px] text-muted-foreground mt-0.5">{t.responsable}</span>
-                  </div>
-                </li>
-            )}
-            </ul> :
-
-          <div className="grid sm:grid-cols-2 gap-3">
-              {fase.entregables.map((e, i) =>
-            <div key={i} className="bg-muted/30 rounded-lg border p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
-                    <div className="flex-1 min-w-0">
-                      <h5 className="font-semibold text-foreground text-sm leading-snug">{e.nombre}</h5>
-                      <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
-                        <span className="flex items-center gap-1"><Clock size={9} />{e.mes}</span>
-                        <span className="flex items-center gap-1"><FileText size={9} />{e.formato}</span>
+            <div className="p-5 md:p-6">
+              {showTab === "tareas" ? (
+                <ul className="space-y-2.5">
+                  {fase.tareas.map((t, i) =>
+                    <li key={i} className="flex items-start gap-3 text-sm group">
+                      <ChevronRight size={13} className="text-primary mt-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                      <div className="flex-1 min-w-0">
+                        <span className="text-foreground group-hover:text-foreground/90 transition-colors">{t.tarea}</span>
+                        <span className="block text-[10px] text-muted-foreground mt-0.5">{t.responsable}</span>
+                      </div>
+                    </li>
+                  )}
+                </ul>
+              ) : (
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {fase.entregables.map((e, i) =>
+                    <div key={i} className="bg-muted/30 rounded-lg border p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                      <div className="flex items-start gap-3">
+                        <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <div className="flex-1 min-w-0">
+                          <h5 className="font-semibold text-foreground text-sm leading-snug">{e.nombre}</h5>
+                          <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
+                            <span className="flex items-center gap-1"><Clock size={9} />{e.mes}</span>
+                            <span className="flex items-center gap-1"><FileText size={9} />{e.formato}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-            )}
-            </div>
-          }
-
-          {/* Phase nav */}
-          <div className="flex justify-between items-center mt-6 pt-4 border-t">
-            <button onClick={() => {setSelectedFase(Math.max(0, selectedFase - 1));setShowTab("tareas");}} disabled={selectedFase === 0}
-            className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors active:scale-95">
-              ← Fase anterior
-            </button>
-            <div className="flex gap-1.5">
-              {HONDURAS_FASES.map((_, fi) =>
-              <button key={fi} onClick={() => {setSelectedFase(fi);setShowTab("tareas");}}
-              className={`w-2 h-2 rounded-full transition-all ${fi === selectedFase ? "bg-primary scale-125" : "bg-muted-foreground/20 hover:bg-muted-foreground/40"}`} />
               )}
-            </div>
-            <button onClick={() => {setSelectedFase(Math.min(HONDURAS_FASES.length - 1, selectedFase + 1));setShowTab("tareas");}} disabled={selectedFase === HONDURAS_FASES.length - 1}
-            className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors active:scale-95">
-              Fase siguiente →
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>);
 
+              {/* Phase nav */}
+              <div className="flex justify-between items-center mt-6 pt-4 border-t">
+                <button onClick={() => { setSelectedFase(selectedFase === 0 ? -1 : selectedFase - 1); setShowTab("tareas"); }} className="text-xs text-muted-foreground hover:text-foreground transition-colors active:scale-95">← Fase anterior</button>
+                <div className="flex gap-1.5">
+                  <button onClick={() => { setSelectedFase(-1); setShowTab("tareas"); }} className={`w-2 h-2 rounded-full transition-all ${isLicSlide ? "bg-primary scale-125" : "bg-muted-foreground/20 hover:bg-muted-foreground/40"}`} />
+                  {HONDURAS_FASES.map((_, fi) =>
+                    <button key={fi} onClick={() => { setSelectedFase(fi); setShowTab("tareas"); }} className={`w-2 h-2 rounded-full transition-all ${fi === selectedFase ? "bg-primary scale-125" : "bg-muted-foreground/20 hover:bg-muted-foreground/40"}`} />
+                  )}
+                </div>
+                <button onClick={() => { setSelectedFase(Math.min(HONDURAS_FASES.length - 1, selectedFase + 1)); setShowTab("tareas"); }} disabled={selectedFase === HONDURAS_FASES.length - 1} className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors active:scale-95">Fase siguiente →</button>
+              </div>
+            </div>
+          </>
+        ) : null}
+      </div>
+    </div>
+  );
 }
