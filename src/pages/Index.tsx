@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/saf/HeroSection";
 import { ResumenSection } from "@/components/saf/ResumenSection";
 import { ContextoSection } from "@/components/saf/ContextoSection";
 import { ModulosSection } from "@/components/saf/ModulosSection";
+import { LicenciamientoSection } from "@/components/saf/LicenciamientoSection";
 import { TimelineSection } from "@/components/saf/TimelineSection";
 import { EquipoSection } from "@/components/saf/EquipoSection";
 import { InfraestructuraSection } from "@/components/saf/InfraestructuraSection";
@@ -20,6 +21,7 @@ const Index = () => {
       <ResumenSection />
       <ContextoSection />
       <ModulosSection />
+      <LicenciamientoSection />
       <TimelineSection />
       <EquipoSection />
       <InfraestructuraSection />
