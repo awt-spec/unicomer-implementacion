@@ -59,7 +59,7 @@ function OrbitLabels({ cx, cy, activeOrbit, setActiveOrbit, setActiveModule, isI
   setActiveOrbit: (v: TabKey | null) => void; setActiveModule: (v: null) => void; isInView: boolean;
 }) {
   return (
-    <div className="absolute left-0 right-0 flex justify-center gap-3 z-40" style={{ top: cy - ORBITS[ORBITS.length - 1].radius - 50 }}>
+    <div className="absolute left-0 right-0 flex justify-center gap-3 z-40" style={{ top: cy + ORBITS[ORBITS.length - 1].radius + 20 }}>
       {ORBITS.map((orbit) => (
         <button
           key={`label-${orbit.key}`}
@@ -239,7 +239,7 @@ function DetailPanel({ activeOrbit, activeModule, setActiveOrbit, setActiveModul
 /* ---------- Main ---------- */
 
 export function ModulosSection() {
-  const [activeOrbit, setActiveOrbit] = useState<TabKey | null>(null);
+  const [activeOrbit, setActiveOrbit] = useState<TabKey | null>("core");
   const [activeModule, setActiveModule] = useState<{ name: string; desc: string } | null>(null);
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
