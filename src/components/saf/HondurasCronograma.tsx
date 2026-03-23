@@ -181,22 +181,18 @@ const HITOS_HN = [
 { mes: "M6", hito: "BRD aprobado", fase: "F02" },
 { mes: "M9", hito: "Integraciones certificadas", fase: "F03" },
 { mes: "M13", hito: "Dress Rehearsal (ETL)", fase: "F04" },
-{ mes: "M16", hito: "UAT Sign-off", fase: "F05" },
+{ mes: "M14", hito: "Certificación migración", fase: "F05" },
 { mes: "M16", hito: "Train-the-Trainer cert.", fase: "F06" },
-{ mes: "M18", hito: "GO-LIVE Honduras", fase: "F07" },
-{ mes: "M20", hito: "Go/No-Go Gate", fase: "F07" },
-{ mes: "M24", hito: "Closure Report", fase: "F07" }];
-
-
-
-
+{ mes: "M19", hito: "UAT Sign-off", fase: "F07" },
+{ mes: "M20", hito: "GO-LIVE Honduras", fase: "F08" },
+{ mes: "M24", hito: "Closure Report", fase: "F08" }];
 
 const TOTAL_MONTHS = 24;
 
 const KPI_DATA = [
-{ value: "7", label: "Fases" },
-{ value: "52", label: "Tareas" },
-{ value: "16", label: "Entregables" },
+{ value: "8", label: "Fases" },
+{ value: "62", label: "Tareas" },
+{ value: "19", label: "Entregables" },
 { value: "24m", label: "Duración" },
 { value: "$1.22M", label: "Inversión" }];
 
