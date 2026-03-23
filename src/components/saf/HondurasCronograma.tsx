@@ -271,8 +271,8 @@ export function HondurasCronograma() {
                 )}
               </div>
               <div className="absolute top-0 h-4 rounded-md bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 border-dashed"
-                style={{ left: "0%", width: "100%" }}>
-                <span className="text-[7px] font-bold text-primary/60 px-2 leading-4 whitespace-nowrap">Mes 1–24</span>
+              style={{ left: "0%", width: "100%" }}>
+                <span className="text-[7px] font-bold text-primary/60 px-2 leading-4 whitespace-nowrap">​</span>
               </div>
             </div>
           </div>
