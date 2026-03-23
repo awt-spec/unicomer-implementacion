@@ -207,10 +207,11 @@ const KPI_DATA = [
 
 
 export function HondurasCronograma() {
-  const [selectedFase, setSelectedFase] = useState(0);
+  const [selectedFase, setSelectedFase] = useState(-1); // -1 = licenciamiento slide
   const [showTab, setShowTab] = useState<"tareas" | "entregables">("tareas");
-  const fase = HONDURAS_FASES[selectedFase];
-  const Icon = fase.icon;
+  const isLicSlide = selectedFase === -1;
+  const fase = isLicSlide ? null : HONDURAS_FASES[selectedFase];
+  const Icon = fase?.icon;
 
   return (
     <div className="space-y-6 animate-fade-in">
