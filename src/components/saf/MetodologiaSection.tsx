@@ -641,32 +641,47 @@ export function MetodologiaSection() {
         {activeTab === "portal" &&
         <div className="space-y-6 animate-fade-in">
             <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
-              <div className="bg-gradient-to-r from-primary to-primary/80 p-6 text-white">
+              <div className="bg-gradient-to-r from-primary to-primary/80 p-6 text-white flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
                     <Monitor size={20} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Portal de Implementación y Soporte SYSDE</h3>
-                    <p className="text-white/70 text-xs">Dashboard en tiempo real para seguimiento del proyecto</p>
+                    <h3 className="font-bold text-lg">Portal de Soporte SYSDE</h3>
+                    <p className="text-white/70 text-xs">Plataforma de soporte en tiempo real</p>
                   </div>
                 </div>
+                <button
+                  onClick={() => {
+                    const iframe = document.getElementById("portal-iframe-container");
+                    if (iframe) {
+                      if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                      } else {
+                        iframe.requestFullscreen();
+                      }
+                    }
+                  }}
+                  className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors active:scale-95"
+                  title="Pantalla completa"
+                >
+                  <Maximize size={16} className="text-white" />
+                </button>
               </div>
-              <div className="aspect-video w-full">
+              <div id="portal-iframe-container" className="aspect-video w-full bg-black">
                 <iframe
-                src="https://dashboard-implementacion.lovable.app"
+                src="https://soporrteunicomer.lovable.app"
                 className="w-full h-full border-0"
-                title="Portal SYSDE - Dashboard de Implementación"
-                loading="lazy" />
-              
+                title="Portal SYSDE - Soporte"
+                loading="lazy"
+                allow="fullscreen" />
               </div>
               <div className="p-5 border-t">
                 <a
-                href="https://dashboard-implementacion.lovable.app"
+                href="https://soporrteunicomer.lovable.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:text-primary/80 transition-colors active:scale-95">
-                
                   <Globe size={14} />
                   Abrir portal en nueva ventana →
                 </a>
