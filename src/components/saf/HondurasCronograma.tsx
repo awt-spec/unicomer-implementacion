@@ -249,7 +249,7 @@ export function HondurasCronograma() {
           <div className="flex mb-2 pl-44 md:pl-52">
             {Array.from({ length: TOTAL_MONTHS }, (_, i) =>
             <div key={i} className={`flex-1 text-center text-[8px] font-medium ${i < 12 ? "text-muted-foreground" : "text-muted-foreground/60"}`}>
-                {i % 2 === 0 ? `M${i + 1}` : ""}
+                {`M${i + 1}`}
               </div>
             )}
           </div>
