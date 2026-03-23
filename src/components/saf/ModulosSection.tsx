@@ -59,7 +59,7 @@ function OrbitLabels({ cx, cy, activeOrbit, setActiveOrbit, setActiveModule, isI
   setActiveOrbit: (v: TabKey | null) => void; setActiveModule: (v: null) => void; isInView: boolean;
 }) {
   return (
-    <div className="absolute left-0 right-0 flex justify-center gap-3 z-40" style={{ top: cy - ORBITS[ORBITS.length - 1].radius - 50 }}>
+    <div className="absolute left-0 right-0 flex justify-center gap-3 z-40" style={{ top: cy + ORBITS[ORBITS.length - 1].radius + 20 }}>
       {ORBITS.map((orbit) => (
         <button
           key={`label-${orbit.key}`}
