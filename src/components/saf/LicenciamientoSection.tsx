@@ -56,7 +56,7 @@ const MODULAR = {
 
 export function LicenciamientoSection() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section id="licenciamiento" className="py-20 px-4 bg-white">
       <div className="max-w-5xl mx-auto text-center">
         {/* Badge */}
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-200 bg-rose-50 text-rose-600 text-sm font-semibold mb-6">
