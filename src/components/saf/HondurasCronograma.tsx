@@ -96,7 +96,7 @@ const HONDURAS_FASES = [
   barStart: 6, barEnd: 13
 },
 {
-  id: "F05", nombre: "Certificación de Migración & Brechas", periodo: "Mes 10–14", semanas: "37–56",
+  id: "F05", nombre: "Certificación de Migración e Identificación de Posibles Brechas de Desarrollo, Adaptaciones y Certificaciones", periodo: "Mes 10–14", semanas: "37–56",
   icon: FlaskConical, color: "from-emerald-500 to-emerald-400", colorLight: "bg-emerald-50 text-emerald-600",
   responsables: "Jhonny Brenes · Danilo Vezzoni · Carlos Cascante",
   tareas: [
